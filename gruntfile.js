@@ -35,4 +35,6 @@ module.exports = function(grunt) {
    * Tasks
    */
 	grunt.registerTask('default', []);
+  grunt.registerTask('build', []);
+  grunt.registerTask('compile', []);
 };
