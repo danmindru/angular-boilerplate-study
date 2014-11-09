@@ -1,0 +1,13 @@
+{
+  "name": "angular-boilerplate-study",
+  "homepage": "https://github.com/dandaniel/angular-boilerplate-study",
+  "description": "A study of AngularJS modularity & organization",
+  "authors": [
+    "Dan Mindru"
+  ],
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "angular": "~1.3.2"
+  }
+}
