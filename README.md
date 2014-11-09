@@ -39,6 +39,7 @@ $ grunt compile
 ###License
 --------------------------
 Copyright (c) Dan Mindru <mindrudan@gmail.com>
+
 All rights reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
