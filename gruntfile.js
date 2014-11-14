@@ -2,6 +2,13 @@
 
 module.exports = function(grunt) {
   /*
+   * Configuration variables
+   */
+  var buildVendorJS = [
+    './vendor/angular/angular.js'
+  ];
+
+  /*
    * Time grunt execution
    */
   require('time-grunt')(grunt);
@@ -28,6 +35,29 @@ module.exports = function(grunt) {
         ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
         ' * Licensed <%= pkg.licenses.type %> <<%= pkg.licenses.url %>>\n' +
         ' */\n'
+    },
+    //////////////
+    copy: {
+      build_js: {
+        src: [
+          './src/app/app-main/app-main.init.js',
+          './src/app/**/*.config.js',
+          './src/app/**/*.controller.js'
+        ],
+        dest: './build/'
+      },
+      build_vendor_js: {
+        src: buildVendorJS,
+        dest: './build/vendor/',
+        expand: true,
+        flatten: true
+      },
+      build_index: {
+        src: ['./src/index.html'],
+        dest: './build/',
+        expand: true,
+        flatten: true
+      }
     }
 	});
 
@@ -35,6 +65,6 @@ module.exports = function(grunt) {
    * Tasks
    */
 	grunt.registerTask('default', []);
-  grunt.registerTask('build', []);
+  grunt.registerTask('build', ['copy:build_js', 'copy:build_index', 'copy:build_vendor_js']); //launch chrome window on port 8989
   grunt.registerTask('compile', []);
 };

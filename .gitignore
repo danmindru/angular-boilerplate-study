@@ -1,5 +1,6 @@
 www/*
 /vendor/
 /node_modules/
-/lib/
+/build/
+/application/
 .DS_Store
