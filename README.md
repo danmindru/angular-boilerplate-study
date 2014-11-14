@@ -22,14 +22,20 @@ $ bower install
 
 ###Build or compile
 --------------------------
+A 2-stage grunt strategy is implemeted.
 
-The app will be built in ./build by running
+For development, files will go to **./build**.
+For production, files will be concatenated, uglyfied / minified and moved to **./application**. (1 css, 1 js)
+
+
+
+The build task will do all the work for development -> ./build
 
 ```
 $ grunt build
 ```
 
-The app will be compiled in ./app by running
+The build task will do all the work for production -> ./application
 
 ```
 $ grunt compile
