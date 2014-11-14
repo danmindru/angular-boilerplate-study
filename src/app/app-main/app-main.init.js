@@ -9,6 +9,8 @@ var AppConfig = (function applicationInit(){
   var pushAfterBootstrap = function pushAfterBootstrap(lateModule){
     angular.module(lateModule, []);
     angular.module(appRootModuleName).requires.push(lateModule);
+
+    return angular.module(lateModule);
   };
 
   ////////////////////////

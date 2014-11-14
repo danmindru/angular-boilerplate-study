@@ -2,11 +2,9 @@
 
 module.exports = function(grunt) {
   /*
-   * Configuration variables
+   * Include grunt configuration
    */
-  var buildVendorJS = [
-    './vendor/angular/angular.js'
-  ];
+  var gruntConfig = require( './grunt.config.js' );
 
   /*
    * Time grunt execution
@@ -21,7 +19,8 @@ module.exports = function(grunt) {
   /*
    * Configuration
    */
-	grunt.initConfig({
+	var gruntTasks = {
+    //////////////
 		pkg: grunt.file.readJSON('package.json'),
     /*
      * Placed at the top of the compiled source files.
@@ -38,33 +37,56 @@ module.exports = function(grunt) {
     },
     //////////////
     copy: {
-      build_js: {
+      build_app_js: {
         src: [
           './src/app/app-main/app-main.init.js',
-          './src/app/**/*.config.js',
-          './src/app/**/*.controller.js'
+          findModulesIn('./src/app/')
         ],
-        dest: './build/'
+        dest: '<%= build_dir %>'
+      },
+      build_common_js: {
+        src: findModulesIn('./src/common/'),
+        dest: '<%= build_dir %>'
       },
       build_vendor_js: {
-        src: buildVendorJS,
-        dest: './build/vendor/',
+        src: ['<%= build.vendor_js %>'],
+        dest: '<%= build_dir %>vendor/',
         expand: true,
         flatten: true
       },
       build_index: {
         src: ['./src/index.html'],
-        dest: './build/',
+        dest: '<%= build_dir %>',
         expand: true,
         flatten: true
       }
     }
-	});
+	};
+
+  /////////////////
+  grunt.initConfig(
+    grunt.util._.extend(gruntTasks, gruntConfig)
+  );
+
+  /*
+   * Helpers
+   */
+   /////////////////
+  function findModulesIn(modulePath){
+    var output = [],
+        i;
+
+    for(i = 0; i <= gruntConfig.module_file_order.length-1; i++){
+      output.push(modulePath + gruntConfig.module_file_order[i]);
+    }
+
+    return output;
+  }
 
 	/*
    * Tasks
    */
 	grunt.registerTask('default', []);
-  grunt.registerTask('build', ['copy:build_js', 'copy:build_index', 'copy:build_vendor_js']); //launch chrome window on port 8989
+  grunt.registerTask('build', ['copy:build_app_js', 'copy:build_index', 'copy:build_vendor_js', 'copy:build_common_js']); //launch chrome window on port 8989
   grunt.registerTask('compile', []);
 };
