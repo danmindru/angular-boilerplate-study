@@ -9,7 +9,7 @@ exceptionLoggingService.$inject = ["$log", "$window", "traceService", 'LOGGLY_KE
 
 //////////////////////////////
 function exceptionLoggingService ($log, $window, traceService, LOGGLY_KEY){
-  absConfig._LTracker.push({'logglyKey': LOGGLY_KEY});
+  _LTracker.push({'logglyKey': LOGGLY_KEY});
 
   function error(exception, cause){
     // preserve the default behaviour which will log the error
@@ -32,7 +32,7 @@ function exceptionLoggingService ($log, $window, traceService, LOGGLY_KEY){
       };
 
       $log.warn("Loggly notified of exception");
-      absConfig._LTracker.push(fullStack);
+      _LTracker.push(fullStack);
 
     } catch (loggingError){
       $log.warn("Error: logging failed");
