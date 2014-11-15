@@ -60,6 +60,12 @@ module.exports = function(grunt) {
         expand: true,
         flatten: true
       }
+    },
+    jshint: {
+      global: ['./src/**/*.js'],
+      options: {
+        jshintrc: true
+      }
     }
 	};
 
@@ -87,6 +93,6 @@ module.exports = function(grunt) {
    * Tasks
    */
 	grunt.registerTask('default', []);
-  grunt.registerTask('build', ['copy:build_app_js', 'copy:build_index', 'copy:build_vendor_js', 'copy:build_common_js']); //launch chrome window on port 8989
+  grunt.registerTask('build', ['jshint:global', 'copy:build_app_js', 'copy:build_index', 'copy:build_vendor_js', 'copy:build_common_js']); //launch chrome window on port 8989
   grunt.registerTask('compile', []);
 };

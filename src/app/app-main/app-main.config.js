@@ -1,6 +1,6 @@
 //////////// root app module does not require pushAfterBootstrap
 
-ApplicationRootModule.config(rootConfig);
+angular.module(absConfig.appRootModuleName).config(rootConfig);
 
 function rootConfig($locationProvider){
   $locationProvider.hashPrefix('!');
