@@ -87,8 +87,10 @@
       "document": true,
       "jasmine": true,
       "angular": true,
+      "module": true,
+      "require": true,
       "absConfig": true,
       "printStackTrace": true,
       "_LTracker": true
-    }        // additional predefined global variables
+    } // additional predefined global variables
 }

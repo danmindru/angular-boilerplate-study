@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = function(grunt) {
   /*
    * Include grunt configuration
@@ -40,12 +38,9 @@ module.exports = function(grunt) {
       build_app_js: {
         src: [
           './src/app/app-main/app-main.init.js',
-          findModulesIn('./src/app/')
+          findModuleFilesIn('./src/app/'),
+          findModuleFilesIn('./src/common/'),
         ],
-        dest: '<%= build_dir %>'
-      },
-      build_common_js: {
-        src: findModulesIn('./src/common/'),
         dest: '<%= build_dir %>'
       },
       build_vendor_js: {
@@ -61,11 +56,30 @@ module.exports = function(grunt) {
         flatten: true
       }
     },
+    /////////////////
     jshint: {
-      global: ['./src/**/*.js'],
       options: {
         jshintrc: true
-      }
+      },
+      src_js: ['./src/**/*.js'],
+      gruntfiles: ['./gruntfile.js', 'grunt.config.js']
+    },
+    /////////////////
+    watch: {
+      options: {
+        livereload: true
+      },
+      src_js: {
+        files: ['./src/**/*.js', './src/**/*.html'],
+        tasks: ['jshint:src_js', 'copy:build_app_js']
+      },
+      gruntfiles: {
+        files: ['./gruntfile.js', 'grunt.config.js'],
+        tasks: ['jshint:gruntfiles'],
+        options: {
+          livereload: false
+        }
+      },
     }
 	};
 
@@ -78,7 +92,7 @@ module.exports = function(grunt) {
    * Helpers
    */
    /////////////////
-  function findModulesIn(modulePath){
+  function findModuleFilesIn(modulePath){
     var output = [],
         i;
 
@@ -92,7 +106,7 @@ module.exports = function(grunt) {
 	/*
    * Tasks
    */
-	grunt.registerTask('default', []);
-  grunt.registerTask('build', ['jshint:global', 'copy:build_app_js', 'copy:build_index', 'copy:build_vendor_js', 'copy:build_common_js']); //launch chrome window on port 8989
+	grunt.registerTask('default', ['build', 'watch']);
+  grunt.registerTask('build', ['copy:build_app_js', 'copy:build_index', 'copy:build_vendor_js']);
   grunt.registerTask('compile', []);
 };

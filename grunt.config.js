@@ -17,10 +17,11 @@ module.exports = {
   },
   ////////////
   module_file_order: [
-    '**/*.config.js',
-    '**/*.constant.js',
+    '**/*.config.js', //routes & constants, etc
     '**/*.run.js',
-    '**/*.service.js',
-    '**/*.controller.js'
+    '**/*.service.js', //factories & providers, etc
+    '**/*.controller.js',
+    '**/*.directive.js',
+    '**/*.filter.js'
   ]
 };
