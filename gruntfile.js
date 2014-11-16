@@ -14,7 +14,7 @@ module.exports = function(grunt) {
    */
   require('time-grunt')(grunt);
 
-	/*
+  /*
    * JIT Grunt will automatically load other npm tasks
    */
   require('jit-grunt')(grunt);
@@ -22,9 +22,9 @@ module.exports = function(grunt) {
   /*
    * Configuration
    */
-	var gruntTasks = {
+  var gruntTasks = {
     //////////////
-		pkg: grunt.file.readJSON('package.json'),
+    pkg: grunt.file.readJSON('package.json'),
     /*
      * Placed at the top of the compiled source files.
      */
@@ -90,7 +90,7 @@ module.exports = function(grunt) {
         }
       },
     }
-	};
+  };
 
   /////////////////
   grunt.initConfig(
@@ -134,10 +134,10 @@ module.exports = function(grunt) {
     });
   }
 
-	/*
+  /*
    * Tasks
    */
-	grunt.registerTask('default', ['build', 'watch']);
+  grunt.registerTask('default', ['build', 'watch']);
   grunt.registerTask('build', ['copy:build_app_js', 'copy:build_vendor_js', 'copy:build_index']);
   grunt.registerTask('compile', []);
 };
