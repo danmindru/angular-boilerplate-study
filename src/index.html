@@ -23,17 +23,11 @@
 <body class="ng-cloak">
 </body>
 
-<script src="vendor/angular.js"></script>
-<script src="src/app/app-main/app-main.init.js"></script>
-<script src="src/app/app-main/app-main.config.js"></script>
-<script src="src/app/app-main/app-main.controller.js"></script>
-
-<script src="vendor/stacktrace.js"></script>
-<script src="vendor/loggly.tracker.js"></script>
-<script src="src/common/loggly/loggly.config.js"></script>
-<script src="src/common/loggly/loggly-exception-logging.service.js"></script>
-<script src="src/common/loggly/loggly-trace.service.js"></script>
-<script src="src/common/loggly/loggly-exception-decorator.service.js"></script>
-
+<!-- Explain it -->
+<%
+  scripts.forEach(function (script){
+    %><script type="text/javascript" src="<%= script %>"></script><%
+  });
+%>
 
 </html>

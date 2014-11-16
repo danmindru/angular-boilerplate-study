@@ -5,6 +5,11 @@ module.exports = function(grunt) {
   var gruntConfig = require( './grunt.config.js' );
 
   /*
+   * Helpers (preparing for grunt util deprecation)
+   */
+  var glob = require('glob');
+
+  /*
    * Time grunt execution
    */
   require('time-grunt')(grunt);
@@ -37,7 +42,6 @@ module.exports = function(grunt) {
     copy: {
       build_app_js: {
         src: [
-          './src/app/app-main/app-main.init.js',
           findModuleFilesIn('./src/app/'),
           findModuleFilesIn('./src/common/'),
         ],
@@ -45,15 +49,16 @@ module.exports = function(grunt) {
       },
       build_vendor_js: {
         src: ['<%= build.vendor_js %>'],
-        dest: '<%= build_dir %>vendor/',
-        expand: true,
-        flatten: true
+        dest: '<%= build_dir %>'
       },
       build_index: {
         src: ['./src/index.html'],
         dest: '<%= build_dir %>',
         expand: true,
-        flatten: true
+        flatten: true,
+        options: {
+          process: processIndexBuild
+        }
       }
     },
     /////////////////
@@ -70,12 +75,16 @@ module.exports = function(grunt) {
         livereload: true
       },
       src_js: {
-        files: ['./src/**/*.js', './src/**/*.html'],
-        tasks: ['jshint:src_js', 'copy:build_app_js']
+        files: ['./src/**/*.js', './src/**/*.html', '!./src/index.html'],
+        tasks: ['newer:jshint:src_js', 'newer:copy:build_app_js']
+      },
+      src_index: {
+        files: ['./src/index.html'],
+        tasks: ['copy:build_index']
       },
       gruntfiles: {
         files: ['./gruntfile.js', 'grunt.config.js'],
-        tasks: ['jshint:gruntfiles'],
+        tasks: ['newer:jshint:gruntfiles'],
         options: {
           livereload: false
         }
@@ -103,10 +112,32 @@ module.exports = function(grunt) {
     return output;
   }
 
+  //////////////
+  function processIndexBuild(content){
+    var buildScripts = [];
+    var customModules = gruntConfig.build.vendor_js
+                        .concat(findModuleFilesIn('./src/app/'))
+                        .concat(findModuleFilesIn('./src/common/'));
+
+    customModules.forEach(function(module){
+      glob(module, { sync: true }, function(err, files){
+        if(files.length > 0){
+          buildScripts = files.concat(buildScripts);
+        }
+      });
+    });
+
+    return grunt.template.process(content, {
+      data: {
+        scripts: buildScripts.reverse()
+      }
+    });
+  }
+
 	/*
    * Tasks
    */
 	grunt.registerTask('default', ['build', 'watch']);
-  grunt.registerTask('build', ['copy:build_app_js', 'copy:build_index', 'copy:build_vendor_js']);
+  grunt.registerTask('build', ['copy:build_app_js', 'copy:build_vendor_js', 'copy:build_index']);
   grunt.registerTask('compile', []);
 };

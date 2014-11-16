@@ -91,6 +91,7 @@
       "require": true,
       "absConfig": true,
       "printStackTrace": true,
-      "_LTracker": true
+      "_LTracker": true,
+      "glob": true
     } // additional predefined global variables
 }
