@@ -19,11 +19,34 @@ $ sudo npm install
 $ bower install
 ```
 
+###Testing
+--------------------------
+To strictly run all tests (no build, etc) run
 
-To run tests it will come in handy to install karma-cli (if you don't have it yet)
+```
+grunt test
+```
+
+
+####Unit
+--------------------------
+To run unit tests it will come in handy to install karma-cli (if you don't have it yet)
 
 ```
 $ npm install -g karma-cli
+```
+
+
+Tests will run in the grunt default task (which builds first)
+
+```
+$ grunt
+```
+
+You can use the continous task while writing tests to auto refresh your changes
+
+```
+$ grunt karma:continuous
 ```
 
 

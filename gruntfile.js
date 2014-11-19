@@ -82,8 +82,12 @@ module.exports = function(grunt) {
         configFile: '<%= build_dir %>/karma.conf.js'
       },
       unit: {
-        port: 9019,
+        port: 9191,
         background: false
+      },
+      continuous: {
+        singleRun: false,
+        autoWatch: true
       }
     },
     /////////////////
@@ -154,8 +158,8 @@ module.exports = function(grunt) {
   /*
    * Tasks
    */
-  grunt.registerTask('default', ['build', 'karma', 'watch']);
+  grunt.registerTask('default', ['build', 'karma:unit', 'watch']);
   grunt.registerTask('build', ['copy:build_app_js', 'copy:build_vendor_js', 'copy:build_index', 'copy:build_karma']);
   grunt.registerTask('compile', []);
-  grunt.registerTask('test', ['karma']);
+  grunt.registerTask('test', ['karma:unit']);
 };
