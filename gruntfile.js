@@ -59,6 +59,13 @@ module.exports = function(grunt) {
         options: {
           process: processIndexBuild
         }
+      },
+      build_karma: {
+        src: ['./karma.conf.js'],
+        dest: '<%= build_dir %>',
+        options: {
+          process: processIndexBuild
+        }
       }
     },
     /////////////////
@@ -68,6 +75,16 @@ module.exports = function(grunt) {
       },
       src_js: ['./src/**/*.js'],
       gruntfiles: ['./gruntfile.js', 'grunt.config.js']
+    },
+    /////////////////
+    karma: {
+      options: {
+        configFile: '<%= build_dir %>/karma.conf.js'
+      },
+      unit: {
+        port: 9019,
+        background: false
+      }
     },
     /////////////////
     watch: {
@@ -137,7 +154,8 @@ module.exports = function(grunt) {
   /*
    * Tasks
    */
-  grunt.registerTask('default', ['build', 'watch']);
-  grunt.registerTask('build', ['copy:build_app_js', 'copy:build_vendor_js', 'copy:build_index']);
+  grunt.registerTask('default', ['build', 'karma', 'watch']);
+  grunt.registerTask('build', ['copy:build_app_js', 'copy:build_vendor_js', 'copy:build_index', 'copy:build_karma']);
   grunt.registerTask('compile', []);
+  grunt.registerTask('test', ['karma']);
 };

@@ -1,4 +1,4 @@
-angular.module(absConfig.appRootModuleName).controller('rootController', rootController);
+angular.module(absConfig.appRootModuleName).controller('RootController', rootController);
 
 function rootController($log) {
   $log.warn('App root ctrl is rollin');

@@ -15,8 +15,15 @@ Can an AngularJS boilerplate be designed to suite the development of application
 To install run
 
 ```
-$ npm install
+$ sudo npm install
 $ bower install
+```
+
+
+To run tests it will come in handy to install karma-cli (if you don't have it yet)
+
+```
+$ npm install -g karma-cli
 ```
 
 
