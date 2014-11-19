@@ -19,6 +19,28 @@ $ sudo npm install
 $ bower install
 ```
 
+###Build or compile
+--------------------------
+A 2-stage grunt strategy is implemeted.
+
+For development, files will go to **./build**.
+For production, files will be concatenated, uglyfied / minified and moved to **./application**. (1 css, 1 js)
+
+
+
+The build task will do all the work for development -> ./build
+
+```
+$ grunt build
+```
+
+The build task will do all the work for production -> ./application
+
+```
+$ grunt compile
+```
+
+
 ###Testing
 --------------------------
 To strictly run all tests (no build, etc) run
@@ -47,28 +69,6 @@ You can use the continous task while writing tests to auto refresh your changes
 
 ```
 $ grunt karma:continuous
-```
-
-
-###Build or compile
---------------------------
-A 2-stage grunt strategy is implemeted.
-
-For development, files will go to **./build**.
-For production, files will be concatenated, uglyfied / minified and moved to **./application**. (1 css, 1 js)
-
-
-
-The build task will do all the work for development -> ./build
-
-```
-$ grunt build
-```
-
-The build task will do all the work for production -> ./application
-
-```
-$ grunt compile
 ```
 
 
