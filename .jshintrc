@@ -92,6 +92,9 @@
       "absConfig": true,
       "printStackTrace": true,
       "_LTracker": true,
-      "glob": true
+      "glob": true,
+      "$inject": true,
+      "inject": true,
+      "expect": true
     } // additional predefined global variables
 }

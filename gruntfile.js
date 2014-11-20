@@ -47,6 +47,10 @@ module.exports = function(grunt) {
         ],
         dest: '<%= build_dir %>'
       },
+      build_unit: {
+        src: ['src/**/*.spec.js'],
+        dest: '<%= build_dir %>'
+      },
       build_vendor_js: {
         src: ['<%= build.vendor_js %>'],
         dest: '<%= build_dir %>'
@@ -158,8 +162,8 @@ module.exports = function(grunt) {
   /*
    * Tasks
    */
-  grunt.registerTask('default', ['build', 'karma:unit', 'watch']);
-  grunt.registerTask('build', ['copy:build_app_js', 'copy:build_vendor_js', 'copy:build_index', 'copy:build_karma']);
+  grunt.registerTask('default', ['jshint', 'build', 'karma:unit', 'watch']);
+  grunt.registerTask('build', ['copy:build_app_js', 'copy:build_vendor_js', 'copy:build_index', 'copy:build_unit', 'copy:build_karma']);
   grunt.registerTask('compile', []);
   grunt.registerTask('test', ['karma:unit']);
 };
