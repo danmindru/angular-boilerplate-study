@@ -57,14 +57,14 @@ module.exports = function(grunt) {
         expand: true,
         flatten: true,
         options: {
-          process: processIndexBuild
+          process: processBuildScripts
         }
       },
       build_karma: {
         src: ['./karma.conf.js'],
         dest: '<%= build_dir %>',
         options: {
-          process: processIndexBuild
+          process: processBuildScripts
         }
       }
     },
@@ -134,7 +134,7 @@ module.exports = function(grunt) {
   }
 
   //////////////
-  function processIndexBuild(content){
+  function processBuildScripts(content){
     var buildScripts = [];
     var customModules = gruntConfig.build.vendor_js
                         .concat(findModuleFilesIn('./src/app/'))
