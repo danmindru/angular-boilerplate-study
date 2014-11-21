@@ -55,6 +55,12 @@ module.exports = function(grunt) {
         src: ['<%= build.vendor_js %>'],
         dest: '<%= build_dir %>'
       },
+      build_views: {
+        src: ['./src/**/*.html'],
+        expand: true,
+        flatten: true,
+        dest: '<%= build_dir %>/views/'
+      },
       build_index: {
         src: ['./src/index.html'],
         dest: '<%= build_dir %>',
@@ -163,7 +169,7 @@ module.exports = function(grunt) {
    * Tasks
    */
   grunt.registerTask('default', ['jshint', 'build', 'karma:unit', 'watch']);
-  grunt.registerTask('build', ['copy:build_app_js', 'copy:build_vendor_js', 'copy:build_index', 'copy:build_unit', 'copy:build_karma']);
+  grunt.registerTask('build', ['copy:build_app_js', 'copy:build_vendor_js', 'copy:build_views', 'copy:build_index', 'copy:build_unit', 'copy:build_karma']);
   grunt.registerTask('compile', []);
   grunt.registerTask('test', ['karma:unit']);
 };

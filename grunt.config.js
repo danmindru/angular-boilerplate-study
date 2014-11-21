@@ -12,6 +12,7 @@ module.exports = {
     ////////////
     vendor_js: [
       './vendor/angular/angular.js',
+      './vendor/angular-ui-router/release/angular-ui-router.js',
       './vendor/angular-mocks/angular-mocks.js',
       './vendor/stacktrace-js/stacktrace.js',
       './vendor/loggly-jslogger/src/loggly.tracker.js'

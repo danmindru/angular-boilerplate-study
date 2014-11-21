@@ -1,7 +1,7 @@
 ////////////////////////
 var absConfig = (function applicationInit(){
   var appRootModuleName = 'abs';
-  var appMainVendorDependencies = [];
+  var appMainVendorDependencies = ['ui.router'];
 
   ////////////////////////
   var pushAfterBootstrap = function pushAfterBootstrap(lateModule){

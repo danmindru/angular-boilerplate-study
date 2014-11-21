@@ -2,8 +2,9 @@
 
 angular.module(absConfig.appRootModuleName).config(rootConfig);
 
-function rootConfig($locationProvider){
+function rootConfig($locationProvider, $urlRouterProvider){
   $locationProvider.hashPrefix('!');
+  $urlRouterProvider.otherwise('/home');
 }
 
-rootConfig.$inject = ['$locationProvider'];
+rootConfig.$inject = ['$locationProvider', '$urlRouterProvider'];
