@@ -181,22 +181,23 @@ module.exports = function(grunt) {
 
   //////////////
   function processBuildScripts(content){
-    var buildScripts = [];
-    var customModules = gruntConfig.build.vendor_js
+    var buildScripts = [],
+        globFiles,
+        customModules = gruntConfig.build.vendor_js
                         .concat(findModuleFilesIn('./src/app/'))
                         .concat(findModuleFilesIn('./src/common/'));
 
     customModules.forEach(function(module){
-      glob(module, { sync: true }, function(err, files){
-        if(files.length > 0){
-          buildScripts = files.concat(buildScripts);
-        }
-      });
+      globFiles = glob.sync(module);
+
+      if(globFiles.length > 0){
+        buildScripts = buildScripts.concat(globFiles);
+      }
     });
 
     return grunt.template.process(content, {
       data: {
-        scripts: buildScripts.reverse()
+        scripts: buildScripts
       }
     });
   }
