@@ -79,6 +79,34 @@ module.exports = function(grunt) {
       }
     },
     /////////////////
+    clean: {
+      build_css_clean: ['<%= build_dir %>/src/assets/css/app.custom.css']
+    },
+    /////////////////
+    less: {
+      build_less: {
+        src: [
+          './src/assets/**/*.less'
+        ],
+        dest: '<%= build_dir %>/src/assets/css/app.custom.css',
+        options: {
+          cleancss: true,
+          compress: true
+        }
+      }
+    },
+    /////////////////
+    cssmin: {
+      build_css: {
+        src: [
+          '<%= build.vendor_css %>',
+          './src/assets/**/*.css',
+          '<%= build_dir %>/src/assets/css/app.custom.css'
+        ],
+        dest: '<%= build_dir %>/src/assets/css/app.min.css'
+      }
+    },
+    /////////////////
     jshint: {
       options: {
         jshintrc: true
@@ -112,6 +140,10 @@ module.exports = function(grunt) {
       src_index: {
         files: ['./src/index.html'],
         tasks: ['copy:build_index']
+      },
+      src_stylesheets: {
+        files: ['./src/assets/**/*.less', './src/assets/**/*.css'],
+        tasks: ['newer:less:build_less', 'cssmin:build_css', 'clean:build_css_clean']
       },
       gruntfiles: {
         files: ['./gruntfile.js', 'grunt.config.js'],
@@ -169,7 +201,7 @@ module.exports = function(grunt) {
    * Tasks
    */
   grunt.registerTask('default', ['jshint', 'build', 'karma:unit', 'watch']);
-  grunt.registerTask('build', ['copy:build_app_js', 'copy:build_vendor_js', 'copy:build_views', 'copy:build_index', 'copy:build_unit', 'copy:build_karma']);
+  grunt.registerTask('build', ['copy:build_app_js', 'copy:build_vendor_js', 'copy:build_views', 'copy:build_index', 'copy:build_unit', 'copy:build_karma', 'less:build_less', 'cssmin:build_css', 'clean:build_css_clean']);
   grunt.registerTask('compile', []);
   grunt.registerTask('test', ['karma:unit']);
 };

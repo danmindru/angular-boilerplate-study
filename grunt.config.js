@@ -16,6 +16,10 @@ module.exports = {
       './vendor/angular-mocks/angular-mocks.js',
       './vendor/stacktrace-js/stacktrace.js',
       './vendor/loggly-jslogger/src/loggly.tracker.js'
+    ],
+    ////////////
+    vendor_css: [
+      './vendor/bootstrap/dist/css/bootstrap.min.css'
     ]
   },
   ////////////
