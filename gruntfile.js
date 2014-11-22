@@ -56,7 +56,7 @@ module.exports = function(grunt) {
         dest: '<%= build_dir %>'
       },
       build_views: {
-        src: ['./src/**/*.html'],
+        src: ['./src/**/*.html', '!./src/**/index.html'],
         expand: true,
         flatten: true,
         dest: '<%= build_dir %>/views/'
@@ -134,8 +134,12 @@ module.exports = function(grunt) {
         livereload: true
       },
       src_js: {
-        files: ['./src/**/*.js', './src/**/*.html', '!./src/index.html'],
+        files: ['./src/**/*.js'],
         tasks: ['newer:jshint:src_js', 'newer:copy:build_app_js']
+      },
+      src_html: {
+        files: ['./src/**/*.html', '!./src/index.html'],
+        tasks: ['newer:copy:build_views']
       },
       src_index: {
         files: ['./src/index.html'],
