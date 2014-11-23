@@ -1,3 +1,5 @@
 test:
+  pre:
+    - grunt build
   override:
     - grunt test
