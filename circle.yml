@@ -1,5 +1,6 @@
 test:
   pre:
+    - bower install
     - grunt build
   override:
     - grunt test
