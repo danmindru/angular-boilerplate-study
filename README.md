@@ -52,7 +52,8 @@ grunt test
 
 ####Unit
 --------------------------
-To run unit tests it will come in handy to install karma-cli (if you don't have it yet)
+To run unit tests it will come in handy to install karma-cli (if you don't have it yet).
+Unit tests will run on PhantomJS, but if you have binaries for other browsers you are encouraged to add them in karma.conf.js
 
 ```
 $ npm install -g karma-cli
