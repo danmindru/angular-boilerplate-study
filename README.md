@@ -1,3 +1,5 @@
+[![Circle CI](https://circleci.com/gh/dandaniel/angular-boilerplate-study/tree/master.svg?style=svg)](https://circleci.com/gh/dandaniel/angular-boilerplate-study/tree/master)
+
 ###A study of AngularJS modularity & organization
 --------------------------
 
