@@ -156,6 +156,10 @@ module.exports = function(grunt) {
           livereload: false
         }
       },
+      tests: {
+        files: ['src/**/*.spec.js'],
+        tasks: ['newer:copy:build_karma', 'newer:copy:build_unit']
+      }
     }
   };
 
