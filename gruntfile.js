@@ -234,5 +234,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['jshint', 'build', 'karma:unit', 'watch']);
   grunt.registerTask('build', ['copy:build_app_js', 'copy:build_vendor_js', 'copy:build_views', 'copy:build_index', 'copy:build_unit', 'copy:build_protractor', 'copy:build_karma', 'less:build_less', 'cssmin:build_css', 'clean:build_css_clean']);
   grunt.registerTask('compile', []);
+  grunt.registerTask('test:unit', ['karma:unit']);
+  grunt.registerTask('test:e2e', ['protractor']);
   grunt.registerTask('test', ['karma:unit', 'protractor']);
 };

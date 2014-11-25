@@ -50,7 +50,7 @@ To strictly run all tests run
 ```
 grunt test
 ```
-*Note: this won't build or compile, but just run all unit and end to end tests*
+*Note: this won't build or compile, but just run all unit and end to end tests.*
 
 
 ####Unit
@@ -60,7 +60,7 @@ Unit tests will run on PhantomJS, but if you have binaries for other browsers yo
 
 ```
 $ npm install -g karma-cli
-$ grunt karma:unit
+$ grunt test:unit
 ```
 
 You can use the continous task while writing tests to auto refresh your changes
@@ -82,7 +82,7 @@ Protractor is used for running end to end tests. Before running the tests be sur
 ```
 $ node_modules/protractor/bin/webdriver-manager update
 $ node_modules/protractor/bin/webdriver-manager start
-$ grunt protractor
+$ grunt test:e2e
 ```
 
 ###License
