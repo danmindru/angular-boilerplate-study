@@ -55,7 +55,7 @@ module.exports = function(grunt) {
         dest: '<%= build_dir %>'
       },
       build_unit: {
-        src: ['src/**/*.spec.js'],
+        src: ['./src/**/*.spec.js'],
         dest: '<%= build_dir %>'
       },
       build_vendor_js: {
@@ -63,19 +63,28 @@ module.exports = function(grunt) {
         dest: '<%= build_dir %>'
       },
       build_views: {
-        src: ['./src/**/*.html', '!./src/**/index.html'],
+        cwd: './src',
+        src: ['**/*.html', '!**/index.html'],
+        dest: '<%= build_dir %>/views/',
         expand: true,
-        flatten: true,
-        dest: '<%= build_dir %>/views/'
+        flatten: true
       },
       build_index: {
-        src: ['./src/index.html'],
+        cwd: './src',
+        src: ['index.html'],
         dest: '<%= build_dir %>',
         expand: true,
         flatten: true,
         options: {
           process: processBuildScripts
         }
+      },
+      build_assets: {
+        cwd: './src',
+        src: ['assets/**/*', '!assets/**/*.less', '!assets/**/*.css'],
+        dest: '<%= build_dir %>src/assets/',
+        expand: true,
+        flatten: true
       },
       build_karma: {
         src: ['./karma.conf.js'],
@@ -85,7 +94,8 @@ module.exports = function(grunt) {
         }
       },
       build_protractor: {
-        src: ['./src/**/*.protractor.js', './src/**/*.e2e.js'],
+        cwd: './src',
+        src: ['**/*.protractor.js', '**/*.e2e.js'],
         expand: true,
         flatten: true,
         dest: '<%= build_dir %>src/e2e/'
@@ -98,9 +108,7 @@ module.exports = function(grunt) {
     /////////////////
     less: {
       build_less: {
-        src: [
-          './src/assets/**/*.less'
-        ],
+        src: ['./src/assets/**/*.less'],
         dest: '<%= build_dir %>/src/assets/css/app.custom.css',
         options: {
           cleancss: true,
@@ -177,6 +185,10 @@ module.exports = function(grunt) {
         files: ['./src/assets/**/*.less', './src/assets/**/*.css'],
         tasks: ['newer:less:build_less', 'cssmin:build_css', 'clean:build_css_clean']
       },
+      src_assets: {
+        files: ['./src/assets/**/*', '!./src/assets/**/*.less', '!./src/assets/**/*.css'],
+        tasks: ['newer:copy:build_assets']
+      },
       gruntfiles: {
         files: ['./gruntfile.js', 'grunt.config.js'],
         tasks: ['newer:jshint:gruntfiles'],
@@ -238,7 +250,7 @@ module.exports = function(grunt) {
    * Tasks
    */
   grunt.registerTask('default', ['jshint', 'build', 'karma:unit', 'watch']);
-  grunt.registerTask('build', ['copy:build_app_js', 'copy:build_vendor_js', 'copy:build_views', 'copy:build_index', 'copy:build_unit', 'copy:build_protractor', 'copy:build_karma', 'less:build_less', 'cssmin:build_css', 'clean:build_css_clean']);
+  grunt.registerTask('build', ['copy:build_app_js', 'copy:build_vendor_js', 'copy:build_views', 'copy:build_index', 'copy:build_unit', 'copy:build_protractor', 'copy:build_karma', 'copy:build_assets', 'less:build_less', 'cssmin:build_css', 'clean:build_css_clean']);
   grunt.registerTask('compile', []);
   grunt.registerTask('test:unit', ['karma:unit']);
   grunt.registerTask('test:e2e', ['protractor']);
