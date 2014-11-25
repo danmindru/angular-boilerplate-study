@@ -6,6 +6,7 @@ function homeConfig($stateProvider){
   $stateProvider.state('home', {
     url: '/home',
     controller: 'HomeController',
+    controllerAs: 'vm',
     templateUrl: 'views/home-page.html',
     data:{
       pageTitle: 'Home page'
