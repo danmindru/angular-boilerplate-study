@@ -15,4 +15,3 @@ function homeConfig($stateProvider){
 }
 
 homeConfig.$inject = ['$stateProvider'];
-
