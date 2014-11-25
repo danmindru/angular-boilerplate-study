@@ -95,6 +95,9 @@
       "glob": true,
       "$inject": true,
       "inject": true,
-      "expect": true
+      "expect": true,
+      "browser": true,
+      "element": true,
+      "by": true
     } // additional predefined global variables
 }

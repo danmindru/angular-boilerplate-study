@@ -18,6 +18,7 @@ module.exports = function(grunt) {
    * JIT Grunt will automatically load other npm tasks
    */
   require('jit-grunt')(grunt);
+  grunt.loadNpmTasks('grunt-protractor-runner');
 
   /*
    * Configuration
@@ -76,6 +77,12 @@ module.exports = function(grunt) {
         options: {
           process: processBuildScripts
         }
+      },
+      build_protractor: {
+        src: ['./src/**/*.protractor.js', './src/**/*.e2e.js'],
+        expand: true,
+        flatten: true,
+        dest: '<%= build_dir %>src/e2e/'
       }
     },
     /////////////////
@@ -129,6 +136,21 @@ module.exports = function(grunt) {
       }
     },
     /////////////////
+    protractor: {
+      options: {
+        configFile: "protractor.conf.js", // Default config file
+        keepAlive: true, // If false, the grunt process stops when the test fails.
+        noColor: false, // If true, protractor will not use colors in its output.
+        args: {}
+      },
+      build: {},
+      /*compile: {
+        options: {
+          configFile: "protractor/protractor-prod.conf.js"
+        }
+      }*/
+    },
+    /////////////////
     watch: {
       options: {
         livereload: true
@@ -157,8 +179,8 @@ module.exports = function(grunt) {
         }
       },
       tests: {
-        files: ['src/**/*.spec.js'],
-        tasks: ['newer:copy:build_karma', 'newer:copy:build_unit']
+        files: ['src/**/*.spec.js', 'src/**/*.e2e.js', 'src/**/*.protractor.js'],
+        tasks: ['newer:copy:build_karma', 'newer:copy:build_unit', 'newer:copy:build_protractor']
       }
     }
   };
@@ -210,7 +232,7 @@ module.exports = function(grunt) {
    * Tasks
    */
   grunt.registerTask('default', ['jshint', 'build', 'karma:unit', 'watch']);
-  grunt.registerTask('build', ['copy:build_app_js', 'copy:build_vendor_js', 'copy:build_views', 'copy:build_index', 'copy:build_unit', 'copy:build_karma', 'less:build_less', 'cssmin:build_css', 'clean:build_css_clean']);
+  grunt.registerTask('build', ['copy:build_app_js', 'copy:build_vendor_js', 'copy:build_views', 'copy:build_index', 'copy:build_unit', 'copy:build_protractor', 'copy:build_karma', 'less:build_less', 'cssmin:build_css', 'clean:build_css_clean']);
   grunt.registerTask('compile', []);
-  grunt.registerTask('test', ['karma:unit']);
+  grunt.registerTask('test', ['karma:unit', 'protractor']);
 };

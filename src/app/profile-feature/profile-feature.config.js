@@ -21,4 +21,3 @@ function profileConfig($stateProvider){
 }
 
 profileConfig.$inject = ['$stateProvider'];
-

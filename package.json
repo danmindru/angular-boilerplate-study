@@ -33,6 +33,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-karma": "^0.9.0",
     "grunt-newer": "^0.8.0",
+    "grunt-protractor-runner": "^1.1.4",
     "jasmine-core": "^2.1.2",
     "jit-grunt": "^0.9.0",
     "karma": "^0.12.25",
@@ -42,6 +43,7 @@
     "karma-opera-launcher": "^0.1.0",
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-safari-launcher": "^0.1.1",
+    "protractor": "^1.4.0",
     "time-grunt": "^1.0.0"
   }
 }
