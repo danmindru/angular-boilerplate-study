@@ -1,0 +1,9 @@
+node_js:
+  - '0.11'
+
+before_script:
+  - 'npm install'
+  - 'bower install'
+  - 'grunt build'
+
+script: 'grunt test:unit'
