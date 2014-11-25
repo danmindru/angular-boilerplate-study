@@ -35,8 +35,15 @@ The build task will do all the work for development -> ./build
 ```
 $ grunt build
 ```
+You can use the following command to start the build http server (port 8008 default):
 
-The build task will do all the work for production -> ./application
+```
+$ grunt shell:run_build_server
+```
+
+
+
+The compile task will do all the work for production -> ./application
 
 ```
 $ grunt compile
@@ -77,7 +84,9 @@ $ grunt
 
 ####End to end
 --------------------------
-Protractor is used for running end to end tests. Before running the tests be sure the webdriver-manager is updated. The selenium server needs to be running too (default at 'http://localhost:4444/wd/hub'):
+Protractor is used for running end to end tests. Before running the tests be sure the webdriver-manager is updated.
+Protractor's base url is 'http://localhost:8008/#!', which can be changed in protractor.conf.js - just make sure the application port matches the base url.
+The selenium server needs to be running too (default at 'http://localhost:4444/wd/hub'):
 
 ```
 $ node_modules/protractor/bin/webdriver-manager update

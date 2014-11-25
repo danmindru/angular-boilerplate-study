@@ -40,6 +40,12 @@ module.exports = function(grunt) {
         ' */\n'
     },
     //////////////
+    shell: {
+      run_build_server: {
+        command: './server/build-server.sh'
+      }
+    },
+    //////////////
     copy: {
       build_app_js: {
         src: [

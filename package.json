@@ -34,6 +34,8 @@
     "grunt-karma": "^0.9.0",
     "grunt-newer": "^0.8.0",
     "grunt-protractor-runner": "^1.1.4",
+    "grunt-shell": "^1.1.1",
+    "http-server": "^0.7.3",
     "jasmine-core": "^2.1.2",
     "jit-grunt": "^0.9.0",
     "karma": "^0.12.25",
