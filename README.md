@@ -1,5 +1,4 @@
 ##A study of AngularJS boilerplates [![Build Status](https://travis-ci.org/dandaniel/angular-boilerplate-study.svg?branch=master)](https://travis-ci.org/dandaniel/angular-boilerplate-study)
---------------------------
 
 This study attempts to answer a few questions when it comes to AngularJS boilerplates:
   1. Is it worth using a boilerpate? Are the benefits clear enough?
