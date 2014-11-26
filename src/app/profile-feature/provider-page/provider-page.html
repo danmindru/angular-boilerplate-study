@@ -1,11 +1,20 @@
 <h1>Provider page</h1>
-{{vm.provider}}
+<section class="providers" data-ng-if="!vm.provider.statusText">
+  {{vm.provider}}
+</section>
+
+<section class="no-providers" data-ng-if="vm.provider.statusText">
+  <h4>Sorry, there was an error getting details for this provider: <i>{{vm.provider.statusText}}</i>
+</section>
 
 <hr/>
 <h2>Other providers</h2>
-
-<section class="providers">
+<section class="providers" data-ng-if="!vm.otherProviders.statusText">
   <section class="provider-container" data-ng-repeat="provider in vm.otherProviders">
     <a href="#!/provider/{{provider.id}}">{{provider.name}}</a>
   </section>
+</section>
+
+<section class="no-providers" data-ng-if="vm.otherProviders.statusText">
+  <h4>Sorry, there was an error getting the other providers: <i>{{vm.otherProviders.statusText}}</i>
 </section>
