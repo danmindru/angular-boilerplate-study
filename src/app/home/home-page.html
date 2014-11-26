@@ -1,7 +1,8 @@
 <h1>AngularJS boilerplate study home</h1>
 <hr/>
 <h2>Here is a list of available providers:</h2>
-<section class="providers">
+
+<section class="providers" data-ng-if="!vm.providers.statusText">
   <section class="provider-container" data-ng-repeat="provider in vm.providers">
     <a href="#!/provider/{{provider.id}}">{{provider.name}}</a>
   </section>
@@ -10,6 +11,11 @@
     <a href="#!/provider/wrong-id">A provider with the wrong id</a>
   </section>
 </section>
+
+<section class="no-providers" data-ng-if="vm.providers.statusText">
+  <h4>Sorry, there was an error getting the providers: <i>{{vm.providers.statusText}}</i>
+</section>
+
 <hr/>
 <h2>Here is a list of available customers:</h2>
 <section class="providers">

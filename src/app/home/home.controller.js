@@ -4,7 +4,13 @@ function homeController($log, ProviderModel, CustomerModel){
   $log.info('Welcome home');
 
   var vm = this;
-  vm.providers = ProviderModel.providerIndex();
+
+  ProviderModel.providerIndex().then(function providerIndexResponse(response){
+    vm.providers = response.data;
+  }, function providerIndexError(error){
+    vm.providers = error;
+  });
+
   vm.customers = CustomerModel.customerIndex();
 }
 

@@ -51,6 +51,7 @@ module.exports = function(grunt) {
         src: [
           findModuleFilesIn('./src/app/'),
           findModuleFilesIn('./src/common/'),
+          './src/app/**/*.json'
         ],
         dest: '<%= build_dir %>'
       },
@@ -170,7 +171,7 @@ module.exports = function(grunt) {
         livereload: true
       },
       src_js: {
-        files: ['./src/**/*.js'],
+        files: ['./src/**/*.js', './src/**/*.json'],
         tasks: ['newer:jshint:src_js', 'newer:copy:build_app_js']
       },
       src_html: {
