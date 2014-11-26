@@ -1,12 +1,14 @@
-###A study of AngularJS modularity & organization [![Build Status](https://travis-ci.org/dandaniel/angular-boilerplate-study.svg?branch=master)](https://travis-ci.org/dandaniel/angular-boilerplate-study)
+##A study of AngularJS boilerplates [![Build Status](https://travis-ci.org/dandaniel/angular-boilerplate-study.svg?branch=master)](https://travis-ci.org/dandaniel/angular-boilerplate-study)
 --------------------------
 
-AngularJS uses modules heavily to declaratively specify how an application should be bootstrapped and how it’s architecture should be designed. Inherently, current boilerplates were built on top of it’s modular structure. Modularity (in theory) can improve a given application in a multitude of areas, such as: **managerial** - development time should be shortened, **application flexibility** - it should be possible to make drastic changes to one module without a need to change the others, **comprehensibility** - it should be possible to study the system one module at a time, **learnability** - the application code should follow industry standards and best practices in order to be easy to setup, learn or extend and **testability** - it should be possible to test the application one module at a time. In some cases, modularity can drastically improve performance by selective, asynchronous or on-demand module loading.
+This study attempts to answer a few questions when it come to AngularJS boilerplates:
+  1. Is it worth using a boilerpate? Are the benefits clear enough?
+  2. Which applications can benefit more from a boilerplate? (If any)
+  3. Can you increase the comprehensibility and performance of an application by using a boilerplate?
+  4. Will using a boilerplate result in a more consistent coding style?
+  5. What conventions or concepts should be used while setting up a boilerplate?
 
-
-What architecture should an AngularJS boilerplate employ in order to reduce deficiencies in performance, scalability, learnability and comprehensibility?
-
-Can an AngularJS boilerplate be designed to suite the development of applications of multiple sizes (one-size-fits-all)? What criteria can be used to demarcate application sizes?
+The result of the study is actually **a boilerplate** itself.
 
 
 ###Installation
@@ -28,6 +30,8 @@ For production, files will be concatenated, uglyfied / minified and moved to **.
 
 
 
+####Build
+--------------------------
 The build task will do all the work for development -> ./build
 
 ```
@@ -40,7 +44,9 @@ $ grunt shell:run_build_server
 ```
 
 
-
+####Compile
+--------------------------
+[Coming soon - not there yet]
 The compile task will do all the work for production -> ./application
 
 ```
@@ -97,6 +103,7 @@ $ grunt test:e2e
 Copyright (c) Dan Mindru <mindrudan@gmail.com>
 
 All rights reserved.
+
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
