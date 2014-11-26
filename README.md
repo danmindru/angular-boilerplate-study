@@ -1,12 +1,11 @@
 ##A study of AngularJS boilerplates [![Build Status](https://travis-ci.org/dandaniel/angular-boilerplate-study.svg?branch=master)](https://travis-ci.org/dandaniel/angular-boilerplate-study)
 --------------------------
 
-This study attempts to answer a few questions when it come to AngularJS boilerplates:
+This study attempts to answer a few questions when it comes to AngularJS boilerplates:
   1. Is it worth using a boilerpate? Are the benefits clear enough?
   2. Which applications can benefit more from a boilerplate? (If any)
   3. Can you increase the comprehensibility and performance of an application by using a boilerplate?
-  4. Will using a boilerplate result in a more consistent coding style?
-  5. What conventions or concepts should be used while setting up a boilerplate?
+  4. What conventions or concepts should be used while setting up a boilerplate?
 
 The result of the study is actually **a boilerplate** itself.
 
