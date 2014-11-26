@@ -1,10 +1,10 @@
 angular.module('abs.feature.home').controller('HomeController', homeController);
 
-function homeController($log, ProfileModel){
+function homeController($log, ProviderModel){
   $log.info('Welcome home');
 
   var vm = this;
-  vm.providers = ProfileModel.providerIndex();
+  vm.providers = ProviderModel.providerIndex();
 }
 
-homeController.$inject = ['$log', 'ProfileModel'];
+homeController.$inject = ['$log', 'ProviderModel'];

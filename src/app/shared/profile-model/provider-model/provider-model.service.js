@@ -1,6 +1,6 @@
-angular.module('abs.service.profile').service('ProfileModel', profileModelService);
+angular.module('abs.model.profile.provider').service('ProviderModel', providerModelService);
 
-function profileModelService(){
+function providerModelService(){
   return {
     providerIndex: providerIndex,
     providerProfile: providerProfile,
