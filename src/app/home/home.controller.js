@@ -5,8 +5,6 @@ function homeController($log, ProfileModel){
 
   var vm = this;
   vm.providers = ProfileModel.providerIndex();
-  vm.quickpot = ProfileModel.providerProfile('quick-pot');
-  vm.noexist = ProfileModel.providerProfile('no-pot');
 }
 
 homeController.$inject = ['$log', 'ProfileModel'];

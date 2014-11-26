@@ -3,12 +3,13 @@ angular.module('abs.service.profile').service('ProfileModel', profileModelServic
 function profileModelService(){
   return {
     providerIndex: providerIndex,
-    providerProfile: providerProfile
+    providerProfile: providerProfile,
+    otherProviders: otherProviders
   };
 
   function providerIndex(){
     return {
-      0: {
+      'quick-pot': {
         id: 'quick-pot',
         name: 'QuickPot',
         address: {
@@ -17,13 +18,22 @@ function profileModelService(){
           postcode: 8000
         }
       },
-      1: {
+      'beni-auto': {
         id: 'beni-auto',
         name: 'Beni Auto',
         address: {
           city: 'Aarhus N',
           street: 'Brendstrupvej 46',
           postcode: 8200
+        }
+      },
+      'hella-service': {
+        id: 'hella-service',
+        name: 'Hella Service Partners',
+        address: {
+          city: 'Odense SV',
+          street: 'Hvidkærvej 23D',
+          postcode: 5250
         }
       }
     };
@@ -73,6 +83,20 @@ function profileModelService(){
           3: 'Lubrication of door hinges.',
           4: 'Replacing lights'
         }
+      },
+      'hella-service': {
+        id: 'hella-service',
+        name: 'Hella Service Partners',
+        address: {
+          city: 'Odense SV',
+          street: 'Hvidkærvej 23D',
+          postcode: 5250
+        },
+        contact: {
+          email: 'info@hellaservicepartner.dk ',
+          phone: '65 65 50 30'
+        },
+        services: {}
       }
     };
 
@@ -94,5 +118,41 @@ function profileModelService(){
     }
 
     return currentProvider;
+  }
+
+  function otherProviders(providerId){
+    var providerIndex = {
+      'quick-pot': {
+        id: 'quick-pot',
+        name: 'QuickPot',
+        address: {
+          city: 'Aarhus C',
+          street: 'Trindsøvej 5',
+          postcode: 8000
+        }
+      },
+      'beni-auto': {
+        id: 'beni-auto',
+        name: 'Beni Auto',
+        address: {
+          city: 'Aarhus N',
+          street: 'Brendstrupvej 46',
+          postcode: 8200
+        }
+      },
+      'hella-service': {
+        id: 'hella-service',
+        name: 'Hella Service Partners',
+        address: {
+          city: 'Odense SV',
+          street: 'Hvidkærvej 23D',
+          postcode: 5250
+        }
+      }
+    };
+
+    providerIndex[providerId] = null;
+
+    return providerIndex;
   }
 }

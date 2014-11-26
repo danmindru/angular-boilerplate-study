@@ -1,7 +1,9 @@
 angular.module('abs.feature.profile.providerPage').controller('ProviderPageController', providerPageController);
 
-function providerPageController($log){
-  $log.info('You are on a provider page');
+function providerPageController($log, $stateParams, ProfileModel){
+  var vm = this;
+  vm.provider = ProfileModel.providerProfile($stateParams.providerId);
+  vm.otherProviders = ProfileModel.otherProviders($stateParams.providerId);
 }
 
-providerPageController.$inject = ['$log'];
+providerPageController.$inject = ['$log', '$stateParams', 'ProfileModel'];

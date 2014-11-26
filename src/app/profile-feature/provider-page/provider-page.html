@@ -1,1 +1,10 @@
 <h1>Provider page</h1>
+{{vm.provider}}
+
+<hr/>
+<h2>Other providers</h2>
+<section class="providers">
+  <section class="provider-container" data-ng-repeat="provider in vm.otherProviders">
+    <a href="#!/provider/{{provider.id}}">{{provider.name}}</a>
+  </section>
+</section>
