@@ -2,6 +2,7 @@ angular.module('abs.feature.profile.providerPage').controller('ProviderPageContr
 
 function providerPageController($log, $stateParams, ProviderModel){
   var vm = this;
+
   ProviderModel.providerProfile($stateParams.providerId).then(function providerProfileResponse(response){
     vm.provider = response;
   }, function providerProfileError(error){
