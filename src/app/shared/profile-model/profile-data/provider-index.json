@@ -1,0 +1,29 @@
+{
+ "quick-pot": {
+    "id": "quick-pot",
+    "name": "QuickPot",
+    "address": {
+      "city": "Aarhus C",
+      "street": "Trindsøvej 5",
+      "postcode": 8000
+    }
+  },
+  "beni-auto": {
+    "id": "beni-auto",
+    "name": "Beni Auto",
+    "address": {
+      "city": "Aarhus N",
+      "street": "Brendstrupvej 46",
+      "postcode": 8200
+    }
+  },
+  "hella-service": {
+    "id": "hella-service",
+    "name": "Hella Service Partners",
+    "address": {
+      "city": "Odense SV",
+      "street": "Hvidkærvej 23D",
+      "postcode": 5250
+    }
+  }
+}

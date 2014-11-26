@@ -1,0 +1,59 @@
+{
+  "quick-pot": {
+    "id": "quick-pot",
+    "name": "QuickPot",
+    "address": {
+      "city": "Aarhus C",
+      "street": "Trindsøvej 5",
+      "postcode": 8000
+    },
+    "contact": {
+      "email": "8000@quickpot.dk",
+      "phone": "86 15 85 44"
+    },
+    "services": {
+      "0": "Checking the pollen filter",
+      "1": "Visual inspection of springs",
+      "2": "Checking wheel bearings",
+      "3": "Checking power steering fluid",
+      "4": "Check the tire pressure",
+      "5": "Lubrication of door hinges.",
+      "6": "Checking the wiper",
+      "7": "Replacing lights"
+    }
+  },
+  "beni-auto": {
+    "id": "beni-auto",
+    "name": "Beni Auto",
+    "address": {
+      "city": "Aarhus N",
+      "street": "Brendstrupvej 46",
+      "postcode": 8200
+    },
+    "contact": {
+      "email": "beni-auto@post.tele.dk",
+      "phone": "40 45 15 16"
+    },
+    "services": {
+      "0": "Checking wheel bearings",
+      "1": "Checking power steering fluid",
+      "2": "Check the tire pressure",
+      "3": "Lubrication of door hinges.",
+      "4": "Replacing lights"
+    }
+  },
+  "hella-service": {
+    "id": "hella-service",
+    "name": "Hella Service Partners",
+    "address": {
+      "city": "Odense SV",
+      "street": "Hvidkærvej 23D",
+      "postcode": 5250
+    },
+    "contact": {
+      "email": "info@hellaservicepartner.dk ",
+      "phone": "65 65 50 30"
+    },
+    "services": {}
+  }
+}
