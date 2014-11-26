@@ -2,7 +2,7 @@ module.exports = function(grunt) {
   /*
    * Include grunt configuration
    */
-  var gruntConfig = require( './grunt.config.js' );
+  var gruntConfig = require( './config/grunt.conf.js' );
 
   /*
    * Helpers (preparing for grunt util deprecation)
@@ -88,7 +88,7 @@ module.exports = function(grunt) {
         flatten: true
       },
       build_karma: {
-        src: ['./karma.conf.js'],
+        src: ['./config/karma.conf.js'],
         dest: '<%= build_dir %>',
         options: {
           process: processBuildScripts
@@ -134,12 +134,12 @@ module.exports = function(grunt) {
         jshintrc: true
       },
       src_js: ['./src/**/*.js'],
-      gruntfiles: ['./gruntfile.js', 'grunt.config.js']
+      gruntfiles: ['./gruntfile.js', 'grunt.conf.js']
     },
     /////////////////
     karma: {
       options: {
-        configFile: '<%= build_dir %>/karma.conf.js'
+        configFile: '<%= build_dir %>/config/karma.conf.js'
       },
       unit: {
         port: 9191,
@@ -153,7 +153,7 @@ module.exports = function(grunt) {
     /////////////////
     protractor: {
       options: {
-        configFile: "protractor.conf.js", // Default config file
+        configFile: "./config/protractor.conf.js", // Default config file
         keepAlive: true, // If false, the grunt process stops when the test fails.
         noColor: false, // If true, protractor will not use colors in its output.
         args: {}
@@ -191,7 +191,7 @@ module.exports = function(grunt) {
         tasks: ['newer:copy:build_assets']
       },
       gruntfiles: {
-        files: ['./gruntfile.js', 'grunt.config.js'],
+        files: ['./gruntfile.js', 'grunt.conf.js'],
         tasks: ['newer:jshint:gruntfiles'],
         options: {
           livereload: false
