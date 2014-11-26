@@ -1,0 +1,32 @@
+{
+  "josh-stevenson": {
+    "id": "josh-stevenson",
+    "name": "Stevenson",
+    "surname": "Josh",
+    "address": {
+      "city": "Aarhus C",
+      "street": "Nordre Ringgade 1",
+      "postcode": 8000
+    }
+  },
+  "jenny-smith": {
+    "id": "jenny-smith",
+    "name": "Smith",
+    "surname": "Jenny",
+    "address": {
+      "city": "Aarhus V",
+      "street": "Haslehøjvej",
+      "postcode": 8210
+    }
+  },
+  "alex-beachman": {
+    "id": "alex-beachman",
+    "name": "Beachman",
+    "surname": "Alex",
+    "address": {
+      "city": "Aarhus N",
+      "street": "Møllevangs Alle 157",
+      "postcode": 8200
+    }
+  }
+}

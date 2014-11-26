@@ -1,82 +1,44 @@
 angular.module('abs.model.profile.customer').service('CustomerModel', customerModelService);
 
-function customerModelService(){
+customerModelService.$inject = ['$http', '$q'];
+
+function customerModelService($http, $q){
   return {
     customerIndex: customerIndex,
     customerProfile: customerProfile
   };
 
   function customerIndex(){
-    return {
-      'josh-stevenson': {
-        id: 'josh-stevenson',
-        name: 'Stevenson',
-        surname: 'Josh'
-      },
-      'jenny-smith': {
-        id: 'jenny-smith',
-        name: 'Smith',
-        surname: 'Jenny'
-      },
-      'alex-beachman': {
-        id: 'alex-beachman',
-        name: 'Beachman',
-        surname: 'Alex'
-      }
-    };
+    return $http.get('./src/app/shared/profile-model/profile-data/customer-index.json');
   }
 
   function customerProfile(customerId){
-    var availableCustomers = {
-      'josh-stevenson': {
-        id: 'josh-stevenson',
-        name: 'Stevenson',
-        surname: 'Josh',
-        address: {
-          city: 'Aarhus C',
-          street: 'Nordre Ringgade 1',
-          postcode: 8000
-        }
-      },
-      'jenny-smith': {
-        id: 'jenny-smith',
-        name: 'Smith',
-        surname: 'Jenny',
-        address: {
-          city: 'Aarhus V',
-          street: 'Haslehøjvej',
-          postcode: 8210
-        }
-      },
-      'alex-beachman': {
-        id: 'alex-beachman',
-        name: 'Beachman',
-        surname: 'Alex',
-        address: {
-          city: 'Aarhus N',
-          street: 'Møllevangs Alle 157',
-          postcode: 8200
+    var customerProfilesDefer = $q.defer();
+    var availableCustomers = $http.get('./src/app/shared/profile-model/profile-data/customer-profiles.json');
+
+    availableCustomers.then(function customerProfileResponse(response){
+      var currentCustomer = {},
+          customerExists = false;
+
+      for (var key in response.data) {
+        if (response.data.hasOwnProperty(key)) {
+          if(customerId === key){
+            customerExists = true;
+            currentCustomer = response.data[key];
+          }
         }
       }
-    };
 
-    var currentCustomer = {},
-        customerExists = false;
-
-    for (var key in availableCustomers) {
-      if (availableCustomers.hasOwnProperty(key)) {
-        if(customerId === key){
-          customerExists = true;
-          currentCustomer = availableCustomers[key];
-        }
+      if(!customerExists) {
+        currentCustomer.error = true;
+        currentCustomer.message = 'Could not find the customer with id ' + customerId;
       }
-    }
 
-    if(!customerExists) {
-      currentCustomer.error = true;
-      currentCustomer.message = 'Could not find the customer with id ' + customerId;
-    }
+      customerProfilesDefer.resolve(currentCustomer);
+    }, function customerProfileError(error){
+      customerProfilesDefer.reject(error);
+    });
 
-    return currentCustomer;
+    return customerProfilesDefer.promise;
   }
 }

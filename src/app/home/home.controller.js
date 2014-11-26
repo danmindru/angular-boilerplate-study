@@ -11,7 +11,11 @@ function homeController($log, ProviderModel, CustomerModel){
     vm.providers = error;
   });
 
-  vm.customers = CustomerModel.customerIndex();
+  CustomerModel.customerIndex().then(function customerIndexResponse(response){
+    vm.customers = response.data;
+  }, function customerIndexError(error){
+    vm.customers = error;
+  });
 }
 
 homeController.$inject = ['$log', 'ProviderModel', 'CustomerModel'];
