@@ -1,17 +1,36 @@
-describe('In the profile feature, the customer page', function(){
+describe('Profile feature: Customer page', function(){
   var customerPageController,
-      $scope,
-      $rootScope;
+      scope,
+      stateParams,
+      CustomerModel,
+      q;
 
   beforeEach(function(){
     module('abs.feature.profile.customerPage');
 
-    inject(function($injector){
-      $rootScope = $injector.get('$rootScope');
-      $scope = $rootScope.$new();
-      customerPageController = $injector.get('$controller')('CustomerPageController', {$scope: $scope});
-    });
+    CustomerModel = {
+      customerIndex: function customerIndex(){
+        return;
+      },
+      customerProfile: function customerProfile(){
+        var deferred = q.defer();
+        return deferred.promise;
+      }
+    };
   });
+
+  beforeEach(inject(function($controller, $rootScope, $q){
+    q = $q;
+    scope = $rootScope.$new();
+    stateParams = {};
+    stateParams.customerId = 'jenny-smith';
+
+    customerPageController = $controller('CustomerPageController', {
+      $scope: scope,
+      $stateParams: stateParams,
+      CustomerModel: CustomerModel
+    });
+  }));
 
   describe('Customer Page Controller', function(){
     it('should have been properly instantiated', function(){
