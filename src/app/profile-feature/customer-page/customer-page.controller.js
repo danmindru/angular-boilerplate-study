@@ -1,13 +1,17 @@
 angular.module('abs.feature.profile.customerPage').controller('CustomerPageController', customerPageController);
 
-function customerPageController($log, $stateParams, CustomerModel){
+function customerPageController($scope, $stateParams, CustomerModel){
   var vm = this;
 
-  CustomerModel.customerProfile($stateParams.customerId).then(function customerProfileResponse(response){
-    vm.customer = response;
-  }, function customerProfileError(error){
-    vm.customer = error;
-  });
+  if($stateParams.customerId){
+    CustomerModel.customerProfile($stateParams.customerId).then(function customerProfileResponse(response){
+      var pageTitle;
+
+      vm.customer = response;
+      pageTitle = !response.error ? vm.customer.name + ' ' + vm.customer.surname + '\'s Profile Page' : 'Sorry, this customer profile does not exist';
+      $scope.$emit('changedPage', pageTitle);
+    });
+  }
 
   CustomerModel.customerIndex().then(function customerIndexResponse(response){
     vm.customers = response.data;
@@ -16,4 +20,4 @@ function customerPageController($log, $stateParams, CustomerModel){
   });
 }
 
-customerPageController.$inject = ['$log', '$stateParams','CustomerModel'];
+customerPageController.$inject = ['$scope', '$stateParams','CustomerModel'];
