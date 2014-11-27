@@ -22,6 +22,11 @@ module.exports = {
       './vendor/bootstrap/dist/css/bootstrap.min.css'
     ]
   },
+  common: {
+    vendor_fonts: [
+      './vendor/bootstrap/dist/fonts/**/*'
+    ]
+  },
   ////////////
   module_file_order: [
     '**/*.init.js', //EXPLAIN

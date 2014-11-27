@@ -82,8 +82,18 @@ module.exports = function(grunt) {
       },
       build_assets: {
         cwd: './src',
-        src: ['assets/**/*', '!assets/**/*.less', '!assets/**/*.css'],
+        src: [
+          'assets/**/*',
+          '!assets/**/*.less',
+          '!assets/**/*.css'
+        ],
         dest: '<%= build_dir %>src/assets/',
+        expand: true,
+        flatten: true
+      },
+      build_fonts: {
+        src: ['<%= common.vendor_fonts %>'],
+        dest: '<%= build_dir %>src/assets/fonts/',
         expand: true,
         flatten: true
       },
@@ -251,7 +261,7 @@ module.exports = function(grunt) {
    * Tasks
    */
   grunt.registerTask('default', ['jshint', 'build', 'karma:unit', 'watch']);
-  grunt.registerTask('build', ['copy:build_app_js', 'copy:build_vendor_js', 'copy:build_views', 'copy:build_index', 'copy:build_unit', 'copy:build_protractor', 'copy:build_karma', 'copy:build_assets', 'less:build_less', 'cssmin:build_css', 'clean:build_css_clean']);
+  grunt.registerTask('build', ['copy:build_app_js', 'copy:build_vendor_js', 'copy:build_views', 'copy:build_fonts','copy:build_index', 'copy:build_unit', 'copy:build_protractor', 'copy:build_karma', 'copy:build_assets', 'less:build_less', 'cssmin:build_css', 'clean:build_css_clean']);
   grunt.registerTask('compile', []);
   grunt.registerTask('test:unit', ['karma:unit']);
   grunt.registerTask('test:e2e', ['protractor']);
