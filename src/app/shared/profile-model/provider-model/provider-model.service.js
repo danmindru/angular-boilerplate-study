@@ -23,7 +23,7 @@ function providerModelService($http, $q){
 
       for (var key in response.data) {
         if (response.data.hasOwnProperty(key)) {
-          if(providerId === key){
+          if(providerId === response.data[key].id){
             providerExists = true;
             currentProvider = response.data[key];
           }
@@ -48,7 +48,13 @@ function providerModelService($http, $q){
     var providerIndex = $http.get('./src/app/shared/profile-model/profile-data/provider-index.json');
 
     providerIndex.then(function otherProvidersResponse(response){
-      response.data[providerId] = null;
+      var i;
+
+      for (i = 0; i <= response.data.length - 1; i++){
+        if(response.data[i].id === providerId){
+          response.data.splice(i, 1);
+        }
+      }
 
       otherProvidersDefer.resolve(response.data);
     }, function otherProvidersError(error){

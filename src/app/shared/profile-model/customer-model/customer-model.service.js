@@ -22,7 +22,7 @@ function customerModelService($http, $q){
 
       for (var key in response.data) {
         if (response.data.hasOwnProperty(key)) {
-          if(customerId === key){
+          if(customerId === response.data[key].id){
             customerExists = true;
             currentCustomer = response.data[key];
           }
