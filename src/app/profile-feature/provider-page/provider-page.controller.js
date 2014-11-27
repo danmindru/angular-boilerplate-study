@@ -1,13 +1,17 @@
 angular.module('abs.feature.profile.providerPage').controller('ProviderPageController', providerPageController);
 
-function providerPageController($log, $stateParams, ProviderModel){
+function providerPageController($scope, $stateParams, ProviderModel){
   var vm = this;
 
-  ProviderModel.providerProfile($stateParams.providerId).then(function providerProfileResponse(response){
-    vm.provider = response;
-  }, function providerProfileError(error){
-    vm.provider = error;
-  });
+  if($stateParams.providerId){
+    ProviderModel.providerProfile($stateParams.providerId).then(function providerProfileResponse(response){
+      var pageTitle;
+
+      vm.provider = response;
+      pageTitle = !response.error ? vm.provider.name + '\'s Profile Page' : 'Sorry, this provider profile does not exist';
+      $scope.$emit('changedPage', pageTitle);
+    });
+  }
 
   ProviderModel.providerIndex().then(function providerIndexResponse(response){
     vm.providers = response.data;
@@ -22,4 +26,4 @@ function providerPageController($log, $stateParams, ProviderModel){
   });
 }
 
-providerPageController.$inject = ['$log', '$stateParams', 'ProviderModel'];
+providerPageController.$inject = ['$scope', '$stateParams', 'ProviderModel'];
