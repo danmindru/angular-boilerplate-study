@@ -1,13 +1,12 @@
 <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
   <section class="container-fluid">
     <p class="navbar-text">
-      <strong>Angular boilerplate study</strong>
+      <strong>Demo application&#0153;</strong>
     </p>
 
     <ul class="nav navbar-nav">
       <li ui-sref-active="active">
         <a href ui-sref="home">
-          <i class="fa fa-home"></i>
           Home
         </a>
       </li>
@@ -23,6 +22,16 @@
           Customers
         </a>
       </li>
+
+      <li ui-sref-active="active">
+        <a href ui-sref="about">
+          About
+        </a>
+      </li>
     </ul>
+
+    <p class="navbar-text pull-right">
+      Copyright © {{vm.currentDate | date:'yyyy'}} <strong><a href="https://github.com/dandaniel/angular-boilerplate-study" target="_blank">Angular boilerplate study</a></strong>
+    </p>
   </section>
 </nav>
