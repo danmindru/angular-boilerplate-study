@@ -96,6 +96,11 @@ $ node_modules/protractor/bin/webdriver-manager start
 $ grunt test:e2e
 ```
 
+###Mentions
+--------------------------
+Special thanks to the indulging people at [fadeit.dk](http://fadeit.dk) and to [Niels Henrik Juul Hansen](https://github.com/nielshenrikjuulhansen) for guiding me.
+
+
 ###License
 --------------------------
 Copyright (c) Dan Mindru <mindrudan@gmail.com>
