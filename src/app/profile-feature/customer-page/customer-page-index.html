@@ -1,0 +1,16 @@
+<h2>Here is a list of available customers:</h2>
+<section class="customers">
+  <section class="customer-container" data-ng-repeat="customer in vm.customers">
+    <a href="#!/customer/{{customer.id}}">{{customer.surname}} {{customer.name}}</a>
+  </section>
+
+  <section class="customer-container">
+    <a href="#!/customer/wrong-id">A customer with the wrong id</a>
+  </section>
+</section>
+
+<section class="no-customers" data-ng-if="vm.customers.statusText">
+  <h4>Sorry, there was an error getting the customers: <i>{{vm.customers.statusText}}</i></h4>
+</section>
+
+<hr/>

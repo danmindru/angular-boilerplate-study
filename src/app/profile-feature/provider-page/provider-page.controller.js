@@ -9,6 +9,12 @@ function providerPageController($log, $stateParams, ProviderModel){
     vm.provider = error;
   });
 
+  ProviderModel.providerIndex().then(function providerIndexResponse(response){
+    vm.providers = response.data;
+  }, function providerIndexError(error){
+    vm.providers = error;
+  });
+
   ProviderModel.otherProviders($stateParams.providerId).then(function otherProvidersResponse(response){
     vm.otherProviders = response;
   }, function otherProvidersError(error){
