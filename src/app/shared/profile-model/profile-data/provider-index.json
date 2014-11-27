@@ -1,5 +1,5 @@
-{
- "quick-pot": {
+[
+ {
     "id": "quick-pot",
     "name": "QuickPot",
     "address": {
@@ -8,7 +8,7 @@
       "postcode": 8000
     }
   },
-  "beni-auto": {
+  {
     "id": "beni-auto",
     "name": "Beni Auto",
     "address": {
@@ -17,7 +17,7 @@
       "postcode": 8200
     }
   },
-  "hella-service": {
+  {
     "id": "hella-service",
     "name": "Hella Service Partners",
     "address": {
@@ -26,4 +26,4 @@
       "postcode": 5250
     }
   }
-}
+]

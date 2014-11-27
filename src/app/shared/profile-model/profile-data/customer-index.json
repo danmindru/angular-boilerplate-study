@@ -1,17 +1,17 @@
-{
-  "josh-stevenson": {
+[
+  {
     "id": "josh-stevenson",
     "name": "Stevenson",
     "surname": "Josh"
   },
-  "jenny-smith": {
+  {
     "id": "jenny-smith",
     "name": "Smith",
     "surname": "Jenny"
   },
-  "alex-beachman": {
+  {
     "id": "alex-beachman",
     "name": "Beachman",
     "surname": "Alex"
   }
-}
+]

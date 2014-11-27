@@ -1,5 +1,5 @@
-{
-  "quick-pot": {
+[
+  {
     "id": "quick-pot",
     "name": "QuickPot",
     "address": {
@@ -22,7 +22,7 @@
       "7": "Replacing lights"
     }
   },
-  "beni-auto": {
+  {
     "id": "beni-auto",
     "name": "Beni Auto",
     "address": {
@@ -42,7 +42,7 @@
       "4": "Replacing lights"
     }
   },
-  "hella-service": {
+  {
     "id": "hella-service",
     "name": "Hella Service Partners",
     "address": {
@@ -56,4 +56,4 @@
     },
     "services": {}
   }
-}
+]

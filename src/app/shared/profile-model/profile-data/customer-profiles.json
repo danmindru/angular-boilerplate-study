@@ -1,5 +1,5 @@
-{
-  "josh-stevenson": {
+[
+  {
     "id": "josh-stevenson",
     "name": "Stevenson",
     "surname": "Josh",
@@ -9,7 +9,7 @@
       "postcode": 8000
     }
   },
-  "jenny-smith": {
+  {
     "id": "jenny-smith",
     "name": "Smith",
     "surname": "Jenny",
@@ -19,7 +19,7 @@
       "postcode": 8210
     }
   },
-  "alex-beachman": {
+  {
     "id": "alex-beachman",
     "name": "Beachman",
     "surname": "Alex",
@@ -29,4 +29,4 @@
       "postcode": 8200
     }
   }
-}
+]
