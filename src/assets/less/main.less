@@ -1,5 +1,24 @@
 @ws: #F7F7F7;
+@b: #000000;
 
 body{
   background:@ws;
+}
+
+.github-button{
+  position: relative;
+  top: 5px;
+  margin-left: 2px;
+}
+
+.footer-container{
+  text-align:center;
+
+  a{
+    color: @b;
+
+    &:hover{
+      color:lighten(@b, 30%);
+    }
+  }
 }
