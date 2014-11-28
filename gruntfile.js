@@ -169,15 +169,23 @@ module.exports = function(grunt) {
     /////////////////
     protractor: {
       options: {
-        configFile: "./config/protractor.conf.js", // Default config file
         keepAlive: true, // If false, the grunt process stops when the test fails.
         noColor: false, // If true, protractor will not use colors in its output.
         args: {}
       },
-      build: {},
+      build: {
+        options: {
+          configFile: './config/protractor.conf.js', // Default config file
+        }
+      },
+      ci: {
+        options: {
+          configFile: 'protractor/protractor-ci.conf.js'
+        }
+      },
       /*compile: {
         options: {
-          configFile: "protractor/protractor-prod.conf.js"
+          configFile: 'protractor/protractor-prod.conf.js'
         }
       }*/
     },
@@ -267,9 +275,23 @@ module.exports = function(grunt) {
    * Tasks
    */
   grunt.registerTask('default', ['jshint', 'build', 'karma:unit', 'watch']);
-  grunt.registerTask('build', ['copy:build_app_js', 'copy:build_vendor_js', 'copy:build_views', 'copy:build_fonts','copy:build_index', 'copy:build_unit', 'copy:build_protractor', 'copy:build_karma', 'copy:build_assets', 'less:build_less', 'cssmin:build_css', 'clean:build_css_clean']);
+  grunt.registerTask('build', [
+    'copy:build_app_js',
+    'copy:build_vendor_js',
+    'copy:build_views',
+    'copy:build_fonts',
+    'copy:build_index',
+    'copy:build_unit',
+    'copy:build_protractor',
+    'copy:build_karma',
+    'copy:build_assets',
+    'less:build_less',
+    'cssmin:build_css',
+    'clean:build_css_clean'
+  ]);
   grunt.registerTask('compile', []);
+  grunt.registerTask('test', ['karma:unit', 'protractor:build']);
   grunt.registerTask('test:unit', ['karma:unit']);
-  grunt.registerTask('test:e2e', ['protractor']);
-  grunt.registerTask('test', ['karma:unit', 'protractor']);
+  grunt.registerTask('test:ci', ['karma:unit', 'protractor:ci']);
+  grunt.registerTask('test:e2e', ['protractor:build']);
 };

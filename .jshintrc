@@ -98,6 +98,9 @@
       "expect": true,
       "browser": true,
       "element": true,
-      "by": true
+      "by": true,
+      "LOGGLY_KEY": true,
+      "SAUCE_USERNAME": true,
+      "SAUCE_ACCESS_KEY": true
     } // additional predefined global variables
 }
