@@ -1,6 +1,7 @@
 absConfig.pushAfterBootstrap('abs.feature.home');
 
 angular.module('abs.feature.home').config(homeConfig);
+homeConfig.$inject = ['$stateProvider'];
 
 function homeConfig($stateProvider){
   $stateProvider.state('home', {
@@ -13,5 +14,3 @@ function homeConfig($stateProvider){
     }
   });
 }
-
-homeConfig.$inject = ['$stateProvider'];

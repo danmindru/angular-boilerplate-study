@@ -1,8 +1,7 @@
 angular.module(absConfig.appRootModuleName).controller('RootController', rootController);
 
-rootController.$inject = ['$scope'];
-
-function rootController($scope) {
+rootController.$inject = ['$scope', '$window'];
+function rootController($scope, $window) {
   var vm = this;
   vm.htmlTitle = 'Angular Boilerplate Study';
   /*
@@ -19,6 +18,8 @@ function rootController($scope) {
     if(angular.isDefined(toState.data.pageTitle)){
       vm.htmlTitle = toState.data.pageTitle + ' - Angular Boilerplate Study';
     }
+
+    $window.scrollTo(0,0);
   });
 
   /*

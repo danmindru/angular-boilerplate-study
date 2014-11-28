@@ -1,7 +1,6 @@
 angular.module('abs.model.profile.customer').service('CustomerModel', customerModelService);
 
 customerModelService.$inject = ['$http', '$q'];
-
 function customerModelService($http, $q){
   return {
     customerIndex: customerIndex,

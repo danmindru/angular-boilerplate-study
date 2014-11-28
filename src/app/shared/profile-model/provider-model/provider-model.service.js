@@ -1,7 +1,6 @@
 angular.module('abs.model.profile.provider').service('ProviderModel', providerModelService);
 
 providerModelService.$inject = ['$http', '$q'];
-
 function providerModelService($http, $q){
   return {
     providerIndex: providerIndex,

@@ -2,6 +2,7 @@ absConfig.pushAfterBootstrap('abs.feature.profile');
 
 angular.module('abs.feature.profile').config(profileConfig);
 
+profileConfig.$inject = ['$stateProvider'];
 function profileConfig($stateProvider){
   $stateProvider.state('providerPage', {
     url: '/provider/:providerId',
@@ -37,5 +38,3 @@ function profileConfig($stateProvider){
     }
   });
 }
-
-profileConfig.$inject = ['$stateProvider'];

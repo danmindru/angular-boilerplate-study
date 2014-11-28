@@ -5,9 +5,8 @@
   */
 angular.module('abs.service.loggly').factory("exceptionLoggingService", exceptionLoggingService);
 
-exceptionLoggingService.$inject = ["$log", "$window", "traceService", 'LOGGLY_KEY'];
-
 //////////////////////////////
+exceptionLoggingService.$inject = ["$log", "$window", "traceService", 'LOGGLY_KEY'];
 function exceptionLoggingService ($log, $window, traceService, LOGGLY_KEY){
   _LTracker.push({'logglyKey': LOGGLY_KEY});
 

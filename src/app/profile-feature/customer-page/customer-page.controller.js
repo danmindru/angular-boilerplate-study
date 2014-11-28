@@ -1,5 +1,6 @@
 angular.module('abs.feature.profile.customerPage').controller('CustomerPageController', customerPageController);
 
+customerPageController.$inject = ['$scope', '$stateParams','CustomerModel'];
 function customerPageController($scope, $stateParams, CustomerModel){
   var vm = this;
 
@@ -19,5 +20,3 @@ function customerPageController($scope, $stateParams, CustomerModel){
     vm.customers = error;
   });
 }
-
-customerPageController.$inject = ['$scope', '$stateParams','CustomerModel'];

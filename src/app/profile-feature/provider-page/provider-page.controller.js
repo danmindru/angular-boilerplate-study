@@ -1,5 +1,6 @@
 angular.module('abs.feature.profile.providerPage').controller('ProviderPageController', providerPageController);
 
+providerPageController.$inject = ['$scope', '$stateParams', 'ProviderModel'];
 function providerPageController($scope, $stateParams, ProviderModel){
   var vm = this;
 
@@ -25,5 +26,3 @@ function providerPageController($scope, $stateParams, ProviderModel){
     vm.otherProviders = error;
   });
 }
-
-providerPageController.$inject = ['$scope', '$stateParams', 'ProviderModel'];
