@@ -1,7 +1,7 @@
 exports.config = {
   baseUrl: 'http://abs.danmind.ru/#!',
-  sauceUser: SAUCE_USERNAME,
-  sauceKey: SAUCE_ACCESS_KEY,
+  sauceUser: process.env.SAUCE_USERNAME,
+  sauceKey: process.env.SAUCE_ACCESS_KEY,
   specs: ['../build/src/**/*.protractor.js', '../build/src/**/*.e2e.js'],
   capabilities: {
     browserName: 'chrome',
