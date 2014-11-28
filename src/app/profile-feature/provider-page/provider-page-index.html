@@ -1,17 +1,43 @@
-<h2>Here is a list of available providers:</h2>
+<section class="row-fluid clearfix">
+  <section class="col-xs-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+    <section class="panel panel-default intro">
+      <section class="panel-heading">
+        <h3 class="panel-title">Here is a list of available providers</h3>
+      </section>
+      <section class="panel-body">
+        <section class="form-group">
+          <input type="text" class="form-control" placeholder="Filter providers..." data-ng-model="search.$">
+        </section>
 
-<section class="providers" data-ng-if="!vm.providers.statusText">
-  <section class="provider-container" data-ng-repeat="provider in vm.providers">
-    <a href="#!/provider/{{provider.id}}">{{provider.name}}</a>
-  </section>
+        <table class="table table-hover" data-ng-if="!vm.providers.statusText">
+          <thead>
+          <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Address</th>
+              <th>Provider Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-ng-repeat="provider in vm.providers | filter:search">
+              <td>{{$index+1}}</td>
+              <td>{{::provider.name}}</td>
+              <td>
+                <small>{{::provider.address.street}}, {{::provider.address.city}}, {{::provider.address.country}}, {{::provider.address.postcode}}</small>
+              </td>
+              <td><a href="#!/provider/{{::provider.id}}">See provider</a></td>
+            </tr>
+          </tbody>
+        </table>
 
-  <section class="provider-container">
-    <a href="#!/provider/wrong-id">A provider with the wrong id</a>
+        <section class="no-providers" data-ng-if="vm.providers.statusText">
+          <h4>Sorry, there was an error getting the providers: <i>{{::vm.providers.statusText}}</i></h4>
+        </section>
+      </section>
+
+      <div class="panel-footer">
+        Looking good? You can <a ui-sref="customerPageIndex">see a list of all customers</a> too!
+      </div>
+    </section>
   </section>
 </section>
-
-<section class="no-providers" data-ng-if="vm.providers.statusText">
-  <h4>Sorry, there was an error getting the providers: <i>{{vm.providers.statusText}}</i></h4>
-</section>
-
-<hr/>

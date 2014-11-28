@@ -1,20 +1,97 @@
-<h1>Provider page</h1>
-<section class="providers" data-ng-if="!vm.provider.statusText">
-  {{vm.provider}}
+<section class="container">
+  <section class="page-header">
+    <h2>
+      {{::vm.provider.name}}
+      <small>
+        <i class="glyphicon glyphicon-earphone"></i>
+        {{::vm.provider.contact.phone}}
+      </small>
+    </h2>
+  </section>
+
+  <section class="row service-list" data-ng-if="vm.provider.services">
+    <section class="col-xs-12">
+      <h3>Listed services</h3>
+    </section>
+
+    <section class="col-xs-12">
+      <section class="form-group service-filter">
+        <input type="text" class="form-control" placeholder="Filter services..." data-ng-model="search.$">
+      </section>
+    </section>
+
+    <p class="col-xs-12 col-sm-3" data-ng-repeat="service in vm.provider.services | filter:search as results">
+      <i class="glyphicon glyphicon-ok-sign"></i>{{service}}
+    </p>
+
+    <p class="col-xs-12" data-ng-if="results.length === 0">Sorry, no items match your search</p>
+  </section>
+
+  <p data-ng-if="!vm.provider.services">
+    <em>This provider has no services listed yet.</em>
+  </p>
 </section>
 
-<section class="no-providers" data-ng-if="vm.provider.statusText">
-  <h4>Sorry, there was an error getting details for this provider: <i>{{vm.provider.statusText}}</i>
-</section>
+<section class="container-fluid profile-page">
+  <section class="container">
+    <section class="row">
+      <section class="col-xs-12 col-sm-6">
+        <section class="providers" data-ng-if="!vm.provider.statusText">
+          <section class="lead">
+            <p class="col-xs-12 col-sm-6 label-group">
+              <label>Street</label><br/>
+              {{::vm.provider.address.street}}
+            </p>
+            <p class="col-xs-12 col-sm-6 label-group">
+              <label>City</label><br/>
+              {{::vm.provider.address.city}}
+            </p>
+            <p class="col-xs-12 col-sm-6 label-group">
+              <label>Country</label><br/>
+              {{::vm.provider.address.country}}
+            </p>
+            <p class="col-xs-12 col-sm-6 label-group">
+              <label>Postcode</label><br/>
+              {{::vm.provider.address.postcode}}
+            </p>
+          </section>
+        </section>
 
-<hr/>
-<h2>Other providers</h2>
-<section class="providers" data-ng-if="!vm.otherProviders.statusText">
-  <section class="provider-container" data-ng-repeat="provider in vm.otherProviders">
-    <a href="#!/provider/{{provider.id}}">{{provider.name}}</a>
+        <section class="no-providers" data-ng-if="vm.provider.statusText">
+          <h4>
+            Sorry, there following error occurred while getting details for this provider: <i>{{::vm.provider.statusText}}</i>
+          </h4>
+        </section>
+      </section>
+
+      <section class="col-xs-12 col-sm-6">
+        <section class="list-group" data-ng-if="!vm.otherProviders.statusText">
+          <header class="list-group-item">
+            <h4>Check out some other providers.</h4>
+            <p>Here are some handy options, different from the current one:</p>
+          </header>
+
+          <a class="list-group-item" data-ng-repeat="provider in vm.otherProviders" href="#!/provider/{{provider.id}}">
+            {{provider.name}}
+          </a>
+        </section>
+
+        <section class="no-providers" data-ng-if="vm.otherProviders.statusText">
+          <h4>
+            Sorry, there was an error getting the other providers: <i>{{::vm.otherProviders.statusText}}</i>
+          </h4>
+        </section>
+      </section>
+    </section>
   </section>
 </section>
 
-<section class="no-providers" data-ng-if="vm.otherProviders.statusText">
-  <h4>Sorry, there was an error getting the other providers: <i>{{vm.otherProviders.statusText}}</i>
+<section class="container-fluid profile-footer">
+  <section class="container">
+    <section class="row">
+      <section class="col-xs-12">
+        Email {{::vm.provider.name}} at <a href="mailto:{{::vm.provider.contact.email}}">{{::vm.provider.contact.email}}</a>
+      </section>
+    </section>
+  </section>
 </section>

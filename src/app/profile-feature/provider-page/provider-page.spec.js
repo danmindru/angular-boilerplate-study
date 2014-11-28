@@ -10,7 +10,8 @@ describe('Profile feature: Provider page', function(){
   beforeEach(function(){
     ProviderModel = {
       providerIndex: function providerIndex(){
-        return;
+        var deferred = q.defer();
+        return deferred.promise;
       },
       providerProfile: function providerProfile(){
         var deferred = q.defer();
