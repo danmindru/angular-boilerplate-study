@@ -180,12 +180,12 @@ module.exports = function(grunt) {
       },
       ci: {
         options: {
-          configFile: 'protractor/protractor-ci.conf.js'
+          configFile: './config/protractor-ci.conf.js'
         }
       },
       /*compile: {
         options: {
-          configFile: 'protractor/protractor-prod.conf.js'
+          configFile: './config/protractor-prod.conf.js'
         }
       }*/
     },
