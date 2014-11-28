@@ -1,18 +1,160 @@
+@bp_sm: 768px;
+@bp_md: 992px;
+@bp_lg: 1200px;
+
 @ws: #F7F7F7;
 @b: #000000;
+@w: #FFFFFF;
+@home_gradient: 90deg, #16222A 10%, #3A6073 90%;
+@profile_gradient: 90deg, #ECE9E6 10%, #FAFAFA 90%;
 
+.gradient(@prop){
+  background: -webkit-linear-gradient(@prop);
+  background:    -moz-linear-gradient(@prop);
+  background:     -ms-linear-gradient(@prop);
+  background:      -o-linear-gradient(@prop);
+  background:         linear-gradient(@prop);
+}
+
+/*
+ * Begin styles
+ *
+ */
 body{
-  background:@ws;
+  @media only screen and (min-width:@bp_sm){
+    padding-bottom:100px; //navbar-fixed-bottom
+  }
 }
 
 .github-button{
   position: relative;
   top: 5px;
-  margin-left: 2px;
 }
 
 .footer-container{
   text-align:center;
+}
+
+.navbar-fixed-bottom{
+  position: static;
+  margin: 30px -15px 0 -15px;
+
+  @media only screen and (min-width:@bp_sm){
+    margin: auto;
+    position: fixed;
+  }
+}
+
+.navbar-text{
+  a{
+    color: @b;
+
+    &:hover{
+      color:lighten(@b, 30%);
+    }
+  }
+}
+
+.home-intro{
+  margin:0px -15px 0 -15px;
+  min-height:400px;
+  padding:30px 15px;
+  color:@ws;
+  font-size:16px;
+  font-weight:200;
+  .gradient(@home_gradient);
+
+  @media only screen and (min-width:@bp_sm){
+    padding:90px 60px;
+  }
+
+  h1{
+    font-weight:300;
+  }
+
+  ul{
+    margin-top:30px;
+    padding-left:0;
+
+    li{
+      font-size:14px;
+      line-height:20px;
+      margin-bottom:5px;
+      list-style-type: none;
+
+      i{
+        margin-right:5px;
+        position:relative;
+        top:2px;
+      }
+    }
+  }
+
+  a{
+    color:darken(@w, 20%);
+
+    &:hover{
+      color:darken(@w, 30%);
+    }
+  }
+}
+
+.home-details{
+  margin-top:40px;
+  font-size:14px;
+  padding-top:5px;
+}
+
+.intro{
+  margin-top:30px;
+}
+
+.container{
+  padding:20px;
+}
+
+.footer{
+  margin-top: 30px;
+  padding: 20px 0 25px 0;
+}
+
+.fadeit-link{
+  display:inline-block;
+  margin-top:25px;
+  text-align:left;
+
+  @media only screen and (min-width:@bp_lg){
+    text-align:right;
+  }
+}
+
+.service-list{
+  min-height:200px;
+
+  .service-filter{
+    margin-bottom:30px;
+  }
+
+  i{
+    margin-right:5px;
+  }
+}
+
+.profile-page{
+  margin:0px -15px 0 -15px;
+  min-height:400px;
+  padding:30px 15px;
+  .gradient(@profile_gradient);
+
+  .label-group{
+    margin-bottom:15px;
+  }
+}
+
+.profile-footer{
+  margin:0px -15px 0 -15px;
+  padding:5px 15px;
+  background-color: #F0F0F0;
 
   a{
     color: @b;
@@ -21,4 +163,9 @@ body{
       color:lighten(@b, 30%);
     }
   }
+}
+
+.customers{
+  font-size:18px;
+  line-height:28px;
 }
