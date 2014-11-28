@@ -1,8 +1,60 @@
-<h1>Provider page</h1>
-<section class="customers" data-ng-if="!vm.customer.statusText">
-  {{vm.customer}}
+<section class="container">
+  <section class="page-header">
+    <h2>
+      {{::vm.customer.name}}, {{::vm.customer.surname}}
+      <small>Member since {{::vm.customer.joined | date:'longDate'}}</small>
+    </h2>
+  </section>
 </section>
 
-<section class="no-customers" data-ng-if="vm.customer.statusText">
-  <h4>Sorry, there was an error getting details for this customer: <i>{{vm.customer.statusText}}</i>
+<section class="container-fluid profile-page">
+  <section class="container">
+    <section class="row">
+      <section class="col-xs-12 col-sm-6">
+        <section class="customers" data-ng-if="!vm.customer.statusText">
+          <section class="lead">
+            <p class="col-xs-12 col-sm-6 label-group">
+              <label>Street</label><br/>
+              {{::vm.customer.address.street}}
+            </p>
+            <p class="col-xs-12 col-sm-6 label-group">
+              <label>City</label><br/>
+              {{::vm.customer.address.city}}
+            </p>
+            <p class="col-xs-12 col-sm-6 label-group">
+              <label>Country</label><br/>
+              {{::vm.customer.address.country}}
+            </p>
+            <p class="col-xs-12 col-sm-6 label-group">
+              <label>Postcode</label><br/>
+              {{::vm.customer.address.postcode}}
+            </p>
+          </section>
+        </section>
+
+        <section class="no-customers" data-ng-if="vm.customer.statusText">
+          <h4>
+            Sorry, there following error occurred while getting details for this customer: <i>{{::vm.customer.statusText}}</i>
+          </h4>
+        </section>
+      </section>
+
+      <section class="col-xs-12 col-sm-6">
+        <section class="list-group">
+          <header class="list-group-item">
+            <h4>That's about it on this page.</h4>
+            <p>Here are some options:</p>
+          </header>
+
+          <a class="list-group-item" ui-sref="providerPageIndex">
+            See a list of all providers
+          </a>
+
+          <a class="list-group-item" ui-sref="customerPageIndex">
+            See a list of all customers
+          </a>
+        </section>
+      </section>
+    </section>
+  </section>
 </section>

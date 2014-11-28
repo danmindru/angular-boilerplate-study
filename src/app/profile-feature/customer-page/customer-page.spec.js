@@ -10,7 +10,8 @@ describe('Profile feature: Customer page', function(){
 
     CustomerModel = {
       customerIndex: function customerIndex(){
-        return;
+        var deferred = q.defer();
+        return deferred.promise;
       },
       customerProfile: function customerProfile(){
         var deferred = q.defer();

@@ -1,16 +1,43 @@
-<h2>Here is a list of available customers:</h2>
-<section class="customers">
-  <section class="customer-container" data-ng-repeat="customer in vm.customers">
-    <a href="#!/customer/{{customer.id}}">{{customer.surname}} {{customer.name}}</a>
-  </section>
+<section class="row-fluid clearfix">
+  <section class="col-xs-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+    <section class="panel panel-default intro">
+      <section class="panel-heading">
+        <h3 class="panel-title">Here is a list of available customers</h3>
+      </section>
+      <section class="panel-body">
+        <section class="form-group">
+          <input type="text" class="form-control" placeholder="Filter customers..." data-ng-model="search.$">
+        </section>
 
-  <section class="customer-container">
-    <a href="#!/customer/wrong-id">A customer with the wrong id</a>
+        <table class="table table-hover" data-ng-if="!vm.customers.statusText">
+          <thead>
+          <tr>
+              <th>#</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Customer Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-ng-repeat="customer in vm.customers | filter:search as whatnot">
+              <td>{{$index+1}}</td>
+              <td>{{::customer.surname}}</td>
+              <td>{{::customer.name}}</td>
+              <td><a href="#!/customer/{{::customer.id}}">See customer</a></td>
+            </tr>
+          </tbody>
+        </table>
+
+        {{whatnot}}
+
+        <section class="no-customers" data-ng-if="vm.customers.statusText">
+          <h4>Sorry, there was an error getting the customers: <i>{{::vm.customers.statusText}}</i></h4>
+        </section>
+      </section>
+
+      <div class="panel-footer">
+        Looking good? You can <a ui-sref="providerPageIndex">see a list of all providers</a> too!
+      </div>
+    </section>
   </section>
 </section>
-
-<section class="no-customers" data-ng-if="vm.customers.statusText">
-  <h4>Sorry, there was an error getting the customers: <i>{{vm.customers.statusText}}</i></h4>
-</section>
-
-<hr/>
