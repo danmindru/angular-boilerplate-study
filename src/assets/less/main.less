@@ -26,9 +26,19 @@ body{
   }
 }
 
-.github-button{
-  position: relative;
-  top: 5px;
+i{
+  margin-right:5px;
+}
+
+.lead{
+  a{
+    color: @b;
+    text-decoration: underline;
+
+    &:hover{
+      color:lighten(@b, 30%);
+    }
+  }
 }
 
 .footer-container{
@@ -64,7 +74,7 @@ body{
   font-weight:200;
   .gradient(@home_gradient);
 
-  @media only screen and (min-width:@bp_sm){
+  @media only screen and (min-width:@bp_md){
     padding:90px 60px;
   }
 
@@ -83,7 +93,6 @@ body{
       list-style-type: none;
 
       i{
-        margin-right:5px;
         position:relative;
         top:2px;
       }
@@ -118,14 +127,14 @@ body{
   padding: 20px 0 25px 0;
 }
 
+.whats-inside{
+  float:left;
+}
+
 .fadeit-link{
   display:inline-block;
   margin-top:25px;
-  text-align:left;
-
-  @media only screen and (min-width:@bp_lg){
-    text-align:right;
-  }
+  float:right;
 }
 
 .service-list{
@@ -133,10 +142,6 @@ body{
 
   .service-filter{
     margin-bottom:30px;
-  }
-
-  i{
-    margin-right:5px;
   }
 }
 
