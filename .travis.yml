@@ -1,8 +1,3 @@
-env:
-  global:
-  - secure: A9pjAu7Rlo8GZu1RtNdZOCJhZgPJuzjYihlGTvwAVBHR+EIyNNB1sRguI1Eds8ydpL9n7r4vZZgJyQx6sd4zwl+39pmtOu9aMpkBPB2X5YMhhl6qVC/s4x63SktSJzENn+cxBo6rsl6gm/9/oJUrnFDPjALKKWdz5vn9nt9VolQ=
-  - secure: Sz+MeiNb0hmGKHiWVUl4llimaLx1i70e8c4Dn/57pDYPJ1tcJjz74RiVJgh1tgQddvcfVudgUh/87ePtEeiaTFG7CCDm0mGeGwYHaJog7kcghwheekkdk6WnUvLAtMmf5Yjpdt7VdssyfLJipt13ay7xSdLBXMLBjeJCVLMkhpU=
-  - secure: V6HkTPfGye1v4/7EiPdGe8z9W14fvv8KZmzVtN4RrVev0RTVbg+2XeYsJnK9fmHaOAolFQBmK5HASyqrzbeHBkumTSwFrWhfNDo0282Qxv9OChxJ8RR9cm1jlDl4HV4gi5JtFsRQW0I4+hKiHKd1Hc+FfBOa/XVXK79fcexfACk=
 language: node_js
 node_js:
 - '0.10'
@@ -13,3 +8,8 @@ before_script:
 - bower install
 - grunt build
 script: grunt test:ci
+env:
+  global:
+  - secure: E4CAXLqlJvkchur3lQJNbn1XOiDXnsSrKek0yu9ABeLJV4bIsBzBkh6Y/TC1eF9miuezNPqUVwLIAJaOepSjxMd2n6xXmA/0EBd6WDF8So6tH6u3g6A8cL9dIgS+uRi6FdzLyhBT+ZBKjmKGj5z30sHp2hInjD8xCJRsRdLzukw=
+  - secure: Zj7Jma8ZczLqczaBom3RDr7H4uUxJ8+V9DAndD4/xZZs45yuhcSFggd2ZM4jPe4gbEk4FglxE8iunOF3+9MwS4flUPLDrOTCRo0bcZm0a1MPjd5pOW9Ky/tXeIeHhz4JGu/2emRm7hOXD7z4hYbEqTpJm5iGxYNmAVZf5nTfPUk=
+  - secure: T4SEi6iXchQnE5opqsfu2ZhoiL+e4JLxeSm0b9lTJzg8ZkkrRgYuaoABr04YIzzkdxTbkE8aBFNcjP9LKbcFUXV0Qf1PohI3mayyvBxNtbLZ5l4QL3gwXsCMgfBVaYt4+w0YsF0oHuwztpsK9o6xNz4ZPFVx9tZx3RIHw5EEDn4=
