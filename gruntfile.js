@@ -43,6 +43,12 @@ module.exports = function(grunt) {
     shell: {
       run_build_server: {
         command: './server/build-server.sh'
+      },
+      run_selenium: {
+        command: './node_modules/protractor/bin/webdriver-manager start'
+      },
+      update_selenium: {
+        command: './node_modules/protractor/bin/webdriver-manager update'
       }
     },
     //////////////
