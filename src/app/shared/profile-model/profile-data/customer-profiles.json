@@ -1,32 +1,38 @@
 [
   {
     "id": "josh-stevenson",
+    "joined": "2013-09-18T21:56:33+00:00",
     "name": "Stevenson",
     "surname": "Josh",
     "address": {
       "city": "Aarhus C",
       "street": "Nordre Ringgade 1",
-      "postcode": 8000
+      "postcode": 8000,
+      "country": "Denmark"
     }
   },
   {
     "id": "jenny-smith",
+    "joined": "2014-01-10T20:22:11+00:00",
     "name": "Smith",
     "surname": "Jenny",
     "address": {
       "city": "Aarhus V",
       "street": "Haslehøjvej",
-      "postcode": 8210
+      "postcode": 8210,
+      "country": "Denmark"
     }
   },
   {
     "id": "alex-beachman",
+    "joined": "2014-09-02T10:11:00+00:00",
     "name": "Beachman",
     "surname": "Alex",
     "address": {
       "city": "Aarhus N",
       "street": "Møllevangs Alle 157",
-      "postcode": 8200
+      "postcode": 8200,
+      "country": "Denmark"
     }
   }
 ]
