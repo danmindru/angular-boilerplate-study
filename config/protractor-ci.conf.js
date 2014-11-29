@@ -6,6 +6,7 @@ exports.config = {
   capabilities: {
     browserName: 'chrome',
     version: '',
-    platform: 'ANY'
-  },
+    platform: 'ANY',
+    name: process.env.TRAVIS_BUILD_NUMBER
+  }
 };
