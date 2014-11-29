@@ -26,6 +26,14 @@ body{
   }
 }
 
+table{
+  font-size:12px;
+
+  @media only screen and (min-width:@bp_sm){
+    font-size:inherit;
+  }
+}
+
 i{
   margin-right:5px;
 }
@@ -125,6 +133,10 @@ i{
 .footer{
   margin-top: 30px;
   padding: 20px 0 25px 0;
+
+  .btn{
+    margin-bottom: 5px;
+  }
 }
 
 .whats-inside{
@@ -134,7 +146,10 @@ i{
 .fadeit-link{
   display:inline-block;
   margin-top:25px;
-  float:right;
+
+  @media only screen and (min-width: @bp_md){
+    float:right;
+  }
 }
 
 .service-list{
@@ -142,6 +157,14 @@ i{
 
   .service-filter{
     margin-bottom:30px;
+  }
+}
+
+.jumbotron{
+  padding:0;
+
+  @media only screen and (min-width: @bp_md){
+    padding: 30px 15px;
   }
 }
 
