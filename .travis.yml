@@ -1,8 +1,8 @@
 env:
   global:
-  - secure: E4CAXLqlJvkchur3lQJNbn1XOiDXnsSrKek0yu9ABeLJV4bIsBzBkh6Y/TC1eF9miuezNPqUVwLIAJaOepSjxMd2n6xXmA/0EBd6WDF8So6tH6u3g6A8cL9dIgS+uRi6FdzLyhBT+ZBKjmKGj5z30sHp2hInjD8xCJRsRdLzukw=
-  - secure: Zj7Jma8ZczLqczaBom3RDr7H4uUxJ8+V9DAndD4/xZZs45yuhcSFggd2ZM4jPe4gbEk4FglxE8iunOF3+9MwS4flUPLDrOTCRo0bcZm0a1MPjd5pOW9Ky/tXeIeHhz4JGu/2emRm7hOXD7z4hYbEqTpJm5iGxYNmAVZf5nTfPUk=
-  - secure: T4SEi6iXchQnE5opqsfu2ZhoiL+e4JLxeSm0b9lTJzg8ZkkrRgYuaoABr04YIzzkdxTbkE8aBFNcjP9LKbcFUXV0Qf1PohI3mayyvBxNtbLZ5l4QL3gwXsCMgfBVaYt4+w0YsF0oHuwztpsK9o6xNz4ZPFVx9tZx3RIHw5EEDn4=
+  - secure: IhJtZa4lzyOhHfJh7Z0K75qJLISP3+HAQA/5F7Yke+RphU/GEzSiRb6R+EXTYgEj4VaxpTBm8O9rzRWjWVYrE6dy588EqmNn2nVYrWPoIowpoNFiJ5SD7D9KAATP+xCJpJi8pAXPGz85A8nIfzrzlTBzQJyveBYBn/ZF+jbBj+8=
+  - secure: MIdvP2Kr6Q0Nncl2BdRWiF6ygb9huLDdve5UG5M7m4YcGv0+M8sKVXejXZq8QIghk7/f88wlUZs+jQJXnIK359REDhbgUter8Jpd4ONrLic5e92eCdrHCxxkecJr18wQlOJC0PhFJe12t/EXZEgN8Cgbp1AXSWwN7bd7hlKOCQc=
+  - secure: gsrnE30EVNwqJmjt1DOv79mkYxAo+WVdK8hmNwgGwEK674tWe5eYQz70aOSDX9e51HvHIIvLzkVcB5EJCMAauujaE6E2F5HyhX6kDddoFKXdrP1BHZdbidUj8B+vJxIKu/+RXfCArCRxvgxWMP+hgcGiiaVX4+4+eWzhxy4k9GQ=
 language: node_js
 node_js:
 - '0.10'
