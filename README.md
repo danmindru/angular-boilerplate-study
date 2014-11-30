@@ -38,23 +38,27 @@ $ grunt build
 You can use the following command to start the build http server (port 8008 default):
 
 ```
-$ grunt shell:run_build_server
+$ grunt shell:dev_server
 ```
 
 
 ####Compile
 --------------------------
-[Coming soon - not there yet]
 The compile task will do all the work for production -> ./application
 
 ```
 $ grunt compile
 ```
+You can use the following command to start the build http server (port 8008 default):
+
+```
+$ grunt shell:prod_server
+```
 
 
 ###Testing
 --------------------------
-To strictly run all tests run
+To strictly run all tests use:
 
 ```
 grunt test
