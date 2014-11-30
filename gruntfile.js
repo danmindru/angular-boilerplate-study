@@ -212,7 +212,6 @@ module.exports = function(grunt) {
       },
       compile_cleanup: {
         options: {
-          beautify: true,
           mangle: false
         },
         src: ['<%= compile_dir %>/src/app/app.min.js'],
