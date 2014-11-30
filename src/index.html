@@ -27,9 +27,13 @@
 
 <!-- Explain it -->
 <%
-  scripts.forEach(function (script){
-    %><script type="text/javascript" src="<%= script %>"></script><%
-  });
+  if(typeof scripts !== 'undefined'){
+    scripts.forEach(function (script){
+      %><script type="text/javascript" src="<%= script %>"></script><%
+    });
+  } else {
+      %><script type="text/javascript" src="./src/app/app.min.js"></script><%
+  }
 %>
 
 </html>

@@ -14,12 +14,22 @@ module.exports = {
       './vendor/angular/angular.js',
       './vendor/angular-ui-router/release/angular-ui-router.js',
       './vendor/angular-mocks/angular-mocks.js',
-      './vendor/stacktrace-js/stacktrace.js',
+      './vendor/stacktrace-js/dist/stacktrace.js',
       './vendor/loggly-jslogger/src/loggly.tracker.js'
     ],
     ////////////
     vendor_css: [
       './vendor/bootstrap/dist/css/bootstrap.min.css'
+    ]
+  },
+  compile: {
+    vendor_min_js: [//won't minify again
+      './vendor/angular/angular.min.js',
+      './vendor/angular-ui-router/release/angular-ui-router.min.js',
+      './vendor/stacktrace-js/dist/stacktrace.min.js',
+      './vendor/loggly-jslogger/src/loggly.tracker.js',
+    ],
+    vendor_js: [//doesn't have a min files, will minify
     ]
   },
   common: {

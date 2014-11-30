@@ -8,12 +8,12 @@ function customerModelService($http, $q){
   };
 
   function customerIndex(){
-    return $http.get('./src/app/shared/profile-model/profile-data/customer-index.json');
+    return $http.get('./data/customer-index.json');
   }
 
   function customerProfile(customerId){
     var customerProfilesDefer = $q.defer();
-    var availableCustomers = $http.get('./src/app/shared/profile-model/profile-data/customer-profiles.json');
+    var availableCustomers = $http.get('./data/customer-profiles.json');
 
     availableCustomers.then(function customerProfileResponse(response){
       var currentCustomer = {},

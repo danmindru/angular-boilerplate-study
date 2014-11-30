@@ -41,8 +41,11 @@ module.exports = function(grunt) {
     },
     //////////////
     shell: {
-      run_build_server: {
+      dev_server: {
         command: './server/build-server.sh'
+      },
+      prod_server: {
+        command: './server/production-server.sh'
       },
       run_selenium: {
         command: './node_modules/protractor/bin/webdriver-manager start'
@@ -56,10 +59,16 @@ module.exports = function(grunt) {
       build_app_js: {
         src: [
           findModuleFilesIn('./src/app/'),
-          findModuleFilesIn('./src/common/'),
-          './src/app/**/*.json'
+          findModuleFilesIn('./src/common/')
         ],
         dest: '<%= build_dir %>'
+      },
+      build_app_data: {
+        src: ['./src/app/**/*.json'],
+        dest: '<%= build_dir %>/data/',
+        expand: true,
+        flatten: true,
+        filter: 'isFile'
       },
       build_unit: {
         src: ['./src/**/*.spec.js'],
@@ -74,34 +83,35 @@ module.exports = function(grunt) {
         src: ['**/*.html', '!**/index.html'],
         dest: '<%= build_dir %>/views/',
         expand: true,
-        flatten: true
+        flatten: true,
+        filter: 'isFile'
       },
       build_index: {
         cwd: './src',
         src: ['index.html'],
         dest: '<%= build_dir %>',
         expand: true,
-        flatten: true,
         options: {
           process: processBuildScripts
         }
       },
       build_assets: {
-        cwd: './src',
+        cwd: './src/assets',
         src: [
-          'assets/**/*',
-          '!assets/**/*.less',
-          '!assets/**/*.css'
+          'img/**/*',
+          'fonts/**/*',
+          '!**/*.less',
+          '!**/*.css'
         ],
         dest: '<%= build_dir %>src/assets/',
-        expand: true,
-        flatten: true
+        expand: true
       },
       build_fonts: {
         src: ['<%= common.vendor_fonts %>'],
         dest: '<%= build_dir %>src/assets/fonts/',
         expand: true,
-        flatten: true
+        flatten: true,
+        filter: 'isFile'
       },
       build_karma: {
         src: ['./config/karma.conf.js'],
@@ -113,14 +123,45 @@ module.exports = function(grunt) {
       build_protractor: {
         cwd: './src',
         src: ['**/*.protractor.js', '**/*.e2e.js'],
+        dest: '<%= build_dir %>src/e2e/',
         expand: true,
-        flatten: true,
-        dest: '<%= build_dir %>src/e2e/'
+        flatten: true
+      },
+      compile_app_data: {
+        cwd: '<%= build_dir %>',
+        src: ['data/*.json'],
+        dest: '<%= compile_dir %>',
+        expand: true
+      },
+      compile_views: {
+        cwd: '<%= build_dir %>',
+        src: ['views/**/*.html'],
+        dest: '<%= compile_dir %>',
+        expand: true
+      },
+      compile_index: {
+        cwd: './src',
+        src: ['index.html'],
+        dest: '<%= compile_dir %>',
+        expand: true,
+        options: {
+          process: function processCompileIndex(content){
+            return grunt.template.process(content);
+          }
+        }
+      },
+      compile_app_assets: {
+        cwd: '<%= build_dir %>',
+        src: ['src/assets/**/*', '!src/assets/**/*.md'],
+        dest: '<%= compile_dir %>',
+        expand: true
       }
     },
     /////////////////
     clean: {
-      build_css_clean: ['<%= build_dir %>/src/assets/css/app.custom.css']
+      build_clean: ['<%= build_dir %>'],
+      build_css_clean: ['<%= build_dir %>/src/assets/css/app.custom.css'],
+      compile_js_clean: ['<%= compile_dir %>/src/app/modules.min.js']
     },
     /////////////////
     less: {
@@ -142,6 +183,40 @@ module.exports = function(grunt) {
           '<%= build_dir %>/src/assets/css/app.custom.css'
         ],
         dest: '<%= build_dir %>/src/assets/css/app.min.css'
+      }
+    },
+    /////////////////
+    uglify: {
+      compile_module_js: {
+        options: {
+          wrap: 'moduleExports',
+          mangle: {
+            except: ['exceptionLoggingService']
+          }
+        },
+        src: [
+          '<%= compile.vendor_js %>',
+          findModuleFilesIn('./build/src/app/'),
+          findModuleFilesIn('./build/src/common/')
+        ],
+        dest: '<%= compile_dir %>/src/app/modules.min.js'
+      },
+      compile_cleanup: {
+        options: {
+          mangle: false
+        },
+        src: ['<%= compile_dir %>/src/app/app.min.js'],
+        dest: '<%= compile_dir %>/src/app/app.min.js'
+      }
+    },
+    /////////////////
+    concat: {
+      compile_js: {
+        src: [
+          '<%= compile.vendor_min_js %>',
+          '<%= compile_dir %>/src/app/modules.min.js'
+        ],
+        dest: '<%= compile_dir %>/src/app/app.min.js'
       }
     },
     /////////////////
@@ -178,16 +253,16 @@ module.exports = function(grunt) {
           configFile: './config/protractor.conf.js', // Default config file
         }
       },
-      ci: {
+      ci_dev: {
         options: {
           configFile: './config/protractor-ci.conf.js'
         }
       },
-      /*compile: {
+      ci_prod: {
         options: {
-          configFile: './config/protractor-prod.conf.js'
+          configFile: './config/protractor-ci-prod.conf.js'
         }
-      }*/
+      }
     },
     /////////////////
     watch: {
@@ -277,6 +352,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['jshint', 'build', 'karma:unit', 'watch']);
   grunt.registerTask('build', [
     'copy:build_app_js',
+    'copy:build_app_data',
     'copy:build_vendor_js',
     'copy:build_views',
     'copy:build_fonts',
@@ -289,9 +365,20 @@ module.exports = function(grunt) {
     'cssmin:build_css',
     'clean:build_css_clean'
   ]);
-  grunt.registerTask('compile', []);
+  grunt.registerTask('compile', [
+    'clean:build_clean',
+    'build',
+    'uglify:compile_module_js',
+    'concat:compile_js',
+    'uglify:compile_cleanup',
+    'clean:compile_js_clean',
+    'copy:compile_app_data',
+    'copy:compile_app_assets',
+    'copy:compile_views',
+    'copy:compile_index'
+  ]);
   grunt.registerTask('test', ['karma:unit', 'protractor:build']);
   grunt.registerTask('test:unit', ['karma:unit']);
-  grunt.registerTask('test:ci', ['karma:unit', 'protractor:ci']);
+  grunt.registerTask('test:ci', ['karma:unit', 'protractor:ci_dev', 'protractor:ci_prod']);
   grunt.registerTask('test:e2e', ['protractor:build']);
 };

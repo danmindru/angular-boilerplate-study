@@ -9,12 +9,12 @@ function providerModelService($http, $q){
   };
 
   function providerIndex(){
-    return $http.get('./src/app/shared/profile-model/profile-data/provider-index.json');
+    return $http.get('./data/provider-index.json');
   }
 
   function providerProfile(providerId){
     var providerProfilesDefer = $q.defer();
-    var availableProviders = $http.get('./src/app/shared/profile-model/profile-data/provider-profiles.json');
+    var availableProviders = $http.get('./data/provider-profiles.json');
 
     availableProviders.then(function providerProfileResponse(response){
       var currentProvider = {},
@@ -44,7 +44,7 @@ function providerModelService($http, $q){
 
   function otherProviders(providerId){
     var otherProvidersDefer = $q.defer();
-    var providerIndex = $http.get('./src/app/shared/profile-model/profile-data/provider-index.json');
+    var providerIndex = $http.get('./data/provider-index.json');
 
     providerIndex.then(function otherProvidersResponse(response){
       var i;
