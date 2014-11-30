@@ -80,8 +80,16 @@ module.exports = function(grunt) {
       },
       build_views: {
         cwd: './src',
-        src: ['**/*.html', '!**/index.html'],
+        src: ['app/**/*.html', '!app/shared/**/*.html'],
         dest: '<%= build_dir %>/views/',
+        expand: true,
+        flatten: true,
+        filter: 'isFile'
+      },
+      build_shared_views: {
+        cwd: './src',
+        src: ['app/shared/**/*.html'],
+        dest: '<%= build_dir %>/shared-views/',
         expand: true,
         flatten: true,
         filter: 'isFile'
@@ -161,7 +169,8 @@ module.exports = function(grunt) {
     clean: {
       build_clean: ['<%= build_dir %>'],
       build_css_clean: ['<%= build_dir %>/src/assets/css/app.custom.css'],
-      compile_js_clean: ['<%= compile_dir %>/src/app/modules.min.js']
+      compile_js_clean: ['<%= compile_dir %>/src/app/modules.min.js'],
+      compile_shared_views_clean: ['<%= compile_dir %>/shared-views/']
     },
     /////////////////
     less: {
@@ -203,6 +212,7 @@ module.exports = function(grunt) {
       },
       compile_cleanup: {
         options: {
+          beautify: true,
           mangle: false
         },
         src: ['<%= compile_dir %>/src/app/app.min.js'],
@@ -214,9 +224,34 @@ module.exports = function(grunt) {
       compile_js: {
         src: [
           '<%= compile.vendor_min_js %>',
-          '<%= compile_dir %>/src/app/modules.min.js'
+          '<%= compile_dir %>/src/app/modules.min.js',
+          '<%= compile_dir %>/shared-views/views.min.js'
         ],
         dest: '<%= compile_dir %>/src/app/app.min.js'
+      }
+    },
+    /////////////////
+    html2js: {
+      options: {
+        htmlmin: {
+          collapseBooleanAttributes: false,
+          collapseWhitespace: true,
+          removeAttributeQuotes: false,
+          removeComments: true,
+          removeEmptyAttributes: false,
+          removeRedundantAttributes: true,
+          removeScriptTypeAttributes: true,
+          removeStyleLinkTypeAttributes: true
+        }
+      },
+      compile_shared_views: {
+        src: ['<%= build_dir %>/shared-views/**/*.html'],
+        dest: '<%= compile_dir %>/shared-views/views.min.js',
+        options: {
+          module: 'sharedViewsModule',
+          base: './build',
+          singleModule: true
+        }
       }
     },
     /////////////////
@@ -355,6 +390,7 @@ module.exports = function(grunt) {
     'copy:build_app_data',
     'copy:build_vendor_js',
     'copy:build_views',
+    'copy:build_shared_views',
     'copy:build_fonts',
     'copy:build_index',
     'copy:build_unit',
@@ -368,13 +404,15 @@ module.exports = function(grunt) {
   grunt.registerTask('compile', [
     'clean:build_clean',
     'build',
+    'copy:compile_views',
+    'html2js:compile_shared_views',
     'uglify:compile_module_js',
     'concat:compile_js',
     'uglify:compile_cleanup',
     'clean:compile_js_clean',
+    'clean:compile_shared_views_clean',
     'copy:compile_app_data',
     'copy:compile_app_assets',
-    'copy:compile_views',
     'copy:compile_index'
   ]);
   grunt.registerTask('test', ['karma:unit', 'protractor:build']);

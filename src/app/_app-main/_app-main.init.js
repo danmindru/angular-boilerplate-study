@@ -1,7 +1,7 @@
 ////////////////////////
 var absConfig = (function applicationInit(){
   var appRootModuleName = 'abs';
-  var appMainVendorDependencies = ['ui.router'];
+  var appMainVendorDependencies = ['ui.router', 'sharedViewsModule'];
 
   ////////////////////////
   var pushAfterBootstrap = function pushAfterBootstrap(lateModule){
@@ -18,6 +18,7 @@ var absConfig = (function applicationInit(){
 })();
 
 ////////////////////////
+angular.module('sharedViewsModule', []);
 angular.module(absConfig.appRootModuleName, absConfig.appMainVendorDependencies);
 
 ///////////////////////
