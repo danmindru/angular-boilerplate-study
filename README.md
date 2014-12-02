@@ -30,7 +30,7 @@ For production, files will be concatenated, uglyfied / minified and moved to **.
 
 ####Build
 --------------------------
-The build task will do all the work for development -> ./build
+The build task will do all the work for development and create files in -> ./build
 
 ```
 $ grunt build
@@ -44,7 +44,7 @@ $ grunt shell:dev_server
 
 ####Compile
 --------------------------
-The compile task will do all the work for production -> ./application
+The compile task will do all the work for production and create files in -> ./application
 
 ```
 $ grunt compile
