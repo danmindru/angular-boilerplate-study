@@ -1,7 +1,9 @@
 angular.module('abs.layout').controller('LayoutController', layoutController);
 
-function layoutController(){
-  var vm = this;
+layoutController.$inject = ['$filter'];
 
-  vm.currentDate = new Date();
+function layoutController($filter){
+  var vm = this;
+  var localCurrentDate = new Date();
+  vm.currentDate = $filter('date')(localCurrentDate, 'yyyy');
 }
