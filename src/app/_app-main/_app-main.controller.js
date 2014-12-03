@@ -10,7 +10,7 @@ function rootController($scope, $window) {
    *
    * Other available params: toParams, fromState, fromParams
    */
-  $scope.$on('$stateChangeSuccess', function(event, toState){
+  $scope.$on('$stateChangeSuccess', function rootStateChangeSuccess(event, toState){
     /*
      * updates the <title> tag
      * (vm.htmlTitle is binded to the title tag)
