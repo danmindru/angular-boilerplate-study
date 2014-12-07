@@ -4,7 +4,7 @@
 All source files are located in this directory.
 Here's an overview:
 
-```javascript
+```
 
 +—— app/
 |   +—— _app-main/ /* Root module -> application bootstrap */
