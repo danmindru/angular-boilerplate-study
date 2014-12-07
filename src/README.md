@@ -5,7 +5,6 @@ All source files are located in this directory.
 Here's an overview:
 
 ```
-
 +—— app/
 |   +—— _app-main/ /* Root module -> application bootstrap */
 |   +—— custom-module/ /* Any custom module, such as 'home' */
@@ -33,7 +32,6 @@ Here's an overview:
 |   +—— less/
 +—— common/ /* Common modules */
 +—— test/ /* Common protractor (e2e test helper methods) */
-
 ```
 
 Go to [src/app/shared](https://github.com/dandaniel/angular-boilerplate-study/tree/master/src/app/shared) for more info on shared modules.
