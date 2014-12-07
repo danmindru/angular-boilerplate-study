@@ -6,14 +6,16 @@ function rootController($scope, $window) {
   vm.htmlTitle = 'Angular Boilerplate Study';
   /*
    * Event callback on every route change
-   * Scrolls the page as if a 'normal' page would be opened
+   * Scrolls the page to the top as 'normally' changing a page
    *
-   * Other available params: toParams, fromState, fromParams
+   * Other available params for $stateChangeSuccess: toParams, fromState, fromParams
+   *
    */
   $scope.$on('$stateChangeSuccess', function rootStateChangeSuccess(event, toState){
     /*
-     * updates the <title> tag
+     * updates the <title> tag if the new route has a pageTitle set
      * (vm.htmlTitle is binded to the title tag)
+     *
      */
     if(angular.isDefined(toState.data.pageTitle)){
       vm.htmlTitle = toState.data.pageTitle + ' - Angular Boilerplate Study';
@@ -23,9 +25,11 @@ function rootController($scope, $window) {
   });
 
   /*
-   * Listens to controllers that want to emit their titles
-   * Used for custom titles (not from state provider).
-   * With this we can set the titles of 'wildcard' paths
+   * Listens to controllers that emit title changes
+   * Used for custom titles (not from state provider),
+   * when the route has a dynamic parameter.
+   *
+   * With this we can set the titles of 'wildcard' paths.
    * E.g. on 'customers/:Id' -> the page title can be customer.name
    *
    */
