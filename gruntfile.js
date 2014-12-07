@@ -418,4 +418,6 @@ module.exports = function(grunt) {
   grunt.registerTask('test:unit', ['karma:unit']);
   grunt.registerTask('test:ci', ['karma:unit', 'protractor:ci_dev', 'protractor:ci_prod']);
   grunt.registerTask('test:e2e', ['protractor:build']);
+  grunt.registerTask('dev', ['shell:dev_server']);
+  grunt.registerTask('prod', ['shell:prod_server']);
 };
