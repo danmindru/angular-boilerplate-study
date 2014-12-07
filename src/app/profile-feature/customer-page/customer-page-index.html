@@ -19,7 +19,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr data-ng-repeat="customer in vm.customers | filter:search as whatnot">
+            <tr data-ng-repeat="customer in vm.customers | filter:search track by $index">
               <td>{{$index+1}}</td>
               <td>{{::customer.surname}}</td>
               <td>{{::customer.name}}</td>
@@ -27,8 +27,6 @@
             </tr>
           </tbody>
         </table>
-
-        {{whatnot}}
 
         <section class="no-customers" data-ng-if="vm.customers.statusText">
           <h4>Sorry, there was an error getting the customers: <i>{{::vm.customers.statusText}}</i></h4>

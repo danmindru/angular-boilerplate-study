@@ -19,13 +19,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr data-ng-repeat="provider in vm.providers | filter:search">
+            <tr data-ng-repeat="provider in vm.providers | filter:search track by $index">
               <td>{{$index+1}}</td>
-              <td>{{::provider.name}}</td>
+              <td>{{provider.name}}</td>
               <td>
-                <small>{{::provider.address.street}}, {{::provider.address.city}}, {{::provider.address.country}}, {{::provider.address.postcode}}</small>
+                <small>{{provider.address.street}}, {{provider.address.city}}, {{provider.address.postcode}}</small>
               </td>
-              <td><a href="#!/provider/{{::provider.id}}">See provider</a></td>
+              <td><a href="#!/provider/{{provider.id}}">See provider</a></td>
             </tr>
           </tbody>
         </table>
