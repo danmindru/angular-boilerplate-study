@@ -1,11 +1,23 @@
 var helpers = function helpers(){
   /*
-   * shorten the way to get an element by model
+   * shorten the way to get an element by model, id, binding, etc
    */
   this.model = function getElementByModelName(modelName){
     return element(by.model(modelName));
   };
 
+  this.id = function getElementById(id){
+    return element(by.id(id));
+  };
+
+  this.binding = function getElementByBinding(binding){
+    return element(by.binding(binding));
+  };
+
+
+  /*
+   * breaks tests if any severe errors are present in the console
+   */
   this.detectSevere = function detectSevere(){
     browser.manage().logs().get('browser').then(function(browserLog) {
       var i = 0;
