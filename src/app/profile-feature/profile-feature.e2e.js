@@ -1,4 +1,4 @@
-var helpers = require('./helpers.protractor.js');
+var h = require('./helpers.protractor.js');
 
 var profileHelper = function profilePageMethods(){
   this.goTo = function goToRoute(route){
@@ -10,38 +10,38 @@ var profileHelper = function profilePageMethods(){
   this.customerRoute = browser.baseUrl + '/customer';
 };
 
-var profilePage = new profileHelper();
+var profileModule = new profileHelper();
 
 describe("Profile module: ", function(){
   describe("Provider page", function(){
     it("should stay on provider route if providerId supplied", function(){
-      profilePage.goTo(profilePage.providerRoute + '/any');
-      expect(browser.getCurrentUrl()).toMatch(profilePage.providerRoute + '/any');
+      profileModule.goTo(profileModule.providerRoute + '/any');
+      expect(browser.getCurrentUrl()).toMatch(profileModule.providerRoute + '/any');
     });
 
     it("should redirect to '/home' if no providerId is supplied", function(){
-      profilePage.goTo(profilePage.providerRoute);
-      expect(browser.getCurrentUrl()).toMatch(profilePage.homeRoute);
+      profileModule.goTo(profileModule.providerRoute);
+      expect(browser.getCurrentUrl()).toMatch(profileModule.homeRoute);
     });
 
     afterEach(function() {
-      helpers.detectSevere();
+      h.detectSevere();
     });
   });
 
   describe("Customer page", function(){
     it("should stay on customer route if customerId supplied", function(){
-      profilePage.goTo(profilePage.customerRoute + '/any');
-      expect(browser.getCurrentUrl()).toMatch(profilePage.customerRoute + '/any');
+      profileModule.goTo(profileModule.customerRoute + '/any');
+      expect(browser.getCurrentUrl()).toMatch(profileModule.customerRoute + '/any');
     });
 
     it("should redirect to '/home' if no customerId is supplied", function(){
-      profilePage.goTo(profilePage.customerRoute);
-      expect(browser.getCurrentUrl()).toMatch(profilePage.homeRoute);
+      profileModule.goTo(profileModule.customerRoute);
+      expect(browser.getCurrentUrl()).toMatch(profileModule.homeRoute);
     });
 
     afterEach(function() {
-      helpers.detectSevere();
+      h.detectSevere();
     });
   });
 });
