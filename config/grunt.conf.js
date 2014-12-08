@@ -1,7 +1,3 @@
-/*
- * Configuration variables for Grunt
- */
-
 module.exports = {
   /*
    * Global configuration.
