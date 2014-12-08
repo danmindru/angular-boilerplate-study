@@ -18,6 +18,8 @@
   <!--[if lt IE 9]>
      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+
+  <!-- All stylesheets in ./src/assets/ (including LESS files) are compiled in one css file in both build and compile phases -->
   <link rel="stylesheet" type="text/css" href="./src/assets/css/app.min.css" />
 </head>
 
@@ -25,8 +27,9 @@
   <section app-shell></section>
 </body>
 
-<!-- Explain it -->
 <%
+  //#Scripts are automatically added using grunt, you should not touch this part.
+
   if(typeof scripts !== 'undefined'){
     scripts.forEach(function (script){
       %><script type="text/javascript" src="<%= script %>"></script><%
