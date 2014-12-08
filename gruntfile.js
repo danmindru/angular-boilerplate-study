@@ -170,7 +170,13 @@ module.exports = function(grunt) {
       build_clean: ['<%= build_dir %>'],
       build_css_clean: ['<%= build_dir %>/src/assets/css/app.custom.css'],
       compile_js_clean: ['<%= compile_dir %>/src/app/modules.min.js'],
-      compile_shared_views_clean: ['<%= compile_dir %>/shared-views/']
+      compile_shared_views_clean: ['<%= compile_dir %>/shared-views/'],
+      clean_samples: [
+        './src/app/about/',
+        './src/app/home/',
+        './src/app/profile-feature/',
+        './src/app//shared/profile-model'
+      ]
     },
     /////////////////
     less: {
