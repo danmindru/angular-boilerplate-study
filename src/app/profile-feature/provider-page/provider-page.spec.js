@@ -1,14 +1,14 @@
 describe('Profile feature: Provider page', function(){
-  beforeEach(module('abs.feature.profile.providerPage'));
+  beforeEach(module('abs.profileFeature.providerPage'));
 
   var ProviderPageController,
       scope,
       stateParams,
-      ProviderModel,
+      ProviderModelService,
       q;
 
   beforeEach(function(){
-    ProviderModel = {
+    ProviderModelService = {
       providerIndex: function providerIndex(){
         var deferred = q.defer();
         return deferred.promise;
@@ -33,7 +33,7 @@ describe('Profile feature: Provider page', function(){
     ProviderPageController = $controller('ProviderPageController', {
       $scope: scope,
       $stateParams: stateParams,
-      ProviderModel: ProviderModel
+      ProviderModelService: ProviderModelService
     });
   }));
 

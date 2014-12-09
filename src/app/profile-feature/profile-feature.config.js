@@ -1,6 +1,6 @@
-absConfig.pushAfterBootstrap('abs.feature.profile');
+absConfig.pushAfterBootstrap('abs.profileFeature');
 
-angular.module('abs.feature.profile').config(profileConfig);
+angular.module('abs.profileFeature').config(profileConfig);
 
 profileConfig.$inject = ['$stateProvider'];
 function profileConfig($stateProvider){

@@ -1,1 +1,1 @@
-absConfig.pushAfterBootstrap('abs.feature.profile.customerPage');
+absConfig.pushAfterBootstrap('abs.profileFeature.customerPage');

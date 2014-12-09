@@ -1,11 +1,11 @@
-angular.module('abs.feature.profile.providerPage').controller('ProviderPageController', providerPageController);
+angular.module('abs.profileFeature.providerPage').controller('ProviderPageController', providerPageController);
 
-providerPageController.$inject = ['$scope', '$stateParams', 'ProviderModel'];
-function providerPageController($scope, $stateParams, ProviderModel){
+providerPageController.$inject = ['$scope', '$stateParams', 'ProviderModelService'];
+function providerPageController($scope, $stateParams, ProviderModelService){
   var vm = this;
 
   if($stateParams.providerId){
-    ProviderModel.providerProfile($stateParams.providerId).then(function providerProfileResponse(response){
+    ProviderModelService.providerProfile($stateParams.providerId).then(function providerProfileResponse(response){
       var pageTitle;
 
       vm.provider = response;
@@ -14,13 +14,13 @@ function providerPageController($scope, $stateParams, ProviderModel){
     });
   }
 
-  ProviderModel.providerIndex().then(function providerIndexResponse(response){
+  ProviderModelService.providerIndex().then(function providerIndexResponse(response){
     vm.providers = response.data;
   }, function providerIndexError(error){
     vm.providers = error;
   });
 
-  ProviderModel.otherProviders($stateParams.providerId).then(function otherProvidersResponse(response){
+  ProviderModelService.otherProviders($stateParams.providerId).then(function otherProvidersResponse(response){
     vm.otherProviders = response;
   }, function otherProvidersError(error){
     vm.otherProviders = error;

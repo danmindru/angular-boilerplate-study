@@ -1,11 +1,11 @@
-angular.module('abs.feature.profile.customerPage').controller('CustomerPageController', customerPageController);
+angular.module('abs.profileFeature.customerPage').controller('CustomerPageController', customerPageController);
 
-customerPageController.$inject = ['$scope', '$stateParams','CustomerModel'];
-function customerPageController($scope, $stateParams, CustomerModel){
+customerPageController.$inject = ['$scope', '$stateParams', 'CustomerModelService'];
+function customerPageController($scope, $stateParams, CustomerModelService){
   var vm = this;
 
   if($stateParams.customerId){
-    CustomerModel.customerProfile($stateParams.customerId).then(function customerProfileResponse(response){
+    CustomerModelService.customerProfile($stateParams.customerId).then(function customerProfileResponse(response){
       var pageTitle;
 
       vm.customer = response;
@@ -14,7 +14,7 @@ function customerPageController($scope, $stateParams, CustomerModel){
     });
   }
 
-  CustomerModel.customerIndex().then(function customerIndexResponse(response){
+  CustomerModelService.customerIndex().then(function customerIndexResponse(response){
     vm.customers = response.data;
   }, function customerIndexError(error){
     vm.customers = error;

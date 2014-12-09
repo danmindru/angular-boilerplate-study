@@ -2,13 +2,13 @@ describe('Profile feature: Customer page', function(){
   var customerPageController,
       scope,
       stateParams,
-      CustomerModel,
+      CustomerModelService,
       q;
 
   beforeEach(function(){
-    module('abs.feature.profile.customerPage');
+    module('abs.profileFeature.customerPage');
 
-    CustomerModel = {
+    CustomerModelService = {
       customerIndex: function customerIndex(){
         var deferred = q.defer();
         return deferred.promise;
@@ -29,7 +29,7 @@ describe('Profile feature: Customer page', function(){
     customerPageController = $controller('CustomerPageController', {
       $scope: scope,
       $stateParams: stateParams,
-      CustomerModel: CustomerModel
+      CustomerModelService: CustomerModelService
     });
   }));
 
