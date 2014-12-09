@@ -1,4 +1,4 @@
-angular.module('abs.model.profile.provider').service('ProviderModel', providerModelService);
+angular.module('abs.profileModel.providerModel').service('ProviderModelService', providerModelService);
 
 providerModelService.$inject = ['$http', '$q'];
 function providerModelService($http, $q){

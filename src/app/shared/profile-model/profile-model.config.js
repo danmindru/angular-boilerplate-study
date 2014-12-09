@@ -1,1 +1,1 @@
-absConfig.pushAfterBootstrap('abs.model.profile');
+absConfig.pushAfterBootstrap('abs.profileModel');

@@ -1,4 +1,4 @@
-angular.module('abs.model.profile.customer').service('CustomerModel', customerModelService);
+angular.module('abs.profileModel.customerModel').service('CustomerModelService', customerModelService);
 
 customerModelService.$inject = ['$http', '$q'];
 function customerModelService($http, $q){

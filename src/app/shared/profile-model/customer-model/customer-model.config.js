@@ -1,1 +1,1 @@
-absConfig.pushAfterBootstrap('abs.model.profile.customer');
+absConfig.pushAfterBootstrap('abs.profileModel.customerModel');
