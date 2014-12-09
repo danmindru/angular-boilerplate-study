@@ -1,4 +1,4 @@
-angular.module('abs.layout').controller('LayoutController', layoutController);
+angular.module('abs.coreLayout').controller('LayoutController', layoutController);
 
 layoutController.$inject = ['$filter'];
 

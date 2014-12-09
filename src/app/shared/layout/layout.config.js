@@ -1,1 +1,1 @@
-absConfig.pushAfterBootstrap('abs.layout');
+absConfig.pushAfterBootstrap('abs.coreLayout');

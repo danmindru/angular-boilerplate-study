@@ -1,4 +1,4 @@
-angular.module('abs.layout').directive('appShell', appShell);
+angular.module('abs.coreLayout').directive('appShell', appShell);
 
 function appShell(){
   return {

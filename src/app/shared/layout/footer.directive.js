@@ -1,4 +1,4 @@
-angular.module('abs.layout').directive('appFooter', appFooter);
+angular.module('abs.coreLayout').directive('appFooter', appFooter);
 
 function appFooter(){
   return {
