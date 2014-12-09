@@ -49,7 +49,7 @@ $ grunt prod
     * [Build](#build)
     * [Compile](#compile)
   5. [Core components](#core-components)
-  6. [Third party components](#core-components)
+  6. [Third party components](#third-party-components)
   7. [Conventions and best practices](#conventions-and-best-practices)
   8. [Testing](#testing)
     * [Unit testing](#unit)
@@ -237,8 +237,8 @@ With the exception of `ui-router`, third party components that are used to build
 
 
   <dt>loggly-jslogger</dt>
-  <dd>This component is a client-side (browser) logger and it's also a dependency of the <code>loggly</code> module in <code>./src/common/loggly/</code>. It allows setting up loggly and storing exceptions in the cloud.<dd>
-
+  <dd>This component is a client-side (browser) logger and it's also a dependency of the <code>loggly</code> module in <code>./src/common/loggly/</code>. It allows setting up loggly and storing exceptions in the cloud.<br/><br/>
+  Loggly is very easy to configure for your account; it only requires one change in <code>./src/common/loggly/loggly.config.js</code>.<dd>
 
   <dt>ui-router</dt>
   <dd>A routing framework for AngularJS. See more on the [ui-router repository](https://github.com/angular-ui/ui-router).<dd>
@@ -264,7 +264,7 @@ With the exception of `ui-router`, third party components that are used to build
 
 
   <dt>SauceLabs</dt>
-  <dd>Whenever Travis CI runs a new build, SauceLabs provides a standalone Selenium server and runs end to end tests automatically. Here's an example: <a href="https://saucelabs.com/tests/a40d7a31221843049b69a37a575e3b60" target="_blank">Build 64</a>. You need to sign up to use this service ([free for open source projects](https://saucelabs.com/opensauce))
+  <dd>Whenever Travis CI runs a new build, SauceLabs provides a standalone Selenium server and runs end to end tests automatically (here's an example: <a href="https://saucelabs.com/tests/a40d7a31221843049b69a37a575e3b60" target="_blank">Build 64</a>). You need to sign up to use this service (<a href="https://saucelabs.com/opensauce" target="_blank">free for open source projects</a>).
 
   To set up Sauce Labs with Travis CI you have to provide a SauceKey and SauceUsername securely in <code>./.travis.yml</code> (you can remove all 3 secure env variables). See how to do it in <a href="https://docs.saucelabs.com/ci-integrations/travis-ci/" target="_blank">SauceLabs' docs</a>.<dd>
 </dl>
