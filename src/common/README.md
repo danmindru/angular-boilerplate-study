@@ -1,7 +1,7 @@
 ###src/common
 --------------------------
 
-Common modules are highly decoupled and likely to be used in multiple applications without any change. They can have vendor dependencies but will not be a dependency of any module in `./src/app`.
+Common components are highly decoupled modules and are likely to be used in multiple applications without any change. They can have vendor dependencies but will not be a dependency of any module in `./src/app`.
 
 You can think of common modules as modules interacting with/overwriting Angular core. The example module provided (`loggly`) is an Angular exception decorator which is used to add custom behaviour to Angular's exception handling.
 

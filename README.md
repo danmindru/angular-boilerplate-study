@@ -1,36 +1,180 @@
-##A study of AngularJS boilerplates [![Build Status](https://travis-ci.org/dandaniel/angular-boilerplate-study.svg?branch=master)](https://travis-ci.org/dandaniel/angular-boilerplate-study)
+#AngularJS boilerplate (study) [![Build Status](https://travis-ci.org/dandaniel/angular-boilerplate-study.svg?branch=master)](https://travis-ci.org/dandaniel/angular-boilerplate-study)
 
-This study attempts to answer a few questions when it comes to AngularJS boilerplates:
-  1. Is it worth using a boilerpate? Are the benefits clear enough?
-  2. Which applications can benefit more from a boilerplate? (If any)
-  3. Can you increase the comprehensibility and performance of an application by using a boilerplate?
-  4. What conventions or concepts should be used while setting up a boilerplate?
+This study looks at AngularJS boilerplates to find the best approaches so you don't have to. Although plenty of choices are available, they will do justice for only some types of applications. There is no one-size-fits all, universal boilerplate.
+Plan your app well, prototype it and then refactor. If you still think it's a good idea to use a boilerplate, choose one and adapt it to your needs.
 
-The result of the study is actually **a boilerplate** itself.
+[See this app in action](http://abs.danmind.ru).
 
 
-###Installation
---------------------------
+##Getting started
 
-To install run
+Install `npm` and `bower` dependencies and run `grunt`, that's it. You are good to go.
 
 ```
 $ sudo npm install
 $ bower install
+$ grunt
 ```
 
-###Build or compile
+After running grunt, the source files will be built into `./build`.
+Navigate to the build directory and start a server (recommended port is 8008) in order to see the app in action.
+
+```sh
+# For the lazy developer, just run the following to start the build server
+# and open a new tab in your favorite browser:
+
+$ grunt dev
+```
+
+When the app is ready for production, compile the app into `./application` by running:
+
+```
+$ grunt compile
+```
+
+```sh
+# Same as with build, run the following to start the production server
+# and open a new tab in your favorite browser:
+
+$ grunt prod
+```
+
+
+##Table of contents
+
+  1. [Intro](#intro)
+  2. [Philosophy](#philosophy)
+  3. [Application structure](#application-structure)
+  4. [Build and compile](#build-and-compile)
+    * [Build](#build)
+    * [Compile](#compile)
+  5. [Core components](#core-components)
+  6. [Third party components](#core-components)
+  7. [Conventions and best practices](#conventions-and-best-practices)
+  8. [Testing](#testing)
+    * [Unit testing](#unit)
+    * [End to end testing](#end-to-end)
+
+
+##Intro
+
+This AngularJS boilerplate study started in order to answer the following questions:
+  1. Is it worth using a boilerpate? Are the benefits clear enough?
+  2. Which applications can benefit more from a boilerplate? (If any)
+  3. Can you increase the comprehensibility and performance of an application by using a boilerplate?
+  4. What conventions, standards or best practices should be used in a boilerplate?
+  5. How can a boilerplate benefit the most out of AngularJS' modular structure?
+
+
+The result of the study is **a boilerplate** itself. The answers lie within, but are also present in this short documentation. Yes, it is worth using a boilerplate, but you have to know why you need it.
+
+
+##Philosophy
+
+The modular nature of AngularJS (mainly) facilitated the development of numerous boilerplates. Based on the *insanely* comprehensive analysis done by Dan Cancro ([link](http://www.dancancro.com/comparison-of-angularjs-application-starters/)), it's noticable that boilerplates exist for certain purposes and are not in fact the result of different approaches to achieve the same exact thing. There is no question that they do have the common purpose of quickly starting off development. At the same time, they are forcing some patterns/concepts that their creators think help in *some way*. This is where it's easy to see why they are different. There are many nuances to *some way*, it can be:
+  * **flexibility**
+  * **performance**
+  * **learnability/documentation**
+  * **efficiency (as in increased dev. speed)**
+  * **testability**
+  * **architecture (structure/overview/understanding)**
+  * **maintainability**, etc
+
+Some developers will value one of them more than the others. This doesn't mean that if testability is considered to be the most important, the others will be neglected. In fact, you probably won't be able to address one issue without affecting the others. It's easier to get this if you look at what this man had to say back when 'personal' and 'computer' where two unrelated terms:
+
+> "The benefits expected of modular programming are: managerial-development time should be shortened because separate groups would work on each module with little need for communication: product flexibility-it should be possible to make drastic changes to
+one module without a need to change others; comprehensibility-it should be possible to study the system one module at a time. The whole system can therefore be better designed because it is better understood."
+
+> **Parnas, D. L. On the Criteria To Be Used in Decomposing Systems into Modules, 1972**
+
+
+Modularity's umbrella can cover most of the decisions we consider when creating a boilerplate. Therefore, that's the first thing this study focuses on: getting modularity right.
+
+Performance and comprehensibility are chosen as being the focus areas of this boilerplate. The two don't usually play well, that's why this makes for a somewhat noble goal. On one hand, performance decisions can be measured and justified. That's going to make some implementations easier to digest. On the other hand, comprehensibility is more personal and hard to measure. That's why it will require more research & testing.
+(more on this in the [Conventions and best practices chapter](#conventions-and-best-practices))
+
+Finally, the result of this study embraces the idea of `certain boilerplates work best for certain applications`. It's based on a real project with clear demands, a specific development setup, a given team & a specific set of tools (technologies).
+
+
+##Application structure
+
+```sh
+root/
++—— src/
+|   +—— app/
+|   |   +—— _app-main/ # Root module -> application bootstrap
+|   |   |   +—— _app-main.config.js
+|   |   |   +—— _app-main.controller.js
+|   |   |   +—— _app-main.init.js
+|   |   |   +—— _app-main.spec.js
+|   |   +—— module/ # Any custom module
+|   |   |   +—— module.config.js # Registering a module
+|   |   |   +—— module.controller.js
+|   |   |   +—— module.e2e.js # Module E2E test
+|   |   |   +—— module-page.html # Module views
+|   |   |   +—— module.spec.js # Module Unit test
+|   |   +—— feature/ # Any custom feature (multiple modules)
+|   |   |   +—— module-one/
+|   |   |   |   +—— module-one.config.js
+|   |   |   |   +—— module-one.controller.js
+|   |   |   |   +—— module-one-edit.html
+|   |   |   |   +—— module-one-index.html
+|   |   |   |   +—— module-one.spec.js
+|   |   |   +—— module-two/
+|   |   |   |   +—— module-two.config.js
+|   |   |   |   +—— module-two.controller.js
+|   |   |   |   +—— module-two-page.html
+|   |   |   |   +—— module-two.spec.js
+|   |   |   +—— feature.config.js
+|   |   |   +—— feature.e2e.js
+|   |   +—— shared/ # Shared modules
+|   |   |   +—— directive/ # Any shared directive
+|   |   |   |   +—— directive.directive.js
+|   |   |   |   +—— directive.html
+|   |   |   +—— layout/ # Shared layout directives
+|   |   |   |   +—— footer.directive.js
+|   |   |   |   +—— footer.html
+|   |   |   |   +—— layout.config.js
+|   |   |   |   +—— layout.controller.js
+|   |   |   |   +—— shell.directive.js
+|   |   |   |   +—— shell.html
+|   |   |   +—— model/ # Any shared model
+|   |   |   |   +—— model.config.js
+|   |   |   |   +—— model.service.js
+|   +—— assets/ # All application assets
+|   |   +—— css/
+|   |   +—— fonts/
+|   |   +—— images/
+|   |   +—— less/
+|   +—— common/ # Common modules
+|   |  +—— loggly/
+|   |  |   +—— loggly.config.js
+|   |  |   +—— loggly-exception-decorator.service.js
+|   |  |   +—— loggly-exception-logging.service.js
+|   |  |   +—— loggly-trace.service.js
+|   +—— test/ # Protractor helper methods (e2e tests)
+|   |  |   +—— helpers.protractor.js
+|   +—— index.html # Application index file
+```
+
+Browse the `./src` directory for examples.
+
+Go to [src/app/shared](https://github.com/dandaniel/angular-boilerplate-study/tree/master/src/app/shared) for more info on shared modules.
+
+Go to [src/common](https://github.com/dandaniel/angular-boilerplate-study/tree/master/src/common) for more info on common modules.
+
+
+##Build and compile
+
+A 2-stage Grunt 'strategy' is implemeted.
+
+For development, files will go to `./build`.
+For production, files will be concatenated, uglyfied / minified and moved to `./application`. (1 css, 1 js)
+
+
+###Build
 --------------------------
-A 2-stage grunt strategy is implemeted.
-
-For development, files will go to **./build**.
-For production, files will be concatenated, uglyfied / minified and moved to **./application**. (1 css, 1 js)
-
-
-
-####Build
---------------------------
-The build task will do all the work for development and create files in -> ./build
+The build task will do all the work for development and create files in -> `./build`
 
 ```
 $ grunt build
@@ -38,38 +182,311 @@ $ grunt build
 You can use the following command to start the build http server (port 8008 default):
 
 ```
-$ grunt shell:dev_server
+$ grunt dev
 ```
 
 
-####Compile
+###Compile
 --------------------------
-The compile task will do all the work for production and create files in -> ./application
+The compile task will do all the work for production and create files in -> `./application`
 
 ```
 $ grunt compile
 ```
-You can use the following command to start the build http server (port 8008 default):
+You can use the following command to start the build http server (port 8009 default):
 
 ```
-$ grunt shell:prod_server
+$ grunt prod
 ```
 
-
-###Testing
+###Watch
 --------------------------
-To strictly run all tests use:
+The `watch` task builds JavaScript, HTML and all assets (including tests and the gruntfiles themselves) when any of them are changed.
+
+
+##Core components
+
+The only 'core' AngularJS modules are:
+* `_app-main`: contains logic for manually bootstrapping the application, sets up a module for `$templateCache`, allows defining 3rd party dependencies and exposes a method to register modules: `pushAfterBootstrap`.
+* `layout`: (inside `app/shared`) contains the `ng-view` directive to display content based on the current route (`ui-router` specific directive). `layout` contains other directives for footer & navigation, but they can be removed. The `shell` directive is the one responsible for `ng-view`.
+
+
+To start clean, you can remove the directories of sample modules or features: `/app/about`, `/app/home`, `/app/profile-feature` and `app/shared/profile-model` can be safely removed.
+
+*Note: `app/shared/profile-model` is a dependency of `/app/home` and `/app/profile-feature`. Removing the modules also requires the navigation directive in `/app/shared/layout/` to be updated.*
+```sh
+# For the lazy developer, just run the following to
+# remove the sample modules:
+
+$ grunt clean:clean_samples
+```
+
+
+##Third party components
+
+With the exception of `ui-router`, third party components that are used to build the sample application are just a recommendation. They can be replaced with any other similar components or completely removed.
+
+
+<dl>
+  <dt>bootstrap</dt>
+  <dd>Twitter Bootstrap is used for it's CSS properties and icon-fonts (JS not included). If there are any plans to use Bootstrap's JavaScript, jQuery needs to be added (it's already downloaded in <code>./vendor/</code> when Bootstrap is resolved).<dd>
+
+
+  <dt>stacktrace.js</dt>
+  <dd>Stacktrace is a components that allows debugging JavaScript by giving a full stack trace of function calls. It's a dependency of the <code>loggly</code> module in <code>./src/common/loggly/</code>.<dd>
+
+
+  <dt>loggly-jslogger</dt>
+  <dd>This component is a client-side (browser) logger and it's also a dependency of the <code>loggly</code> module in <code>./src/common/loggly/</code>. It allows setting up loggly and storing exceptions in the cloud.<dd>
+
+
+  <dt>ui-router</dt>
+  <dd>A routing framework for AngularJS. See more on the [ui-router repository](https://github.com/angular-ui/ui-router).<dd>
+
+
+  <dt>angular-mocks</dt>
+  <dd>A module that provides support to inject and mock Angular services into unit tests. Read the docs on the <a href="https://docs.angularjs.org/api/ngMock" target="_blank">Angular site</a>.<dd>
+
+
+  <dt>Karma</dt>
+  <dd>Karma is the chosen test runner for Jasmine unit tests. It can be configured in <code>./config/karma.conf.js</code>.<dd>
+
+
+  <dt>Protractor</dt>
+  <dd>Protractor is an end-to-end test framework for AngularJS applications. Protractor is built on top of WebDriverJS (it requires a running Selenium Server, read more about here: <a href="#end-to-end">End to end testing</a>).<dd>
+
+
+  <dt>Travis CI</dt>
+  <dd>Travis CI is a hosted continuous integration service. It is integrated with GitHub and automatically runs unit and end to end tests for each build. You need to sign up in order to use this service (free for open source projects).
+
+  <a href="https://travis-ci.org/dandaniel/angular-boilerplate-study/builds" target="_blank">See the builds for this repository on Travis CI</a><dd>
+
+
+
+  <dt>SauceLabs</dt>
+  <dd>Whenever Travis CI runs a new build, SauceLabs provides a standalone Selenium server and runs end to end tests automatically. Here's an example: <a href="https://saucelabs.com/tests/a40d7a31221843049b69a37a575e3b60" target="_blank">Build 64</a>. You need to sign up to use this service ([free for open source projects](https://saucelabs.com/opensauce))
+
+  To set up Sauce Labs with Travis CI you have to provide a SauceKey and SauceUsername securely in <code>./.travis.yml</code> (you can remove all 3 secure env variables). See how to do it in <a href="https://docs.saucelabs.com/ci-integrations/travis-ci/" target="_blank">SauceLabs' docs</a>.<dd>
+</dl>
+
+###Grunt 'contrib' tasks
+Grunt tasks are used in order to automate the build and compilation of the app code.
+Open `./package.json` to see the installed Grunt tasks. An external configuration file is used to define file locations in `./config/grunt.conf.js`. Both the config file and `./grunfile.js` are well commented. Reading it would be a good way to fully understand how the Grunt tasks work, but you don't have to.
+
+`jit-grunt` and `grunt-newer` are used to speed up tasks.
+
+
+##Conventions and best practices
+
+###Workflow conventions
+These conventions should be followed during normal development.
+
+
+####Working with Grunt
+As a rule, Grunt tasks (`./grunfile.js`) shouldn't require any alteration. Changes should be made in `./config/grunt.conf.js`. Before adding/changing a task, it's always a good idea to go through all tasks and check if it's not already there.
+
+
+####Adding a third party dependency
+Grunt 'glues together' the various application components and moves Bower dependencies where they belong (i. e. `../bootstrap/dist/css/bootstrap.min.css` -> `../assets/css`). Due to the way Bower dependecies are organized (well they aren't, really), this process cannot be fully automated. To add a third party dependency, you need to:
+
+**Step 1**: Install it it
+```
+$ bower install <component-name>
+```
+**Step 2**: Update the build object in `./config/grunt.conf.js`
+```javascript
+...
+build: {
+  vendor_js: {
+    ...
+    './vendor/component-name/dist/js/component.js' //not minified
+    ...
+  }
+}
+...
+```
+**Step 3**: Update the compile object in `./config/grunt.conf.js`
+```javascript
+...
+compile: {
+  vendor_min_js: {
+    ...
+    './vendor/component-name/dist/js/component.min.js' //minified
+    ...
+  }
+}
+...
+```
+
+*<b>Step 4 (optional)</b> : If it's an Angular core components (such as `ui-route`), it needs to be added to the `appMainVendorDependencies` Array in the root module's init file (`./src/app/_app-main/_app-main.init.js`).*
+
+
+Providing different source files for build and compile phases is done for a couple reasons:
+
+1. During build (aka. development time) meaningful error messages/exceptions should be provided for debugging.
+1. During build, it's useful to have the code 'beautified' (line numbers) and not 'mangled' (full variable names)
+1. There is no reason to minify a script if it's already minified by a vendor
+1. Attempting to minify a vendor script can break it (it can have it's own minifying settings)
+
+For a more in-depth look, `./config/grunt.conf.js` contains useful comments.
+
+
+####Naming conventions
+#####Files and directories
+Lower case, separated by a dash
+* Directory: `src/directory-name/`
+* Filename: `file-name.js`
+
+
+#####AngularJS directories
+* Module dirs: `<module-name>/`
+* Feature dirs: `<feature-name>-feature/` (contains multiple modules)
+* Model dirs: `<module-name>-model/` (contains services)
+
+
+#####AngularJS component filenames
+* Init/globals: `<module-name>.init.js`
+* Config blocks: `<module-name>.config.js`
+* Run blocks: `<module-name>.run.js`
+* Services: `<module-name>.service.js` (including factories, providers, values)
+* Controllers: `<module-name>.controller.js`
+* Directives: `<module-name>.directive.js`
+* Filters: `<module-name>.filter.js`
+* Views: `<view-name>.html`
+
+
+#####Other files
+* E2E tests: `<module-name>.e2e.js`, `<feature-name>.e2e.js` (depending on the case)
+* E2E helpers: `<name>.protractor.js`
+* Unit tests: `<module-name>.spec.js`
+
+
+#####Angular modules
+* Module names: `<namespace>.<moduleName>`
+* Feature names (collection of modules): `<namespace>.<featureName>Feature`
+* Nested modules (inside a feature): `<namespace>.<featureName>Feature.<moduleName>`
+
+(i.e. `abs.about`, `abs.profileFeature`, `abs.profileFeature.providerPage`)
+
+
+* Core modules: `<namespace>.core<ModuleName>`
+* Core features: `<namespace>.core<FeatureName>Feature`
+* Core nested module: `<namespace>.core<FeatureName>Feature.core<ModuleName>`
+
+(i.e. `abs.coreLayout`)
+
+
+* Common modules: `<namespace>.common<ModuleName>`
+* Common features: `<namespace>.common<FeatureName>Feature`
+* Common nested: `<namespace>.common<FeatureName>Feature.common<ModuleName>`
+
+(i.e. `abs.commonLoggly`)
+
+
+* Model names: `<namespace>.<modelName>Model`
+* Nested models: `<namespace>.<parentModel>Model.<modelName>Model`
+
+(i.e. `abs.profileModel`, `abs.profileModel.customerModel`)
+
+#####Angular module components
+* Controllers: `<ControllerName>Controller`
+* Models: `<ModelName><ModelType>` (ModelType could be service, factory, value)
+* Directives: `<directiveName>`
+* Filters: `<filterName>`
+
+
+####Creating a module
+To create a module, make a directory in a corresponding location:
+* `./src/app/` for any basic module
+* `./src/app/shared/` for any shared module (i.e. directive, shared layout)
+* `./src/common/` for any [common module](https://github.com/dandaniel/angular-boilerplate-study/tree/master/src/common)
+
+After making the directory, create a config file (`<module-name>.config.js`). In this file the module needs to be registered as a depedency of the application root.
+```javascript
+rootConfig.pushAfterBootstrap('<namespace>.<module-name>');
+```
+That's it, use it as any other Angular module.
+
+Here's a more practical example:
+```javascript
+absConfig.pushAfterBootstrap('abs.home');
+
+angular.module('abs.home').config(homeConfig);
+homeConfig.$inject = ['$log'];
+
+function homeConfig($log){
+  $log.warn('I am being practical');
+}
+```
+
+
+####Component dependency injection
+
+Dependencies are injected into components by creating a $inject property on the component function:
+```javascript
+angular.module('user').controller('UserController', userController);
+
+userController.$inject = ['$scope', '$stateParams', 'ProviderModelService'];
+function userController($scope, $stateParams, ProviderModelService){
+  //controller logic
+}
+```
+
+Note on annotation:
+
+First of all automatic annotation is not implemented, although it can be achieved with `ng-annotate`. This is so because every now and then `ng-annotate` backfires. After many hours of debugging, you'll promise yourself to never use it and avoid such situations. Therefore, the 'old-school' annotation is used, but with a twist: it's not done inline with the component (in this case controller) definition. This makes it easy to have an overview of depedencies and easily manage them while being minification-proof.
+
+
+####File locations during build/compile
+<dl>
+  <dt>Shared views</dt>
+  <dd>
+  All views located in <code>./src/app/shared/</code> will be located in <code>./src/shared-views/</code>.
+
+  <br/><br/>
+  <em>Note: compiling will combine all shared views in a module and use $templateCache to define their location. The directory above won't exist in the compile phase, but the views will still be accesible in the same location.</em>
+  </dd>
+
+  <dt>'Non-shared' views</dt>
+  <dd>All other views will be available in <code>./build/views/</code>(build phase) and <code>./application/views/</code>(compile phase).</dd>
+
+  <dt>Static assets</dt>
+  <dd>With the exception of stylesheet files which are concatenated and compiled, all assets will maintain their directory structure.</dd>
+</dl>
+
+
+####Routes
+
+Routes are defined in module configuration blocks. In the case of features, routes are defined in the feature configuration block. The idea behind keeping the route logic in each module or feature is to encourage a higher modularity of components. Moreover, keeping module logic
+
+Examples are avilable in the configuration block of the [home module](https://github.com/dandaniel/angular-boilerplate-study/blob/master/src/app/home/home.config.js) and [profile feature](https://github.com/dandaniel/angular-boilerplate-study/blob/master/src/app/profile-feature/profile-feature.config.js).
+
+
+####Misc
+Other style considerations; will be added soon.
+<!--Controller as in templates, directives, etc
+A file should always do one thing: controller, directive, template, etc.-->
+
+###Performance recommendations
+Documentation will be added soon.
+
+
+##Testing
+
+To run all tests use:
 
 ```
-grunt test
+$ grunt test
 ```
-*Note: this won't build or compile, but just run all unit and end to end tests.*
+*Note: you should have a selenium server running, see [end to end testing](#end-to-end)*
+
+*Note: this won't build or compile, but just run all unit and end to end tests for the build binaries, which should be present in `./build`.*
 
 
-####Unit
+###Unit
 --------------------------
 To run unit tests it will come in handy to install karma-cli (if you don't have it yet).
-Unit tests will run on PhantomJS, but if you have binaries for other browsers you are encouraged to add them in karma.conf.js
+Unit tests will run on PhantomJS, but if you have binaries for other browsers you are encouraged to add them in `karma.conf.js`
 
 ```
 $ npm install -g karma-cli
@@ -88,29 +505,31 @@ Unit tests will run in the grunt default task (which builds first)
 $ grunt
 ```
 
-####End to end
+###End to end
 --------------------------
 Protractor is used for running end to end tests. Before running the tests be sure the webdriver-manager is updated.
-Protractor's base url is 'http://localhost:8008/#!', which can be changed in protractor.conf.js - just make sure the application port matches the base url.
-The selenium server needs to be running too (default at 'http://localhost:4444/wd/hub'):
+Protractor's base url is `http://localhost:8008/#!`, but can be changed in `protractor.conf.js` - just make sure the application port matches the base url.
+In order to run Protractor tests, a selenium server needs to be running (default at `http://localhost:4444/wd/hub`):
 
 ```
-$ node_modules/protractor/bin/webdriver-manager update
 $ node_modules/protractor/bin/webdriver-manager start
 $ grunt test:e2e
 ```
 
-###Mentions
---------------------------
-Special thanks to the indulging people at [fadeit.dk](http://fadeit.dk) and to [Niels Henrik Juul Hansen](https://github.com/nielshenrikjuulhansen) for guiding me.
+If you are running tests for the first time don't forget to update the webdriver
+
+```
+$ node_modules/protractor/bin/webdriver-manager update
+```
+
+##Mentions
+
+Special thanks to the people at [fadeit.dk](http://fadeit.dk) for their patience and to [Niels Henrik Juul Hansen](https://github.com/nielshenrikjuulhansen) for guiding me.
 
 
-###License
---------------------------
+##License
+
 Copyright (c) Dan Mindru <mindrudan@gmail.com>
-
-All rights reserved.
-
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

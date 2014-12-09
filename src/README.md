@@ -4,14 +4,14 @@
 All source files are located in this directory.
 Here's an overview:
 
-```
+```sh
 +—— app/
-|   +—— _app-main/ /* Root module -> application bootstrap */
-|   +—— custom-module/ /* Any custom module, such as 'home' */
-|   |   +—— custom-module.config.js /* Registering a module */
+|   +—— _app-main/ # Root module -> application bootstrap
+|   +—— custom-module/ # Any custom module, such as 'home'
+|   |   +—— custom-module.config.js # Registering a module
 |   |   +—— custom-module.controller.js
-|   |   +—— custom-module-page.html /* Module Views */
-|   +—— custom-feature/ /* Any custom feature (multiple modules) */
+|   |   +—— custom-module-page.html # Module Views
+|   +—— custom-feature/ # Any custom feature (multiple modules)
 |   |   +—— client-page/
 |   |   |   +—— client-page.config.js
 |   |   |   +—— client-page.controller.js
@@ -22,16 +22,17 @@ Here's an overview:
 |   |   |   +—— provider-page.controller.js
 |   |   |   +—— provider-page-index.html
 |   |   |   +—— provider-page-edit.html
-|   |   +—— custom-feature.config.js /* Registering a feature */
-|   +—— shared/ /* Shared modules */
-|   |   +—— layout/ /* Shared layout directives */
-+—— assets/ /* All application assets */
+|   |   +—— custom-feature.config.js # Registering a feature
+|   +—— shared/ # Shared modules
+|   |   +—— layout/ # Shared layout directives
++—— assets/ # All application assets
 |   +—— css/
 |   +—— fonts/
 |   +—— images/
 |   +—— less/
-+—— common/ /* Common modules */
-+—— test/ /* Common protractor (e2e test helper methods) */
++—— common/ # Common modules
++—— test/ # Protractor helper methods (e2e tests)
++—— index.html # Application index file
 ```
 
 Go to [src/app/shared](https://github.com/dandaniel/angular-boilerplate-study/tree/master/src/app/shared) for more info on shared modules.
