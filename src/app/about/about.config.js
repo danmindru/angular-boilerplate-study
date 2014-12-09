@@ -1,6 +1,6 @@
-absConfig.pushAfterBootstrap('abs.feature.about');
+absConfig.pushAfterBootstrap('abs.about');
 
-angular.module('abs.feature.about').config(aboutConfig);
+angular.module('abs.about').config(aboutConfig);
 
 aboutConfig.$inject = ['$stateProvider'];
 function aboutConfig($stateProvider){
