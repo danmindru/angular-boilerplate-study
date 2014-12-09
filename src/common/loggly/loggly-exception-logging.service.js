@@ -2,6 +2,7 @@
   * Exception Logging Service, currently only used by the $exceptionHandler
   * it preserves the default behaviour (logging to the console) but
   * also posts the error server side after generating a stacktrace.
+  *
   */
 angular.module('abs.commonLoggly').factory("exceptionLoggingService", exceptionLoggingService);
 
