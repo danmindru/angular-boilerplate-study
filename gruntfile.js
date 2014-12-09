@@ -287,7 +287,7 @@ module.exports = function(grunt) {
       }
     },
     /*
-     * The html2js task is used to convert all views into a module
+     * The html2js task is used to convert all shared views into a module
      * that adds them to $templateCache. It also minifies HTML
      * markup.
      *
