@@ -3,7 +3,7 @@
   * it preserves the default behaviour (logging to the console) but
   * also posts the error server side after generating a stacktrace.
   */
-angular.module('abs.service.loggly').factory("exceptionLoggingService", exceptionLoggingService);
+angular.module('abs.commonLoggly').factory("exceptionLoggingService", exceptionLoggingService);
 
 //////////////////////////////
 exceptionLoggingService.$inject = ["$log", "$window", "traceService", 'LOGGLY_KEY'];
