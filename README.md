@@ -17,26 +17,11 @@ $ grunt
 ```
 
 After running grunt, the source files will be built into `./build`.
-Navigate to the build directory and start a server (recommended port is 8008) in order to see the app in action.
-
-```sh
-# For the lazy developer, just run the following to start the build server
-# and open a new tab in your favorite browser:
-
-$ grunt dev
-```
 
 When the app is ready for production, compile the app into `./application` by running:
 
 ```
 $ grunt compile
-```
-
-```sh
-# Same as with build, run the following to start the production server
-# and open a new tab in your favorite browser:
-
-$ grunt prod
 ```
 
 
