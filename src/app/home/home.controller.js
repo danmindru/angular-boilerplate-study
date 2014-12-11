@@ -1,8 +1,7 @@
 angular.module('abs.home').controller('HomeController', homeController);
 
-function homeController($log, ProviderModelService, CustomerModelService){
-  $log.info('Welcome home');
-
+homeController.$inject = ['ProviderModelService', 'CustomerModelService'];
+function homeController(ProviderModelService, CustomerModelService){
   var vm = this;
 
   ProviderModelService.providerIndex().then(function providerIndexResponse(response){
@@ -17,5 +16,3 @@ function homeController($log, ProviderModelService, CustomerModelService){
     vm.customers = error;
   });
 }
-
-homeController.$inject = ['$log', 'ProviderModelService', 'CustomerModelService'];

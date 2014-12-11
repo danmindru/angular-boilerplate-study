@@ -24,7 +24,6 @@ module.exports = function(grunt) {
    * Configuration
    */
   var gruntTasks = {
-    //////////////
     pkg: grunt.file.readJSON('package.json'),
     /*
      * Placed at the top of the compiled source files.

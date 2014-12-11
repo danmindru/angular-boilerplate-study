@@ -1,8 +1,8 @@
 absConfig.pushAfterBootstrap('abs.home');
 
 angular.module('abs.home').config(homeConfig);
-homeConfig.$inject = ['$stateProvider'];
 
+homeConfig.$inject = ['$stateProvider'];
 function homeConfig($stateProvider){
   $stateProvider.state('home', {
     url: '/home',
