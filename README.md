@@ -24,6 +24,10 @@ When the app is ready for production, compile the app into `./application` by ru
 $ grunt compile
 ```
 
+###Requirements
+`Grunt`, `grunt-cli` and `Bower` are required to build the application.
+Read more about these packages [on the Grunt](http://gruntjs.com/installing-grunt) or [Bower](http://bower.io/) documentations pages.
+
 
 ##Table of contents
 
