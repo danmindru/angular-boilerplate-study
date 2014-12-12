@@ -1,0 +1,1 @@
+absConfig.pushAfterBootstrap('abs.profileFeature.customerIndex');
