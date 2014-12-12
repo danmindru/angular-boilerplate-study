@@ -12,11 +12,11 @@ function profileConfig($stateProvider){
     data: {
       pageTitle: 'Provider page'
     }
-  }).state('providerPageIndex', {
+  }).state('providerIndex', {
     url: '/providers',
-    controller: 'ProviderPageController',
+    controller: 'ProviderIndexController',
     controllerAs: 'vm',
-    templateUrl: 'views/provider-page-index.html',
+    templateUrl: 'views/provider-index.html',
     data: {
       pageTitle: 'Provider index'
     }
@@ -28,13 +28,13 @@ function profileConfig($stateProvider){
     data: {
       pageTitle: 'Customer page'
     }
-  }).state('customerPageIndex', {
+  }).state('customerIndex', {
     url: '/customers',
-    controller: 'CustomerPageController',
+    controller: 'CustomerIndexController',
     controllerAs: 'vm',
-    templateUrl: 'views/customer-page-index.html',
+    templateUrl: 'views/customer-index.html',
     data: {
-      pageTitle: 'Customer page'
+      pageTitle: 'Customer index'
     }
   });
 }
