@@ -4,20 +4,12 @@ providerPageController.$inject = ['$scope', '$stateParams', 'ProviderModelServic
 function providerPageController($scope, $stateParams, ProviderModelService){
   var vm = this;
 
-  if($stateParams.providerId){
-    ProviderModelService.providerProfile($stateParams.providerId).then(function providerProfileResponse(response){
-      var pageTitle;
+  ProviderModelService.providerProfile($stateParams.providerId).then(function providerProfileResponse(response){
+    var pageTitle;
 
-      vm.provider = response;
-      pageTitle = !response.error ? vm.provider.name + '\'s Profile Page' : 'Sorry, this provider profile does not exist';
-      $scope.$emit('changedPage', pageTitle);
-    });
-  }
-
-  ProviderModelService.providerIndex().then(function providerIndexResponse(response){
-    vm.providers = response.data;
-  }, function providerIndexError(error){
-    vm.providers = error;
+    vm.provider = response;
+    pageTitle = !response.error ? vm.provider.name + '\'s Profile Page' : 'Sorry, this provider profile does not exist';
+    $scope.$emit('changedPage', pageTitle);
   });
 
   ProviderModelService.otherProviders($stateParams.providerId).then(function otherProvidersResponse(response){

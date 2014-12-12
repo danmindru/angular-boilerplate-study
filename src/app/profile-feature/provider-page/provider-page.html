@@ -1,10 +1,10 @@
 <section class="container">
   <section class="page-header">
     <h2>
-      {{vm.provider.name}}
+      <span data-ng-bind="vm.provider.name"></span>
       <small>
         <i class="glyphicon glyphicon-earphone"></i>
-        {{vm.provider.contact.phone}}
+        <span data-ng-bind="vm.provider.contact.phone"></span>
       </small>
     </h2>
   </section>
@@ -21,7 +21,8 @@
     </section>
 
     <p class="col-xs-12 col-sm-3" data-ng-repeat="service in vm.provider.services | filter:search as results track by $index">
-      <i class="glyphicon glyphicon-ok-sign"></i>{{service}}
+      <i class="glyphicon glyphicon-ok-sign"></i>
+      <span data-ng-bind="service"></span>
     </p>
 
     <p class="col-xs-12" data-ng-if="results.length === 0">Sorry, no items match your search</p>
@@ -38,28 +39,31 @@
       <section class="col-xs-12 col-sm-6">
         <section class="providers" data-ng-if="!vm.provider.statusText">
           <section class="lead">
-            <p class="col-xs-12 col-sm-6 label-group">
-              <label>Street</label><br/>
-              {{vm.provider.address.street}}
-            </p>
-            <p class="col-xs-12 col-sm-6 label-group">
-              <label>City</label><br/>
-              {{vm.provider.address.city}}
-            </p>
-            <p class="col-xs-12 col-sm-6 label-group">
-              <label>Country</label><br/>
-              {{vm.provider.address.country}}
-            </p>
-            <p class="col-xs-12 col-sm-6 label-group">
-              <label>Postcode</label><br/>
-              {{vm.provider.address.postcode}}
-            </p>
+            <dl class="col-xs-12 col-sm-6">
+              <dt>Street</dt>
+              <dd data-ng-bind="vm.provider.address.street"></dd>
+            </dl>
+
+            <dl class="col-xs-12 col-sm-6">
+              <dt>City</dt>
+              <dd data-ng-bind="vm.provider.address.city"></dd>
+            </dl>
+
+            <dl class="col-xs-12 col-sm-6">
+              <dt>Country</dt>
+              <dd data-ng-bind="vm.provider.address.country"></dd>
+            </dl>
+
+            <dl class="col-xs-12 col-sm-6">
+              <dt>Postcode</dt>
+              <dd data-ng-bind="vm.provider.address.postcode"></dd>
+            </dl>
           </section>
         </section>
 
         <section class="no-providers" data-ng-if="vm.provider.statusText">
           <h4>
-            Sorry, there following error occurred while getting details for this provider: <i>{{vm.provider.statusText}}</i>
+            Sorry, there following error occurred while getting details for this provider: <i data-ng-bind="vm.provider.statusText"></i>
           </h4>
         </section>
       </section>
@@ -71,14 +75,13 @@
             <p>Here are some handy options, different from the current one:</p>
           </header>
 
-          <a class="list-group-item" data-ng-repeat="provider in vm.otherProviders track by $index" href="#!/provider/{{provider.id}}">
-            {{provider.name}}
+          <a class="list-group-item" data-ng-repeat="provider in vm.otherProviders track by $index" href="#!/provider/{{provider.id}}" data-ng-bind="provider.name">
           </a>
         </section>
 
         <section class="no-providers" data-ng-if="vm.otherProviders.statusText">
           <h4>
-            Sorry, there was an error getting the other providers: <i>{{vm.otherProviders.statusText}}</i>
+            Sorry, there was an error getting the other providers: <i data-ng-bind="vm.otherProviders.statusText"></i>
           </h4>
         </section>
       </section>
@@ -90,7 +93,7 @@
   <section class="container">
     <section class="row">
       <section class="col-xs-12">
-        Email {{vm.provider.name}} at <a href="mailto:{{vm.provider.contact.email}}">{{vm.provider.contact.email}}</a>
+        Email <span data-ng-bind="vm.provider.name"></span> at <a href="mailto:{{vm.provider.contact.email}}" data-ng-bind="vm.provider.contact.email"></a>
       </section>
     </section>
   </section>
