@@ -6,12 +6,12 @@
       </section>
       <section class="panel-body">
         <section class="form-group">
-          <input type="text" class="form-control" placeholder="Filter customers..." data-ng-model="search.$">
+          <input type="text" class="form-control" placeholder="Filter customers by name..." data-ng-model="search.name">
         </section>
 
-        <table class="table table-hover" data-ng-if="!vm.customers.statusText">
-          <thead>
-          <tr>
+        <table class="table table-hover">
+          <thead data-ng-if="!vm.customers.statusText && results.length !== 0">
+            <tr>
               <th>#</th>
               <th>First Name</th>
               <th>Last Name</th>
@@ -19,17 +19,19 @@
             </tr>
           </thead>
           <tbody>
-            <tr data-ng-repeat="customer in vm.customers | filter:search track by $index">
+            <tr data-ng-repeat="customer in vm.customers | filter:search as results track by $index">
               <td>{{$index+1}}</td>
-              <td>{{::customer.surname}}</td>
-              <td>{{::customer.name}}</td>
-              <td><a href="#!/customer/{{::customer.id}}">See customer</a></td>
+              <td>{{customer.surname}}</td>
+              <td>{{customer.name}}</td>
+              <td><a href="#!/customer/{{customer.id}}">See customer</a></td>
             </tr>
           </tbody>
         </table>
 
+        <p data-ng-if="results.length === 0">Sorry, no customers match your search</p>
+
         <section class="no-customers" data-ng-if="vm.customers.statusText">
-          <h4>Sorry, there was an error getting the customers: <i>{{::vm.customers.statusText}}</i></h4>
+          <h4>Sorry, there was an error getting the customers: <i>{{vm.customers.statusText}}</i></h4>
         </section>
       </section>
 

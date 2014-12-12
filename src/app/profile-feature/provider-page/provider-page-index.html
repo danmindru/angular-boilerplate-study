@@ -6,11 +6,11 @@
       </section>
       <section class="panel-body">
         <section class="form-group">
-          <input type="text" class="form-control" placeholder="Filter providers..." data-ng-model="search.$">
+          <input type="text" class="form-control" placeholder="Filter providers by name..." data-ng-model="search.name">
         </section>
 
-        <table class="table table-hover" data-ng-if="!vm.providers.statusText">
-          <thead>
+        <table class="table table-hover">
+          <thead data-ng-if="!vm.providers.statusText && results.length !== 0">
           <tr>
               <th>#</th>
               <th>Name</th>
@@ -19,7 +19,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr data-ng-repeat="provider in vm.providers | filter:search track by $index">
+            <tr data-ng-repeat="provider in vm.providers | filter:search as results track by $index">
               <td>{{$index+1}}</td>
               <td>{{provider.name}}</td>
               <td>
@@ -29,6 +29,8 @@
             </tr>
           </tbody>
         </table>
+
+        <p data-ng-if="results.length === 0">Sorry, no providers match your search</p>
 
         <section class="no-providers" data-ng-if="vm.providers.statusText">
           <h4>Sorry, there was an error getting the providers: <i>{{::vm.providers.statusText}}</i></h4>
