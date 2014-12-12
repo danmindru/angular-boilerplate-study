@@ -394,7 +394,7 @@ module.exports = function(grunt) {
       },
       src_html: {
         files: ['./src/**/*.html', '!./src/index.html'],
-        tasks: ['newer:copy:build_views']
+        tasks: ['newer:copy:build_views', 'copy:build_shared_views']
       },
       src_index: {
         files: ['./src/index.html'],
