@@ -1,8 +1,8 @@
 <section class="container">
   <section class="page-header">
     <h2>
-      {{::vm.customer.name}}, {{::vm.customer.surname}}
-      <small>Member since {{::vm.customer.joined | date:'longDate'}}</small>
+      <span data-ng-bind="vm.customer.name + ' ' + vm.customer.surname"></span>
+      <small>Member since <span data-ng-bind="vm.customer.joined | date:'longDate'"></span></small>
     </h2>
   </section>
 </section>
@@ -13,28 +13,28 @@
       <section class="col-xs-12 col-sm-6">
         <section class="customers" data-ng-if="!vm.customer.statusText">
           <section class="lead">
-            <p class="col-xs-12 col-sm-6 label-group">
-              <label>Street</label><br/>
-              {{::vm.customer.address.street}}
-            </p>
-            <p class="col-xs-12 col-sm-6 label-group">
-              <label>City</label><br/>
-              {{::vm.customer.address.city}}
-            </p>
-            <p class="col-xs-12 col-sm-6 label-group">
-              <label>Country</label><br/>
-              {{::vm.customer.address.country}}
-            </p>
-            <p class="col-xs-12 col-sm-6 label-group">
-              <label>Postcode</label><br/>
-              {{::vm.customer.address.postcode}}
-            </p>
+            <dl class="col-xs-12 col-sm-6 label-group">
+              <dt>Street</dt>
+              <dd data-ng-bind="vm.customer.address.street"></dd>
+            </dl>
+            <dl class="col-xs-12 col-sm-6 label-group">
+              <dt>City</dt>
+              <dd data-ng-bind="vm.customer.address.city"></dd>
+            </dl>
+            <dl class="col-xs-12 col-sm-6 label-group">
+              <dt>Country</dt>
+              <dd data-ng-bind="vm.customer.address.country"></dd>
+            </dl>
+            <dl class="col-xs-12 col-sm-6 label-group">
+              <dt>Postcode</dt>
+              <dd data-ng-bind="vm.customer.address.postcode"></dd>
+            </dl>
           </section>
         </section>
 
         <section class="no-customers" data-ng-if="vm.customer.statusText">
           <h4>
-            Sorry, there following error occurred while getting details for this customer: <i>{{::vm.customer.statusText}}</i>
+            Sorry, there following error occurred while getting details for this customer: <i data-ng-bind="vm.customer.statusText"></i>
           </h4>
         </section>
       </section>

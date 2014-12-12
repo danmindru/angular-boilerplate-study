@@ -20,10 +20,10 @@
           </thead>
           <tbody>
             <tr data-ng-repeat="provider in vm.providers | filter:search as results track by $index">
-              <td>{{$index+1}}</td>
-              <td>{{provider.name}}</td>
+              <td data-ng-bind="$index+1"></td>
+              <td data-ng-bind="provider.name"></td>
               <td>
-                <small>{{provider.address.street}}, {{provider.address.city}}, {{provider.address.postcode}}</small>
+                <small data-ng-bind="provider.address.street + ' ' + provider.address.city + ' ' + provider.address.postcode"></small>
               </td>
               <td><a href="#!/provider/{{provider.id}}">See provider</a></td>
             </tr>
@@ -33,7 +33,7 @@
         <p data-ng-if="results.length === 0">Sorry, no providers match your search</p>
 
         <section class="no-providers" data-ng-if="vm.providers.statusText">
-          <h4>Sorry, there was an error getting the providers: <i>{{::vm.providers.statusText}}</i></h4>
+          <h4>Sorry, there was an error getting the providers: <i data-ng-bind="vm.providers.statusText"></i></h4>
         </section>
       </section>
 
