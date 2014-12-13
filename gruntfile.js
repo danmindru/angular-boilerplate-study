@@ -358,12 +358,13 @@ module.exports = function(grunt) {
      */
     protractor: {
       options: {
-        keepAlive: true, // If false, the grunt process stops when the test fails.
+        keepAlive: false, // the grunt process stops when the test fails.
         noColor: false,
         args: {}
       },
       build: {
         options: {
+          keepAlive: true,
           configFile: './config/protractor.conf.js', //Local tests
         }
       },
