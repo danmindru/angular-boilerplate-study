@@ -1,15 +1,15 @@
 {
   "name": "angular-bp",
-  "version": "0.0.1",
-  "description": "A study of AngularJS modularity & organization",
+  "version": "0.1.1",
+  "description": "A boilerplate resulting from the study of AngularJS boilerplates, modularity and application architectures",
   "repository": {
     "type": "git",
     "url": "https://github.com/dandaniel/angular-boilerplate-study"
   },
   "keywords": [
     "AngularJS",
-    "module",
-    "boilerplate"
+    "boilerplate",
+    "module"
   ],
   "author": "Dan Mindru",
   "licenses": {
