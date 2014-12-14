@@ -33,7 +33,7 @@
         <p data-ng-if="results.length === 0">Sorry, no providers match your search</p>
 
         <section class="no-providers" data-ng-if="vm.providers.statusText">
-          <h4>Sorry, there was an error getting the providers: <i data-ng-bind="vm.providers.statusText"></i></h4>
+          <h4>Sorry, there was an error getting the providers: <i data-ng-bind="::vm.providers.statusText"></i></h4>
         </section>
       </section>
 

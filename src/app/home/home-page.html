@@ -63,7 +63,7 @@
         </section>
 
         <section class="no-providers" data-ng-if="vm.providers.statusText">
-          <h4>Sorry, there was an error getting the providers: <i data-ng-bind="vm.providers.statusText"></i></h4>
+          <h4>Sorry, there was an error getting the providers: <i data-ng-bind="::vm.providers.statusText"></i></h4>
         </section>
       </section>
 
@@ -85,7 +85,7 @@
         </section>
 
         <section class="no-customers" data-ng-if="vm.customers.statusText">
-          <h4>Sorry, there was an error getting the customers: <i data-ng-bind="vm.customers.statusText"></i></h4>
+          <h4>Sorry, there was an error getting the customers: <i data-ng-bind="::vm.customers.statusText"></i></h4>
         </section>
       </section>
     </section>

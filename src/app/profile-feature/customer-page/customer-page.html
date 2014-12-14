@@ -2,7 +2,7 @@
   <section class="page-header">
     <h2>
       <span data-ng-bind="vm.customer.name + ' ' + vm.customer.surname"></span>
-      <small>Member since <span data-ng-bind="vm.customer.joined | date:'longDate'"></span></small>
+      <small>Member since <span data-ng-bind="::vm.customer.joined | date:'longDate'"></span></small>
     </h2>
   </section>
 </section>
@@ -34,7 +34,7 @@
 
         <section class="no-customers" data-ng-if="vm.customer.statusText">
           <h4>
-            Sorry, there following error occurred while getting details for this customer: <i data-ng-bind="vm.customer.statusText"></i>
+            Sorry, there following error occurred while getting details for this customer: <i data-ng-bind="::vm.customer.statusText"></i>
           </h4>
         </section>
       </section>

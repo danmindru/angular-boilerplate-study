@@ -31,7 +31,7 @@
         <p data-ng-if="results.length === 0">Sorry, no customers match your search</p>
 
         <section class="no-customers" data-ng-if="vm.customers.statusText">
-          <h4>Sorry, there was an error getting the customers: <i data-ng-bind="vm.customers.statusText"></i></h4>
+          <h4>Sorry, there was an error getting the customers: <i data-ng-bind="::vm.customers.statusText"></i></h4>
         </section>
       </section>
 

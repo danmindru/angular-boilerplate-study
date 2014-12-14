@@ -63,7 +63,7 @@
 
         <section class="no-providers" data-ng-if="vm.provider.statusText">
           <h4>
-            Sorry, there following error occurred while getting details for this provider: <i data-ng-bind="vm.provider.statusText"></i>
+            Sorry, there following error occurred while getting details for this provider: <i data-ng-bind="::vm.provider.statusText"></i>
           </h4>
         </section>
       </section>
@@ -81,7 +81,7 @@
 
         <section class="no-providers" data-ng-if="vm.otherProviders.statusText">
           <h4>
-            Sorry, there was an error getting the other providers: <i data-ng-bind="vm.otherProviders.statusText"></i>
+            Sorry, there was an error getting the other providers: <i data-ng-bind="::vm.otherProviders.statusText"></i>
           </h4>
         </section>
       </section>
