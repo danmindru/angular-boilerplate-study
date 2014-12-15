@@ -6,7 +6,7 @@
       </section>
       <section class="panel-body">
         <section class="form-group">
-          <input type="text" class="form-control" placeholder="Filter customers by name..." data-ng-model="search.$">
+          <input type="text" class="form-control" placeholder="Filter customers by name..." data-ng-model="search.$" ng-model-options="{debounce: 400}">
         </section>
 
         <table class="table table-hover">
