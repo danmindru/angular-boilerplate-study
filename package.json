@@ -1,6 +1,6 @@
 {
   "name": "angular-bp",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A boilerplate resulting from the study of AngularJS boilerplates, modularity and application architectures",
   "repository": {
     "type": "git",
