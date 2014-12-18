@@ -27,41 +27,26 @@ $ grunt compile
 
 ###Requirements
 `Grunt`, `grunt-cli` and `Bower` are required to build the application.
-Read more about these packages [on the Grunt](http://gruntjs.com/installing-grunt) or [Bower](http://bower.io/) documentations pages.
+Read more about these packages [on the Grunt](http://gruntjs.com/installing-grunt) or [Bower](http://bower.io/) documentation pages.
 
 
 ##Table of contents
 
-  1. [Intro](#intro)
-  2. [Philosophy](#philosophy)
-  3. [Application structure](#application-structure)
-  4. [Build and compile](#build-and-compile)
+  1. [Philosophy](#philosophy)
+  1. [Application structure](#application-structure)
+  1. [Build and compile](#build-and-compile)
     * [Build](#build)
     * [Compile](#compile)
-  5. [Core components](#core-components)
-  6. [Third party components](#third-party-components)
-  7. [Conventions and best practices](#conventions-and-best-practices)
-  8. [Testing](#testing)
+  1. [Core components](#core-components)
+  1. [Third party components](#third-party-components)
+  1. [Conventions and best practices](#conventions-and-best-practices)
+  1. [Testing](#testing)
     * [Unit testing](#unit)
     * [End to end testing](#end-to-end)
 
-
-##Intro
-
-This AngularJS boilerplate study started in order to answer the following questions:
-  1. Is it worth using a boilerpate? Are the benefits clear enough?
-  2. Which applications can benefit more from a boilerplate? (If any)
-  3. Can you increase the comprehensibility and performance of an application by using a boilerplate?
-  4. What conventions, standards or best practices should be used in a boilerplate?
-  5. How can a boilerplate benefit the most out of AngularJS' modular structure?
-
-
-The result of the study is **a boilerplate** itself. The answers lie within, but are also present in this short documentation. Yes, it is worth using a boilerplate, but you have to know why you need it.
-
-
 ##Philosophy
 
-The modular nature of AngularJS (mainly) facilitated the development of numerous boilerplates. Based on the *insanely* comprehensive analysis done by Dan Cancro ([link](http://www.dancancro.com/comparison-of-angularjs-application-starters/)), it's noticable that boilerplates exist for certain purposes and are not in fact the result of different approaches to achieve the same exact thing. There is no question that they do have the common purpose of quickly starting off development. At the same time, they are forcing some patterns/concepts that their creators think help in *some way*. This is where it's easy to see why they are different. There are many nuances to *some way*, it can be:
+The modular nature of AngularJS (mainly) facilitated the development of numerous boilerplates. Based on the *insanely* comprehensive analysis done by Dan Cancro ([link](http://www.dancancro.com/comparison-of-angularjs-application-starters/)), it's noticeable that boilerplates exist for certain purposes and are not in fact the result of different approaches to achieve the same exact thing. There is no question that they do have the common purpose of quickly starting off development. At the same time, they are forcing some patterns/concepts that their creators think help in *some way*. This is where it's easy to see why they are different. There are many nuances to *some way*, it can be:
   * **flexibility**
   * **performance**
   * **learnability/documentation**
@@ -107,8 +92,7 @@ root/
 |   |   |   +—— module-one/
 |   |   |   |   +—— module-one.config.js
 |   |   |   |   +—— module-one.controller.js
-|   |   |   |   +—— module-one-edit.html
-|   |   |   |   +—— module-one-index.html
+|   |   |   |   +—— module-one-page.html
 |   |   |   |   +—— module-one.spec.js
 |   |   |   +—— module-two/
 |   |   |   |   +—— module-two.config.js
@@ -156,7 +140,7 @@ Go to [src/common](https://github.com/dandaniel/angular-boilerplate-study/tree/m
 
 ##Build and compile
 
-A 2-stage Grunt 'strategy' is implemeted.
+A 2-stage Grunt 'strategy' is implemented.
 
 For development, files will go to `./build`.
 For production, files will be concatenated, uglyfied / minified and moved to `./application`. (1 css, 1 js)
@@ -277,9 +261,9 @@ As a rule, Grunt tasks (`./grunfile.js`) shouldn't require any alteration. Chang
 
 
 ####Adding a third party dependency
-Grunt 'glues together' the various application components and moves Bower dependencies where they belong (i. e. `../bootstrap/dist/css/bootstrap.min.css` -> `../assets/css`). Due to the way Bower dependecies are organized (well they aren't, really), this process cannot be fully automated. To add a third party dependency, you need to:
+Grunt 'glues together' the various application components and moves Bower dependencies where they belong (i. e. `../bootstrap/dist/css/bootstrap.min.css` -> `../assets/css`). Due to the way Bower dependencies are organized (well they aren't, really), this process cannot be fully automated. To add a third party dependency, you need to:
 
-**Step 1**: Install it it
+**Step 1**: Install it
 ```
 $ bower install <component-name>
 ```
@@ -308,7 +292,7 @@ compile: {
 ...
 ```
 
-*<b>Step 4 (optional)</b> : If it's an Angular core components (such as `ui-route`), it needs to be added to the `appMainVendorDependencies` Array in the root module's init file (`./src/app/_app-main/_app-main.init.js`).*
+*<b>Step 4 (optional)</b> : If it's an Angular core component (such as `ui-route`), it should be added to the `appMainVendorDependencies` Array in the root module's init file (`./src/app/_app-main/_app-main.init.js`).*
 
 
 Providing different source files for build and compile phases is done for a couple reasons:
@@ -391,7 +375,7 @@ To create a module, make a directory in a corresponding location:
 * `./src/app/shared/` for any shared module (i.e. directive, shared layout)
 * `./src/common/` for any [common module](https://github.com/dandaniel/angular-boilerplate-study/tree/master/src/common)
 
-After making the directory, create a config file (`<module-name>.config.js`). In this file the module needs to be registered as a depedency of the application root.
+After making the directory, create a config file (`<module-name>.config.js`). In this file the module needs to be registered as a dependency of the application root.
 ```javascript
 rootConfig.pushAfterBootstrap('<namespace>.<module-name>');
 ```
@@ -424,17 +408,17 @@ function userController($scope, $stateParams, ProviderModelService){
 
 Note on annotation:
 
-First of all automatic annotation is not implemented, although it can be achieved with `ng-annotate`. This is so because every now and then `ng-annotate` backfires. After many hours of debugging, you'll promise yourself to never use it and avoid such situations. Therefore, the 'old-school' annotation is used, but with a twist: it's not done inline with the component (in this case controller) definition. This makes it easy to have an overview of depedencies and easily manage them while being minification-proof.
+First of all automatic annotation is not implemented, although it can be achieved with `ng-annotate`. This is so because every now and then `ng-annotate` backfires. After many hours of debugging, you'll promise yourself to never use it and avoid such situations. Therefore, the 'old-school' annotation is used, but with a twist: it's not done inline with the component (in this case controller) definition. This makes it easy to have an overview of dependencies and easily manage them while being minification-proof.
 
 
 ####File locations during build/compile
 <dl>
   <dt>Shared views</dt>
   <dd>
-  All views located in <code>./src/app/shared/</code> will be located in <code>./src/shared-views/</code>.
+  All views in <code>./src/app/shared/</code> will be located in <code>./src/shared-views/</code> after build or compile.
 
   <br/><br/>
-  <em>Note: compiling will combine all shared views in a module and use $templateCache to define their location. The directory above won't exist in the compile phase, but the views will still be accesible in the same location.</em>
+  <em>Note: compiling will combine all shared views in a module and use $templateCache to define their location. The directory above won't exist in the compile phase, but the views will still be accessible in the same location.</em>
   </dd>
 
   <dt>'Non-shared' views</dt>
@@ -449,16 +433,20 @@ First of all automatic annotation is not implemented, although it can be achieve
 
 Routes are defined in module configuration blocks. In the case of features, routes are defined in the feature configuration block. The idea behind keeping the route logic in each module or feature is to encourage a higher modularity of components. Moreover, keeping module logic
 
-Examples are avilable in the configuration block of the [home module](https://github.com/dandaniel/angular-boilerplate-study/blob/master/src/app/home/home.config.js) and [profile feature](https://github.com/dandaniel/angular-boilerplate-study/blob/master/src/app/profile-feature/profile-feature.config.js).
+Examples are available in the configuration block of the [home module](https://github.com/dandaniel/angular-boilerplate-study/blob/master/src/app/home/home.config.js) and [profile feature](https://github.com/dandaniel/angular-boilerplate-study/blob/master/src/app/profile-feature/profile-feature.config.js).
 
 
-####Misc
-Other style considerations; will be added soon.
-<!--Controller as in templates, directives, etc
-A file should always do one thing: controller, directive, template, etc.-->
-
-###Performance recommendations
-Documentation will be added soon.
+####Performance & Misc
+Other style considerations:
+* Only perform DOM manipulations with directives
+* Use ng-bind, avoid interpolations
+* Use the bind-once syntax to reduce watchers where possible
+* Always use the 'controller as' syntax
+* Each file holds one component (be it controller, directive, etc)
+* Used data-* for attributes
+* Use ui-sref instead of href for internal anchors
+* Try to use 'ng-repeat as' while filtering to display a 'no results' message
+* Don't use inline filters and ng-repeats if there's another way to achieve the same thing
 
 
 ##Testing
@@ -483,7 +471,7 @@ $ npm install -g karma-cli
 $ grunt test:unit
 ```
 
-You can use the continous task while writing tests to auto refresh your changes
+You can use the continuous task while writing tests to auto refresh your changes
 
 ```
 $ grunt karma:continuous
@@ -511,6 +499,23 @@ If you are running tests for the first time don't forget to update the webdriver
 ```
 $ node_modules/protractor/bin/webdriver-manager update
 ```
+
+##What's coming next
+* Add `grunt-perfbudget` for better performance monitoring, perhaps together with `grunt-pagespeed`
+* Add `uncss` in the workflow (with `phantomcss`)
+* Switch to Angular dependency 'strict mode'
+* Extend documentation: provider visual resources for build & sample application structure; add a list of 'features' in the boilerplate about page
+* Create unit tests for the home, customer-index & provider-index modules
+* Extend E2E tests to at least cover all routes
+
+--------------------------
+- *Include `phantomas` in the workflow - make perf reporting trends ?*
+- *Reduce repetition in CSS - use `parker`, `colorguard` ?*
+- *Use debug: false in production ?*
+- *Change remaining inline filters to controller filters ?*
+- *Work on Windows support (shell commands) ?*
+- *Move dev/prod demo to github pages ?*
+
 
 ##Mentions
 
