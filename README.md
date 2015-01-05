@@ -377,7 +377,7 @@ To create a module, make a directory in a corresponding location:
 
 After making the directory, create a config file (`<module-name>.config.js`). In this file the module needs to be registered as a dependency of the application root.
 ```javascript
-rootConfig.pushAfterBootstrap('<namespace>.<module-name>');
+absConfig.pushAfterBootstrap('<namespace>.<module-name>');
 ```
 That's it, use it as any other Angular module.
 

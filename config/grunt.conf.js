@@ -39,7 +39,7 @@ module.exports = {
   /*
    * Compile configuration.
    * The compile object is similar to the build one, except it
-   * contains to Arrays: one for minified scripts and one for
+   * contains two Arrays: one for minified scripts and one for
    * unminified ones.
    * The reason for this is that usually (but not always), Bower
    * dependencies also have a minified version of a component,
