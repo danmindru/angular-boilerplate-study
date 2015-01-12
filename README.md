@@ -512,6 +512,8 @@ $ node_modules/protractor/bin/webdriver-manager update
 - *Include `phantomas` in the workflow - make perf reporting trends ?*
 - *Reduce repetition in CSS - use `parker`, `colorguard` ?*
 - *Use debug: false in production ?*
+- *Try `useApplyAsync` for httpProvider ?*
+- *Implement a form and animation example ?*
 - *Change remaining inline filters to controller filters ?*
 - *Work on Windows support (shell commands) ?*
 - *Move dev/prod demo to github pages ?*
