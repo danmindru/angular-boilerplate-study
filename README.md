@@ -233,7 +233,6 @@ With the exception of `ui-router`, third party components that are used to build
   <a href="https://travis-ci.org/dandaniel/angular-boilerplate-study/builds" target="_blank">See the builds for this repository on Travis CI</a><dd>
 
 
-
   <dt>SauceLabs</dt>
   <dd>Whenever Travis CI runs a new build, SauceLabs provides a standalone Selenium server and runs end to end tests automatically (here's an example: <a href="https://saucelabs.com/tests/a40d7a31221843049b69a37a575e3b60" target="_blank">Build 64</a>). You need to sign up to use this service (<a href="https://saucelabs.com/opensauce" target="_blank">free for open source projects</a>).
 
@@ -254,12 +253,10 @@ These conventions should be followed during normal development.
 
 --------------------------
 
-
 ####Working with Grunt
 As a rule, Grunt tasks (`./grunfile.js`) shouldn't require any alteration. Changes should be made in `./config/grunt.conf.js`. Before adding/changing a task, it's always a good idea to go through all tasks and check if it's not already there.
 
 --------------------------
-
 
 ####Adding a third party dependency
 Grunt 'glues together' the various application components and moves Bower dependencies where they belong (i. e. `../bootstrap/dist/css/bootstrap.min.css` -> `../assets/css`). Due to the way Bower dependencies are organized (well they aren't, really), this process cannot be fully automated. To add a third party dependency, you need to:
@@ -305,20 +302,15 @@ Providing different source files for build and compile phases is done for a coup
 
 For a more in-depth look, `./config/grunt.conf.js` contains useful comments.
 
-
-
 --------------------------
 
 ####Naming conventions
 
 
---------------------------
-
 #####Files and directories
 Lower case, separated by a dash
 * Directory: `src/directory-name/`
 * Filename: `file-name.js`
-
 
 --------------------------
 
@@ -326,7 +318,6 @@ Lower case, separated by a dash
 * Module dirs: `<module-name>/`
 * Feature dirs: `<feature-name>-feature/` (contains multiple modules)
 * Model dirs: `<module-name>-model/` (contains services)
-
 
 --------------------------
 
@@ -340,14 +331,12 @@ Lower case, separated by a dash
 * Filters: `<module-name>.filter.js`
 * Views: `<view-name>.html`
 
-
 --------------------------
 
 #####Other files
 * E2E tests: `<module-name>.e2e.js`, `<feature-name>.e2e.js` (depending on the case)
 * E2E helpers: `<name>.protractor.js`
 * Unit tests: `<module-name>.spec.js`
-
 
 --------------------------
 
@@ -388,7 +377,6 @@ Lower case, separated by a dash
 
 --------------------------
 
-
 ####Creating a module
 To create a module, make a directory in a corresponding location:
 * `./src/app/` for any basic module
@@ -415,7 +403,6 @@ function homeConfig($log){
 
 --------------------------
 
-
 ####Component dependency injection
 
 Dependencies are injected into components by creating a $inject property on the component function:
@@ -433,7 +420,6 @@ Note on annotation:
 First of all automatic annotation is not implemented, although it can be achieved with `ng-annotate`. This is so because every now and then `ng-annotate` backfires. After many hours of debugging, you'll promise yourself to never use it and avoid such situations. Therefore, the 'old-school' annotation is used, but with a twist: it's not done inline with the component (in this case controller) definition. This makes it easy to have an overview of dependencies and easily manage them while being minification-proof.
 
 --------------------------
-
 
 ####File locations during build/compile
 <dl>
@@ -454,7 +440,6 @@ First of all automatic annotation is not implemented, although it can be achieve
 
 --------------------------
 
-
 ####Routes
 
 Routes are defined in module configuration blocks. In the case of features, routes are defined in the feature configuration block. The idea behind keeping the route logic in each module or feature is to encourage a higher modularity of components. Moreover, keeping module logic
@@ -462,7 +447,6 @@ Routes are defined in module configuration blocks. In the case of features, rout
 Examples are available in the configuration block of the [home module](https://github.com/dandaniel/angular-boilerplate-study/blob/master/src/app/home/home.config.js) and [profile feature](https://github.com/dandaniel/angular-boilerplate-study/blob/master/src/app/profile-feature/profile-feature.config.js).
 
 --------------------------
-
 
 ####Performance & Misc
 Other style considerations:
