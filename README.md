@@ -147,7 +147,6 @@ For production, files will be concatenated, uglyfied / minified and moved to `./
 
 
 ###Build
---------------------------
 The build task will do all the work for development and create files in -> `./build`
 
 ```
@@ -161,7 +160,6 @@ $ grunt dev
 
 
 ###Compile
---------------------------
 The compile task will do all the work for production and create files in -> `./application`
 
 ```
@@ -174,7 +172,6 @@ $ grunt prod
 ```
 
 ###Watch
---------------------------
 The `watch` task builds JavaScript, HTML and all assets (including tests and the gruntfiles themselves) when any of them are changed.
 
 
@@ -255,9 +252,13 @@ Open `./package.json` to see the installed Grunt tasks. An external configuratio
 ###Workflow conventions
 These conventions should be followed during normal development.
 
+--------------------------
+
 
 ####Working with Grunt
 As a rule, Grunt tasks (`./grunfile.js`) shouldn't require any alteration. Changes should be made in `./config/grunt.conf.js`. Before adding/changing a task, it's always a good idea to go through all tasks and check if it's not already there.
+
+--------------------------
 
 
 ####Adding a third party dependency
@@ -305,18 +306,29 @@ Providing different source files for build and compile phases is done for a coup
 For a more in-depth look, `./config/grunt.conf.js` contains useful comments.
 
 
+
+--------------------------
+
 ####Naming conventions
+
+
+--------------------------
+
 #####Files and directories
 Lower case, separated by a dash
 * Directory: `src/directory-name/`
 * Filename: `file-name.js`
 
 
+--------------------------
+
 #####AngularJS directories
 * Module dirs: `<module-name>/`
 * Feature dirs: `<feature-name>-feature/` (contains multiple modules)
 * Model dirs: `<module-name>-model/` (contains services)
 
+
+--------------------------
 
 #####AngularJS component filenames
 * Init/globals: `<module-name>.init.js`
@@ -329,11 +341,15 @@ Lower case, separated by a dash
 * Views: `<view-name>.html`
 
 
+--------------------------
+
 #####Other files
 * E2E tests: `<module-name>.e2e.js`, `<feature-name>.e2e.js` (depending on the case)
 * E2E helpers: `<name>.protractor.js`
 * Unit tests: `<module-name>.spec.js`
 
+
+--------------------------
 
 #####Angular modules
 * Module names: `<namespace>.<moduleName>`
@@ -362,11 +378,15 @@ Lower case, separated by a dash
 
 (i.e. `abs.profileModel`, `abs.profileModel.customerModel`)
 
+--------------------------
+
 #####Angular module components
 * Controllers: `<ControllerName>Controller`
 * Models: `<ModelName><ModelType>` (ModelType could be service, factory, value)
 * Directives: `<directiveName>`
 * Filters: `<filterName>`
+
+--------------------------
 
 
 ####Creating a module
@@ -393,6 +413,8 @@ function homeConfig($log){
 }
 ```
 
+--------------------------
+
 
 ####Component dependency injection
 
@@ -409,6 +431,8 @@ function userController($scope, $stateParams, ProviderModelService){
 Note on annotation:
 
 First of all automatic annotation is not implemented, although it can be achieved with `ng-annotate`. This is so because every now and then `ng-annotate` backfires. After many hours of debugging, you'll promise yourself to never use it and avoid such situations. Therefore, the 'old-school' annotation is used, but with a twist: it's not done inline with the component (in this case controller) definition. This makes it easy to have an overview of dependencies and easily manage them while being minification-proof.
+
+--------------------------
 
 
 ####File locations during build/compile
@@ -428,12 +452,16 @@ First of all automatic annotation is not implemented, although it can be achieve
   <dd>With the exception of stylesheet files which are concatenated and compiled, all assets will maintain their directory structure.</dd>
 </dl>
 
+--------------------------
+
 
 ####Routes
 
 Routes are defined in module configuration blocks. In the case of features, routes are defined in the feature configuration block. The idea behind keeping the route logic in each module or feature is to encourage a higher modularity of components. Moreover, keeping module logic
 
 Examples are available in the configuration block of the [home module](https://github.com/dandaniel/angular-boilerplate-study/blob/master/src/app/home/home.config.js) and [profile feature](https://github.com/dandaniel/angular-boilerplate-study/blob/master/src/app/profile-feature/profile-feature.config.js).
+
+--------------------------
 
 
 ####Performance & Misc
@@ -462,7 +490,6 @@ $ grunt test
 
 
 ###Unit
---------------------------
 To run unit tests it will come in handy to install karma-cli (if you don't have it yet).
 Unit tests will run on PhantomJS, but if you have binaries for other browsers you are encouraged to add them in `karma.conf.js`
 
@@ -484,7 +511,6 @@ $ grunt
 ```
 
 ###End to end
---------------------------
 Protractor is used for running end to end tests. Before running the tests be sure the webdriver-manager is updated.
 Protractor's base url is `http://localhost:8008/#!`, but can be changed in `protractor.conf.js` - just make sure the application port matches the base url.
 In order to run Protractor tests, a selenium server needs to be running (default at `http://localhost:4444/wd/hub`):
@@ -508,7 +534,7 @@ $ node_modules/protractor/bin/webdriver-manager update
 * Create unit tests for the home, customer-index & provider-index modules
 * Extend E2E tests to at least cover all routes
 
---------------------------
+Other future additions:
 - *Include `phantomas` in the workflow - make perf reporting trends ?*
 - *Reduce repetition in CSS - use `parker`, `colorguard` ?*
 - *Use debug: false in production ?*
