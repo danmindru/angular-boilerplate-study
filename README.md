@@ -202,6 +202,9 @@ With the exception of `ui-router`, third party components that are used to build
   <dt>bootstrap</dt>
   <dd>Twitter Bootstrap is used for it's CSS properties and icon-fonts (JS not included). If there are any plans to use Bootstrap's JavaScript, jQuery needs to be added (it's already downloaded in <code>./vendor/</code> when Bootstrap is resolved).<dd>
 
+  <dt>LESS</dt>
+  <dd>CSS can be pre-processed using LESS. To make things even sweeter, <b>grunt-autoprefixer</b> will add all CSS prefixes for you automatically. No more <b>-webkit-</b>, <b>-moz-</b>, <b>-ms-</b>, etc in your source files ever! (Support for SASS is NOT implemented)<dd>
+
 
   <dt>stacktrace.js</dt>
   <dd>Stacktrace is a components that allows debugging JavaScript by giving a full stack trace of function calls. It's a dependency of the <code>loggly</code> module in <code>./src/common/loggly/</code>.<dd>
