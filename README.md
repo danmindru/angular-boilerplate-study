@@ -1,5 +1,5 @@
 #AngularJS boilerplate (study)
-[![Build Status](https://travis-ci.org/dandaniel/angular-boilerplate-study.svg?branch=master)](https://travis-ci.org/dandaniel/angular-boilerplate-study) [![devDependency Status](https://david-dm.org/dandaniel/angular-boilerplate-study/dev-status.svg)](https://david-dm.org/dandaniel/angular-boilerplate-study#info=devDependencies)
+[![Build Status](https://travis-ci.org/dandaniel/angular-boilerplate-study.svg?branch=master)](https://travis-ci.org/dandaniel/angular-boilerplate-study) [![devDependency Status](https://david-dm.org/danmindru/angular-boilerplate-study/dev-status.svg)](https://david-dm.org/danmindru/angular-boilerplate-study#info=devDependencies)
 
 This study looks at AngularJS boilerplates to find the best approaches so you don't have to. Although plenty of choices are available, they will do justice for only some types of applications. There is no one-size-fits all, universal boilerplate.
 Plan your app well, prototype it and then refactor. If you still think it's a good idea to use a boilerplate, choose one and adapt it to your needs.
