@@ -1,5 +1,5 @@
 #AngularJS boilerplate (study)
-[![Build Status](https://travis-ci.org/dandaniel/angular-boilerplate-study.svg?branch=master)](https://travis-ci.org/dandaniel/angular-boilerplate-study) [![devDependency Status](https://david-dm.org/danmindru/angular-boilerplate-study/dev-status.svg)](https://david-dm.org/danmindru/angular-boilerplate-study#info=devDependencies)
+[![Build Status](https://travis-ci.org/danmindru/angular-boilerplate-study.svg?branch=master)](https://travis-ci.org/danmindru/angular-boilerplate-study) [![devDependency Status](https://david-dm.org/danmindru/angular-boilerplate-study/dev-status.svg)](https://david-dm.org/danmindru/angular-boilerplate-study#info=devDependencies)
 
 This study looks at AngularJS boilerplates to find the best approaches so you don't have to. Although plenty of choices are available, they will do justice for only some types of applications. There is no one-size-fits all, universal boilerplate.
 Plan your app well, prototype it and then refactor. If you still think it's a good idea to use a boilerplate, choose one and adapt it to your needs.
@@ -133,9 +133,9 @@ root/
 
 Browse the `./src` directory for examples.
 
-Go to [src/app/shared](https://github.com/dandaniel/angular-boilerplate-study/tree/master/src/app/shared) for more info on shared modules.
+Go to [src/app/shared](https://github.com/danmindru/angular-boilerplate-study/tree/master/src/app/shared) for more info on shared modules.
 
-Go to [src/common](https://github.com/dandaniel/angular-boilerplate-study/tree/master/src/common) for more info on common modules.
+Go to [src/common](https://github.com/danmindru/angular-boilerplate-study/tree/master/src/common) for more info on common modules.
 
 
 ##Build and compile
@@ -233,7 +233,7 @@ With the exception of `ui-router`, third party components that are used to build
   <dt>Travis CI</dt>
   <dd>Travis CI is a hosted continuous integration service. It is integrated with GitHub and automatically runs unit and end to end tests for each build. You need to sign up in order to use this service (free for open source projects).
 
-  <a href="https://travis-ci.org/dandaniel/angular-boilerplate-study/builds" target="_blank">See the builds for this repository on Travis CI</a><dd>
+  <a href="https://travis-ci.org/danmindru/angular-boilerplate-study/builds" target="_blank">See the builds for this repository on Travis CI</a><dd>
 
 
   <dt>SauceLabs</dt>
@@ -384,7 +384,7 @@ Lower case, separated by a dash
 To create a module, make a directory in a corresponding location:
 * `./src/app/` for any basic module
 * `./src/app/shared/` for any shared module (i.e. directive, shared layout)
-* `./src/common/` for any [common module](https://github.com/dandaniel/angular-boilerplate-study/tree/master/src/common)
+* `./src/common/` for any [common module](https://github.com/danmindru/angular-boilerplate-study/tree/master/src/common)
 
 After making the directory, create a config file (`<module-name>.config.js`). In this file the module needs to be registered as a dependency of the application root.
 ```javascript
@@ -447,7 +447,7 @@ First of all automatic annotation is not implemented, although it can be achieve
 
 Routes are defined in module configuration blocks. In the case of features, routes are defined in the feature configuration block. The idea behind keeping the route logic in each module or feature is to encourage a higher modularity of components. Moreover, keeping module logic
 
-Examples are available in the configuration block of the [home module](https://github.com/dandaniel/angular-boilerplate-study/blob/master/src/app/home/home.config.js) and [profile feature](https://github.com/dandaniel/angular-boilerplate-study/blob/master/src/app/profile-feature/profile-feature.config.js).
+Examples are available in the configuration block of the [home module](https://github.com/danmindru/angular-boilerplate-study/blob/master/src/app/home/home.config.js) and [profile feature](https://github.com/danmindru/angular-boilerplate-study/blob/master/src/app/profile-feature/profile-feature.config.js).
 
 --------------------------
 

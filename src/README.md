@@ -35,6 +35,6 @@ Here's an overview:
 +—— index.html # Application index file
 ```
 
-Go to [src/app/shared](https://github.com/dandaniel/angular-boilerplate-study/tree/master/src/app/shared) for more info on shared modules.
+Go to [src/app/shared](https://github.com/danmindru/angular-boilerplate-study/tree/master/src/app/shared) for more info on shared modules.
 
-Go to [src/common](https://github.com/dandaniel/angular-boilerplate-study/tree/master/src/common) for more info on common modules.
+Go to [src/common](https://github.com/danmindru/angular-boilerplate-study/tree/master/src/common) for more info on common modules.
