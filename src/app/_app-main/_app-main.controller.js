@@ -17,8 +17,10 @@ function rootController($scope, $window) {
      * (vm.htmlTitle is binded to the title tag)
      *
      */
-    if(angular.isDefined(toState.data.pageTitle)){
+    if(angular.isDefined(toState.data) && angular.isDefined(toState.data.pageTitle)){
       vm.htmlTitle = toState.data.pageTitle + ' - Angular Boilerplate Study';
+    } else {
+      vm.htmlTitle = 'Angular Boilerplate Study';
     }
 
     $window.scrollTo(0,0);
