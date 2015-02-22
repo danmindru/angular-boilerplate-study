@@ -6,6 +6,8 @@ Plan your app well, prototype it and then refactor. If you still think it's a go
 
 [See this app in action](http://abs.danmind.ru).
 
+[See a live app built with this boilerplate](http://fadeit.dk).
+
 
 ##Getting started
 
