@@ -406,7 +406,7 @@ module.exports = function(grunt) {
       },
       src_js: {
         files: ['./src/**/*.js', './src/**/*.json'],
-        tasks: ['newer:jshint:src_js', 'newer:copy:build_app_js']
+        tasks: ['newer:jshint:src_js', 'newer:copy:build_app_js', 'copy:build_app_data']
       },
       src_html: {
         files: ['./src/**/*.html', '!./src/index.html'],
