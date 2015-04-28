@@ -1,12 +1,17 @@
 {
   "name": "angular-boilerplate-study",
-  "homepage": "https://github.com/danmindru/angular-boilerplate-study",
+  "homepage": "http://abs.danmind.ru",
+  "repository": "https://github.com/danmindru/angular-boilerplate-study",
   "description": "A study of AngularJS modularity & organization",
+  "keywords": [
+    "AngularJS",
+    "boilerplate",
+    "module"
+  ],
   "authors": [
     "Dan Mindru"
   ],
   "license": "MIT",
-  "private": true,
   "dependencies": {
     "angular": "~1.3.9",
     "loggly-jslogger": "*",
@@ -16,5 +21,15 @@
   },
   "devDependencies": {
     "angular-mocks": "~1.3.9"
-  }
+  },
+  "ignore": [
+    "/vendor/",
+    "/node_modules/",
+    "/build/",
+    "/application/",
+    ".DS_Store"
+  ],
+  "main": [
+    "src/app/_app-main/_app_main.init.js"
+  ]
 }
