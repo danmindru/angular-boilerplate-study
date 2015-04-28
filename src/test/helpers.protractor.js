@@ -35,7 +35,7 @@ var helpers = function helpers(){
         }
       }
       //Uncomment for full log ->
-      console.log('\n log: ' + require('util').inspect(browserLog));
+      //console.log('\n log: ' + require('util').inspect(browserLog));
       expect(severeWarnings).toBe(false);
     });
   };
