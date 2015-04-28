@@ -27,11 +27,15 @@ var helpers = function helpers(){
         //if there are any SEVERE errors (such as AngularJS exceptions) the test should fail and the error message should be displayed
         if(browserLog[i].level.name === 'SEVERE'){
           console.log('\n' + browserLog[i].level.name + '(Possibly exception) \n' + browserLog[i].message);
-          severeWarnings = true;
+
+          //don't show errors for missing favicon
+          if(browserLog[i].message.indexOf('favicon') === -1){
+            severeWarnings = true;
+          }
         }
       }
       //Uncomment for full log ->
-      //console.log('\n log: ' + require('util').inspect(browserLog));
+      console.log('\n log: ' + require('util').inspect(browserLog));
       expect(severeWarnings).toBe(false);
     });
   };
