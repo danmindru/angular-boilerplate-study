@@ -43,7 +43,11 @@ module.exports = {
    * unminified ones.
    * The reason for this is that usually (but not always), Bower
    * dependencies also have a minified version of a component,
-   * therefore there is no reason for us to minify it again.
+   * therefore there is no reason for us to minify them again.
+   *
+   * Note: This only applies to JavaScript files.
+   * The same advantages don't really apply to CSS, therefore we
+   * can include the minified versions in the build object.
    *
    */
   compile: {
