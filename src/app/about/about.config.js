@@ -8,7 +8,8 @@ function aboutConfig($stateProvider){
     url: '/about',
     templateUrl: 'views/about-page.html',
     data:{
-      pageTitle: 'About page'
+      pageTitle: 'About page',
+      pageDesc: 'This study looks at AngularJS boilerplates to find the best approaches. Although plenty of choices are available, they will do justice for only some types of applications.'
     }
   });
 }

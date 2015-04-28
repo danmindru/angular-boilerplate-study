@@ -18,7 +18,8 @@ function profileConfig($stateProvider){
     controllerAs: 'vm',
     templateUrl: 'views/provider-index.html',
     data: {
-      pageTitle: 'Provider index'
+      pageTitle: 'Provider index',
+      pageDesc: 'A list of all registered providers.'
     }
   }).state('customerPage', {
     url: '/customer/:customerId',
@@ -34,7 +35,8 @@ function profileConfig($stateProvider){
     controllerAs: 'vm',
     templateUrl: 'views/customer-index.html',
     data: {
-      pageTitle: 'Customer index'
+      pageTitle: 'Customer index',
+      pageDesc: 'A list of all registered customers.'
     }
   });
 }
