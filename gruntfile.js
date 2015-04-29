@@ -198,7 +198,7 @@ module.exports = function(grunt) {
         './src/app/about/',
         './src/app/home/',
         './src/app/profile-feature/',
-        './src/app//shared/profile-model'
+        './src/app/shared/profile-model'
       ]
     },
     /*
