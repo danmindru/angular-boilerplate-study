@@ -2,8 +2,10 @@
  * This variable contains the root module name, root vendor dependecies and
  * exposes the pushAfterBootstrap method.
  *
- * Custom module dependencies should be added using pushAfterBootstrap,
- * don't add them here.
+ * Custom module dependencies should be added via the second parameter of
+ * pushAfterBootstrap, don't add them here.
+ *
+ * Eg. absConfig.pushAfterBootstrap('abs.home', ['module1', 'module2']);
  *
  * 'sharedViewsModule' is a module generated in the compile phase with the
  * help of grunt-html2js.
@@ -15,8 +17,8 @@ var absConfig = (function applicationInit(){
   var appRootModuleName = 'abs';
   var appMainVendorDependencies = ['ui.router', 'sharedViewsModule'];
 
-  var pushAfterBootstrap = function pushAfterBootstrap(lateModule){
-    angular.module(lateModule, []);
+  var pushAfterBootstrap = function pushAfterBootstrap(lateModule, dependencies){
+    angular.module(lateModule, dependencies || []);
     angular.module(appRootModuleName).requires.push(lateModule);
   };
 
