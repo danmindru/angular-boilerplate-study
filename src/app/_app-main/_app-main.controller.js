@@ -62,7 +62,7 @@ function rootController($scope, $window) {
   });
 
   /*
-   * Same as for changed
+   * Same as for changedTitle
    */
   $scope.$on('changedDesc', function changedPage(event, pageDesc){
     vm.htmlDesc = pageDesc;
